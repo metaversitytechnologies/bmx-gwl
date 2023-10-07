@@ -52,6 +52,7 @@ import MasterReport from "../../pages/dataReport/masterReport/MasterReport";
 import CommReport from "../../pages/dataReport/commReport/CommReport";
 import { useIt_Self_By_APP_URLQuery } from "../../../store/service/supermasteAccountStatementServices";
 import { useEffect } from "react";
+import NewCreateUser from "../../pages/newCreateUser/NewCreateUser";
 
 
 const Main = ({setOpenRules}) => {
@@ -114,10 +115,16 @@ useEffect(() => {
             <Route path="/account-operation" element={<AccountOperations />} />
             <Route path="/client/login-report" element={<LoginReport />} />
             <Route path="/client/login-report/:id" element={<LoginReport />} />
-            <Route path="/client/create-super" element={<CreateSuperAgent createName={"Super Master"}/>}/>
+            <Route path="/client/create-super" element={<NewCreateUser createName={"Super Master"} userTyep={5}/>}/>
+            <Route path="/client/create-agent" element={<NewCreateUser createName={"Master"} userTyep={0}/>}/>
+            <Route path="/client/create-dealer" element={<NewCreateUser createName={"Agent"} userTyep={1}/>}/>
+            <Route path="/client/create-client" element={<NewCreateUser createName={"Client"} userTyep={2}/>}/>
+            
+            {/* <Route path="/client/create-super" element={<CreateSuperAgent createName={"Super Master"}/>}/>
             <Route path="/client/create-agent" element={<CreateSuperAgent createName={"Master"}/>}/>
             <Route path="/client/create-dealer" element={<CreateSuperAgent createName={"Agent"}/>} />
-            <Route path="/client/create-client" element={<CreateSuperAgent createName={"Client"}/>} />
+            <Route path="/client/create-client" element={<CreateSuperAgent createName={"Client"}/>} /> */}
+
             <Route path="/client/limitplusminus-super/:id" element={<SuperAgentLimitDetails />} />
             <Route path="/client/limitplusminus-agent" element={<AgentLimitDetails />} />
             
@@ -159,8 +166,8 @@ useEffect(() => {
             <Route path="/client/deletedlenden/:id" element={<DeletedLenden/>}/>
             <Route path="/rules" element={<Rulespage/>}/>
 
-            <Route path="/report/master" element={<MasterReport userType={1} reportName={"Master"}/>}/>
             <Route path="/report/super" element={<MasterReport userType={0} reportName={"Super Master"}/>}/>
+            <Route path="/report/master" element={<MasterReport userType={1} reportName={"Master"}/>}/>
             <Route path="/report/agent" element={<MasterReport userType={2} reportName={"Agent"}/>}/>
             <Route path="/report/client" element={<MasterReport userType={3} reportName={"Clients"}/>}/>
             

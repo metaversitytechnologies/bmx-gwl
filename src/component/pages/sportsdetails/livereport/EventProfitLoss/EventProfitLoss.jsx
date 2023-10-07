@@ -86,7 +86,7 @@ const EventProfitLoss = () => {
           <SuperAgentProfitLoss data={profitLoss?.data?.showBetsdata} />
         </Col>
         <Col
-          className={`${userType === "0" ? "" : "d-none"}`}
+          className={`${userType === "0" || userType == "5"  ? "" : "d-none"}`}
           xs={24}
           md={24}
           xl={7}
@@ -94,7 +94,7 @@ const EventProfitLoss = () => {
           <MasterProfitLoss data={profitLoss?.data?.showBetsdata} />
         </Col>
         <Col
-          className={`${userType === "1" ? "" : "d-none"}`}
+          className={`${userType === "1" || userType == "5" || userType === "0" ? "" : "d-none"}`}
           xs={24}
           md={24}
           xl={7}

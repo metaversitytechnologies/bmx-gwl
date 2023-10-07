@@ -59,7 +59,7 @@ const nav = useNavigate()
           <Col  xl={8} xs={24} lg={8} md={24} span={8}>
             <div className="super_ledger item1">
               <div>Lena</div>
-              <div>{leneBalance}</div>
+              <div>{leneBalance?.toFixed(2)}</div>
             </div>
             <div >
               <div className="table_section">
@@ -77,7 +77,7 @@ const nav = useNavigate()
           <Col  xl={8} xs={24} lg={8} md={24}>
             <div className="super_ledger item2" >
               <div>Dena</div>
-              <div>{Math.abs(denaData)}</div>
+              <div>{Math.abs(denaData?.toFixed(2))}</div>
             </div>
             <div>
               <div className="table_section">
@@ -96,7 +96,7 @@ const nav = useNavigate()
             <div className="last_item">
             <div className="super_ledger item3">
               <div>Clear</div>
-              <div>{clearData}</div>
+              <div>{(clearData?.toFixed)}</div>
             </div>
             <div>
               <div className="table_section">

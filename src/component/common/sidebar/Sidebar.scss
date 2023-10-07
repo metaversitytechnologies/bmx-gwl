@@ -112,3 +112,17 @@
 // header.ant-layout-header{
 //   z-index: 99999 !important;
 // }
+
+
+
+.data_report_list{
+  .ant-menu-inline{
+    .ant-menu-submenu{
+      .ant-menu-submenu-title{
+        .ant-menu-submenu-arrow{
+          margin-left: 24px;
+        }
+      }
+    }
+  }
+}

@@ -79,7 +79,7 @@ const ListSuper = ({ userTyep, Listname }) => {
         </div>
       </div>
 
-      {id && Listname !== "Client" && (
+      {/* {id && Listname !== "Client" && (
         <div className="main_live_section list_supers">
           <div className="_match">
             <div className="sub_live_section live_report">
@@ -88,9 +88,6 @@ const ListSuper = ({ userTyep, Listname }) => {
                 className="team_name">
                 Client Details
               </div>
-              {/* <div className="show_btn">
-                <button onClick={handleBackClick}>Back</button>
-              </div> */}
             </div>
           </div>
           <div>
@@ -118,7 +115,7 @@ const ListSuper = ({ userTyep, Listname }) => {
             </div>
           </div>
         </div>
-      )}
+      )} */}
     </>
   );
 };

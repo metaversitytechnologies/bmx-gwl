@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import { Button, Form, Input, InputNumber, Spin, notification } from "antd";
 import './Deposit.scss'
-import { useAddLimitMutation, useDepositAndWithdrawQuery } from "../../store/service/userlistService";
+import { useDepositAndWithdrawQuery, useDepositMutation } from "../../store/service/userlistService";
 import { openNotification, openNotificationError } from "../../App";
 
 const Deposit = ({data: datadeposit, userIdData, handleClose}) => {
   const [form]= Form.useForm();
 
 
-    const [trigger , {data, error, isLoading}] = useAddLimitMutation()
+    const [trigger , {data, error, isLoading}] = useDepositMutation()
     const {data: depositeWithdraw} = useDepositAndWithdrawQuery({
       userId:datadeposit
     }, {refetchOnMountOrArgChange:true});

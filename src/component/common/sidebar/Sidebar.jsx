@@ -96,11 +96,11 @@ const Sidebar = (props) => {
                   label: <Link to="/client/list-super">Super Master</Link>,
                 },
                 {
-                  className: `${userType === "0" ? "" : "d-none"}`,
+                  className: `${userType === "0" || userType == "5"  ? "" : "d-none"}`,
                   label: <Link to="/client/list-agent">Master</Link>,
                 },
                 {
-                  className: `${userType === "1" ? "" : "d-none"}`,
+                  className: `${userType === "1" || userType == "5" || userType === "0" ? "" : "d-none"}`,
                   label: <Link to="/client/list-dealer">Agent</Link>,
                 },
                 {
@@ -155,11 +155,11 @@ const Sidebar = (props) => {
                   label: <Link to="/client/ledger-super">Super Master Ledger</Link>,
                 },
                 {
-                  className: `${userType === "0" ? "" : "d-none"}`,
+                  className: `${userType === "0" || userType == "5"  ? "" : "d-none"}`,
                   label: <Link to="/client/ledger-master">Master Ledger</Link>,
                 },
                 {
-                  className: `${userType === "1" ? "" : "d-none"}`,
+                  className: `${userType === "1" || userType == "5" || userType === "0" ? "" : "d-none"}`,
                   label: <Link to="/client/ledger-agent">Agent Ledger</Link>,
                 },
                 {
@@ -172,17 +172,7 @@ const Sidebar = (props) => {
               icon: <BiUserCircle />,
               label: "Cash Transaction",
               children: [
-                {
-                  label: (
-                    <Link to="/client/txn-client">Debit/Credit Entry(C)</Link>
-                  ),
-                },
-                {
-                  className: `${userType === "1" ? "" : "d-none"}`,
-                  label: (
-                    <Link to="/client/txn-agent">Debit/Credit Entry(A)</Link>
-                  ),
-                },
+                
                 {
                   className: `${userType == "5" ? "" : "d-none"}`,
                   label: (
@@ -190,9 +180,21 @@ const Sidebar = (props) => {
                   ),
                 },
                 {
-                  className: `${userType === "0" ? "" : "d-none"}`,
+                  className: `${userType === "0" || userType == "5"  ? "" : "d-none"}`,
                   label: (
                     <Link to="/client/txn-master">Debit/Credit Entry(M)</Link>
+                  ),
+                },
+                
+                {
+                  className: `${userType === "1" || userType == "5" || userType === "0" ? "" : "d-none"}`,
+                  label: (
+                    <Link to="/client/txn-agent">Debit/Credit Entry(A)</Link>
+                  ),
+                },
+                {
+                  label: (
+                    <Link to="/client/txn-client">Debit/Credit Entry(C)</Link>
                   ),
                 },
               ],
@@ -210,12 +212,12 @@ const Sidebar = (props) => {
                     label: <Link to="/report/super">Super Master </Link>,
                   },
                   {
-                    className: `${userType === "0" ? "" : "d-none"}`,
+                    className: `${userType === "0" || userType == "5"  ? "" : "d-none"}`,
                     label: <Link to="/report/master">Master </Link>,
                   },
                   
                   {
-                    className: `${userType === "1" ? "" : "d-none"}`,
+                    className: `${userType === "1" || userType == "5" || userType === "0" ? "" : "d-none"}`,
                     label: <Link to="/report/agent">Agent </Link>,
                   },
                   {
@@ -231,11 +233,11 @@ const Sidebar = (props) => {
                       label: <Link to="/client/comm-report-super">Super Master</Link>,
                     },
                     {
-                      className: `${userType === "0" ? "" : "d-none"}`,
+                      className: `${userType === "0" || userType == "5"  ? "" : "d-none"}`,
                       label: <Link to="/client/comm-report-master">Master</Link>,
                     },
                     {
-                      className: `${userType === "1" ? "" : "d-none"}`,
+                      className: `${userType === "1" || userType == "5" || userType === "0" ? "" : "d-none"}`,
                       label: <Link to="/client/comm-report-agent">Agent</Link>,
                     },
                     {
@@ -317,7 +319,7 @@ const Sidebar = (props) => {
                     ),
                   },
                   {
-                    className: `${userType === "0" ? "" : "d-none"}`,
+                    className: `${userType === "0" || userType == "5"  ? "" : "d-none"}`,
                     label: (
                       <Link
                         to="/client/list-agent"
@@ -327,7 +329,7 @@ const Sidebar = (props) => {
                     ),
                   },
                   {
-                    className: `${userType === "1" ? "" : "d-none"}`,
+                    className: `${userType === "1" || userType == "5" || userType === "0" ? "" : "d-none"}`,
                     label: (
                       <Link
                         to="/client/list-dealer"
@@ -406,7 +408,7 @@ const Sidebar = (props) => {
                     ),
                   },
                   {
-                    className: `${userType === "0" ? "" : "d-none"}`,
+                    className: `${userType === "0" || userType == "5"  ? "" : "d-none"}`,
                     label: (
                       <Link
                         onClick={() => props?.action()}
@@ -416,7 +418,7 @@ const Sidebar = (props) => {
                     ),
                   },
                   {
-                    className: `${userType === "1" ? "" : "d-none"}`,
+                    className: `${userType === "1" || userType == "5" || userType === "0" ? "" : "d-none"}`,
                     label: (
                       <Link
                         onClick={() => props?.action()}
@@ -441,25 +443,7 @@ const Sidebar = (props) => {
                 icon: <BiUserCircle />,
                 label: "Cash Transaction",
                 children: [
-                  {
-                    label: (
-                      <Link
-                        to="/client/txn-client"
-                        onClick={() => props?.action()}>
-                        Debit/Credit Entry(C)
-                      </Link>
-                    ),
-                  },
-                  {
-                    className: `${userType === "1" ? "" : "d-none"}`,
-                    label: (
-                      <Link
-                        to="/client/txn-agent"
-                        onClick={() => props?.action()}>
-                        Debit/Credit Entry(A)
-                      </Link>
-                    ),
-                  },
+                  
                   {
                     className: `${userType == "5" ? "" : "d-none"}`,
                     label: (
@@ -471,7 +455,7 @@ const Sidebar = (props) => {
                     ),
                   },
                   {
-                    className: `${userType == "0" ? "" : "d-none"}`,
+                    className: `${userType === "0" || userType == "5"  ? "" : "d-none"}`,
                     label: (
                       <Link
                         to="/client/txn-master"
@@ -480,10 +464,31 @@ const Sidebar = (props) => {
                       </Link>
                     ),
                   },
+                  
+                  {
+                    className: `${userType === "1" || userType == "5" || userType === "0" ? "" : "d-none"}`,
+                    label: (
+                      <Link
+                        to="/client/txn-agent"
+                        onClick={() => props?.action()}>
+                        Debit/Credit Entry(A)
+                      </Link>
+                    ),
+                  },
+                  {
+                    label: (
+                      <Link
+                        to="/client/txn-client"
+                        onClick={() => props?.action()}>
+                        Debit/Credit Entry(C)
+                      </Link>
+                    ),
+                  },
                 ],
               },
               {
                 key: "6",
+                className:"data_report_list",
                 icon: <BiUserCircle />,
                 label: "Reports",
                 children: [
@@ -503,7 +508,7 @@ const Sidebar = (props) => {
                         ),
                       },
                       {
-                        className: `${userType === "0" ? "" : "d-none"}`,
+                        className: `${userType === "0" || userType == "5"  ? "" : "d-none"}`,
                         label: (
                           <Link
                           to="/report/master"
@@ -514,7 +519,7 @@ const Sidebar = (props) => {
                       },
                       
                       {
-                        className: `${userType === "1" ? "" : "d-none"}`,
+                        className: `${userType === "1" || userType == "5" || userType === "0" ? "" : "d-none"}`,
                         label: (
                           <Link
                           to="/report/agent"
@@ -550,7 +555,7 @@ const Sidebar = (props) => {
                         ),
                       },
                       {
-                        className: `${userType === "0" ? "" : "d-none"}`,
+                        className: `${userType === "0" || userType == "5"  ? "" : "d-none"}`,
                         label: (
                           <Link
                             to="/client/comm-report-master"
@@ -560,7 +565,7 @@ const Sidebar = (props) => {
                         ),
                       },
                       {
-                        className: `${userType === "1" ? "" : "d-none"}`,
+                        className: `${userType === "1" || userType == "5" || userType === "0" ? "" : "d-none"}`,
                         label: (
                           <Link
                             to="/client/comm-report-agent"

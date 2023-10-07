@@ -3,15 +3,15 @@ import { Button, Form, Input, InputNumber, Spin} from "antd";
 import "./Deposit.scss";
 import {
   useDepositAndWithdrawQuery,
-  useMinusLimitMutation,
+  useWithdrawMutation,
 } from "../../store/service/userlistService";
 import { openNotification, openNotificationError } from "../../App";
 
-const Withdraw = ({ data:datadeposit, userIdData, handleClose }) => {
+const Withdraw = ({ data: datadeposit, userIdData, handleClose }) => {
   const [form]= Form.useForm();
 
 
-  const [trigger, { data, error, isLoading }] = useMinusLimitMutation();
+  const [trigger, { data, error, isLoading }] = useWithdrawMutation();
   const {data: depositeWithdraw} = useDepositAndWithdrawQuery({
     userId:datadeposit
   });
@@ -19,7 +19,7 @@ const Withdraw = ({ data:datadeposit, userIdData, handleClose }) => {
   const onFinish = (values) => {
     const withdrawData = {
       amount: Number(values?.number),
-      remark: "credit deposit",
+      remark: "credit withdraw",
       lupassword: values?.password,
       userId: userIdData,
     };

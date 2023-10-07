@@ -152,6 +152,7 @@ const Dashboard = () => {
             </div>
           </div>
         </Card.Grid>
+        
         <Card.Grid hoverable={false} style={gridStyle}>
           <div className="main_card_section">
             <div className="icon_card_section">

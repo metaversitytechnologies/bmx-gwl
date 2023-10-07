@@ -30,7 +30,7 @@ const LadgerDetails = () => {
           {
             image: <BiUserCircle />,
             name: "Master",
-            path:"/client/ledger-maste",
+            path:"/client/ledger-master",
             size:"20",
             userType:1
 
@@ -45,7 +45,7 @@ const LadgerDetails = () => {
           },
           {
             image: <BiUserCircle />,
-            name: "Client Master",
+            name: "Client",
             path:"/client/ledger-client",
             size:"20",
             userType:3
@@ -54,10 +54,10 @@ const LadgerDetails = () => {
 
     const uType =localStorage.getItem("userType")
   const userTypeMatch={
-    0:[1,3,6,7],
+    0:[1,2,3,6,7],
     1:[2,3,6,7],
     2:[3,6,7],
-    5:[0,3,6,7]
+    5:[0,1,2,3,6,7]
   }
 
   return (

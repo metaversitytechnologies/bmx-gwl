@@ -38,10 +38,10 @@ const MasterDetails = () => {
   ];
   const uType =localStorage.getItem("userType")
   const userTypeMatch={
-    0:[1,3],
+    0:[1,2,3],
     1:[2,3],
     2:[3],
-    5:[0,3]
+    5:[0,1,2,3]
   }
   return (
     <>

@@ -23,18 +23,17 @@ const BetlockModal = ({
   userType,
   getData,
 }) => {
-  const [accountBetStatus, setAccountBetStatus] = useState(false);
   const [form] = Form.useForm();
+
+  console.log(betStatus,accStatus, "dfsddas")
 
   const [trigger, { data, error, isLoading }] = useBlockBettingMutation();
 
   const onFinish = (values) => {
-    console.log(values?.type, "fdfsdf");
-    setAccountBetStatus(values?.type == "acc" ? true : false);
     const bettingPayload = {
       userId: userIdData,
-      betLock: values?.type == "bet" && !betStatus,
-      accountLock: values?.type == "acc" && !accStatus,
+      betLock: values?.type == "bet" ? !betStatus : betStatus,
+      accountLock: values?.type == "acc" ? !accStatus : accStatus,
       isactive: true,
       liveCasinoLock: false,
       virtualCasinoLock: false,

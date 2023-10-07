@@ -13,14 +13,14 @@ const data = [
       {
         image: <BiUserCircle />,
         name: "Dr/Cr Entry Master",
-        path:"/client/txn-agent",
+        path:"/client/txn-master",
         size:"14",
         userType:1
       },
       {
         image: <BiUserCircle />,
         name: "Dr/Cr Entry Agent",
-        path:"/client/txn-client",
+        path:"/client/txn-agent",
         size:"14",
         userType:2
       },
@@ -36,10 +36,10 @@ const data = [
 const CashTransanction = () => {
 
   const userTypeMatch={
-    0:[1,3],
+    0:[1,2,3],
     1:[2,3],
     2:[3],
-    5:[0,3]
+    5:[0,1,2,3]
   }
   const uType =localStorage.getItem("userType")
   return (

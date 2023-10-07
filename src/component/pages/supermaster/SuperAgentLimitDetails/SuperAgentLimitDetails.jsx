@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import "./SuperAgentLimitDetails.scss";
 import React from "react";
 import { Tabs } from "antd";
@@ -13,26 +13,30 @@ const SuperAgentLimitDetails = () => {
     nav(-1);
   };
 
+  const onChange = (key) => {
+    console.log(key, "ddsddasdasd");
+
+  };
+
   const items = [
     {
       key: "1",
       label: `Add`,
-      children: <AddSuperLimites />,
+      children: <AddSuperLimites/>,
     },
     {
       key: "2",
       label: `Minus`,
-      children: <MinusLimit  />,
+      children: <MinusLimit/>,
       color:"red"
     },
   ];
 
-  const onChange = (key) => {
-    console.log(key);
-  };
+  
 
 
-  const uType = localStorage.getItem("userType")
+  const {state} = useLocation();
+  // const uType = localStorage.getItem("userType")
 
 
   return (
@@ -45,7 +49,7 @@ const SuperAgentLimitDetails = () => {
             <div
               style={{ padding: "9px 8px", fontSize: "22px" }}
               className="team_name">
-              {uType == 5? "Super Master Limit Details": uType == 0?"Master Limit Details ":uType == 1?"Agent Limit Details": uType == 2?"Client Limit Details":""}
+              {state == 1 ? "Master Limit Details":state == 2?"Agent Limit Details": state == 3?"Client Limit Details":"Super Master Limit Details"}
             </div>
             <div className="show_btn">
               <button onClick={handleBackClick}>Back</button>
@@ -57,6 +61,7 @@ const SuperAgentLimitDetails = () => {
           <Tabs
             defaultActiveKey="1"
             className="add_minus"
+            destroyInactiveTabPane
             items={items}
             onChange={onChange}
           />
