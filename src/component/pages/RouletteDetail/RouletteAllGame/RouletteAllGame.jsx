@@ -22,7 +22,7 @@ const {state} = useLocation()
   return (
     <Card
     className="sport_detail main_match_ledger"
-    title={`AURA ${state?.rouletteDate}`}
+    title={`${state?.isAuraDetails?"AURA":"Super Nowa"} ${state?.rouletteDate}`}
     extra={<button onClick={() => nav(-1)}>Back</button>}>
     {/* <div className="matchladger_total">
       <p

@@ -150,7 +150,10 @@ useEffect(() => {
             <Route path="/Casino/today-pandl" element={<TodayProfitLoss/>}/>
             <Route path="/client/mobile-app-report" element={<SelectClient/>}/>
             <Route path="/client/secure-code-report" element={<SecureCodeReport/>}/>
-            <Route path="/casino/aura-details" element={<RouletteDetail/>}/>
+
+            <Route path="/casino/aura-details" element={<RouletteDetail isAura={true} Id={323334}/>}/>
+            <Route path="/casino/supernowa" element={<RouletteDetail isAura={false} Id={323338}/>}/>
+            
             <Route path="/casino/:id/plus-minus-type" element={<RoulettePlusMinus/>}/>
             <Route path="/casino/:id/all-games" element={<RouletteAllGame/>}/>
             <Route path="/casino/show-bets/:id" element={<ShowBets/>}/>

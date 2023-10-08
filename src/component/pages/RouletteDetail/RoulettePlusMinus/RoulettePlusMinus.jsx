@@ -172,7 +172,9 @@ const RoulettePlusMinus = () => {
     }
   }, [plusMinus]);
 
-  const uType = localStorage.getItem("userType")
+  const uType = localStorage.getItem("userType");
+
+  console.log(state?.isAuraDetails, "sdasdasda")
 
   return (
     <>
@@ -186,7 +188,7 @@ const RoulettePlusMinus = () => {
                 `${uType == 5? "Sub Admin ": uType == 0?"Super Master ":uType == 1?"Master ": uType == 2?"Agent ":""} Company Report`
               }</p>
               <p style={{ fontSize: "16px" }}>
-                {`AURA ${state?.rouletteDate}`}{" "}
+                {`${state?.isAuraDetails?"AURA":"Super Nowa"} ${state?.rouletteDate}`}{" "}
               </p>
             </div>
             <div className="show_btn">

@@ -9,16 +9,19 @@ import { useRouletteDetailsQuery } from "../../../store/service/CasinoServices";
 
 const { RangePicker } = DatePicker;
 
-const RouletteDetail = () => {
+const RouletteDetail = ({isAura, Id}) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [dropdownStates, setDropdownStates] = useState([]);
   const timeBefore = moment().subtract(14, "days").format("YYYY-MM-DD");
   const time = moment().format("YYYY-MM-DD");
   const [dateData, setDateData] = useState([timeBefore, time]);
   const [rouletteDate, setRouletteDate] = useState();
+  const [isAuraDetails, setIsAuraDetails] = useState();
 
   const navigate = useNavigate();
 
+  console.log(Id, "isAura");
+  
   const handleBackbtn = () => {
     navigate(-1);
   };
@@ -26,21 +29,22 @@ const RouletteDetail = () => {
 
   const handleDroupDown = (val) => {
     setRouletteDate(val);
+    setIsAuraDetails(isAura);
   };
 
   const handlePlusMinus = () => {
-    navigate(`/casino/${323334}/plus-minus-type`, { state: { rouletteDate } });
+    navigate(`/casino/${Id}/plus-minus-type`, { state: { rouletteDate, isAuraDetails } });
   };
 
   const handleDisplayGame = () => {
-    navigate(`/casino/${323334}/all-games`, { state: { rouletteDate } });
+    navigate(`/casino/${Id}/all-games`, { state: { rouletteDate, isAuraDetails } });
   };
 
   const items = [
     {
       label: (
         <p onClick={handlePlusMinus} className="title_section">
-          Aura Plus Minus
+         { `${isAura?"Aura":"Super Nowa"} Plus Minus`}
         </p>
       ),
       key: "0",
@@ -92,7 +96,7 @@ const RouletteDetail = () => {
     isFetching,
   } = useRouletteDetailsQuery(
     {
-      casinoId: 323334,
+      casinoId: Id,
       startDate: dateData[0],
       endDate: dateData[1],
     },
@@ -103,7 +107,7 @@ const RouletteDetail = () => {
     <>
       <Card
         className="sport_detail roulette"
-        title="AURA Detail"
+        title={isAura?"AURA Detail":"Super Nowa Detail"}
         extra={
           <>
             <button onClick={console.log("")}>Book</button>
