@@ -89,15 +89,15 @@ const Sidebar = (props) => {
             {
               key: "2",
               icon: <BiUserCircle />,
-              label: <div>{uType == 5? "Sub Admin Details": uType == 0?"Super Master Detail":uType == 1?"Master Detail": uType == 2?"Agent Detail":""}</div>,
+              label: <div>{uType == 5? "Sub Admin Details": uType == 0?"Master Detail":uType == 1?"Super Detail": uType == 2?"Agent Detail":""}</div>,
               children: [
                 {
                   className: `${userType != "5" ? "d-none" : ""}`,
-                  label: <Link to="/client/list-super">Super Master</Link>,
+                  label: <Link to="/client/list-super">Master</Link>,
                 },
                 {
                   className: `${userType === "0" || userType == "5"  ? "" : "d-none"}`,
-                  label: <Link to="/client/list-agent">Master</Link>,
+                  label: <Link to="/client/list-agent">Super</Link>,
                 },
                 {
                   className: `${userType === "1" || userType == "5" || userType === "0" ? "" : "d-none"}`,
@@ -151,11 +151,11 @@ const Sidebar = (props) => {
                 },
                 {
                   className: `${userType != "5" ? "d-none" : ""}`,
-                  label: <Link to="/client/ledger-super">Super Master Ledger</Link>,
+                  label: <Link to="/client/ledger-super">Master Ledger</Link>,
                 },
                 {
                   className: `${userType === "0" || userType == "5"  ? "" : "d-none"}`,
-                  label: <Link to="/client/ledger-master">Master Ledger</Link>,
+                  label: <Link to="/client/ledger-master">Super Ledger</Link>,
                 },
                 {
                   className: `${userType === "1" || userType == "5" || userType === "0" ? "" : "d-none"}`,
@@ -175,13 +175,13 @@ const Sidebar = (props) => {
                 {
                   className: `${userType == "5" ? "" : "d-none"}`,
                   label: (
-                    <Link to="/client/txn-super">Debit/Credit Entry(SM)</Link>
+                    <Link to="/client/txn-super">Debit/Credit Entry(M)</Link>
                   ),
                 },
                 {
                   className: `${userType === "0" || userType == "5"  ? "" : "d-none"}`,
                   label: (
-                    <Link to="/client/txn-master">Debit/Credit Entry(M)</Link>
+                    <Link to="/client/txn-master">Debit/Credit Entry(S)</Link>
                   ),
                 },
                 
@@ -208,11 +208,11 @@ const Sidebar = (props) => {
                   label: "Data Report",
                   children:[{
                     className: `${userType != "5" ? "d-none" : ""}`,
-                    label: <Link to="/report/super">Super Master </Link>,
+                    label: <Link to="/report/super">Master </Link>,
                   },
                   {
                     className: `${userType === "0" || userType == "5"  ? "" : "d-none"}`,
-                    label: <Link to="/report/master">Master </Link>,
+                    label: <Link to="/report/master">Super</Link>,
                   },
                   
                   {
@@ -229,11 +229,11 @@ const Sidebar = (props) => {
                   children:[
                     {
                       className: `${userType != "5" ? "d-none" : ""}`,
-                      label: <Link to="/client/comm-report-super">Super Master</Link>,
+                      label: <Link to="/client/comm-report-super">Master</Link>,
                     },
                     {
                       className: `${userType === "0" || userType == "5"  ? "" : "d-none"}`,
-                      label: <Link to="/client/comm-report-master">Master</Link>,
+                      label: <Link to="/client/comm-report-master">Super</Link>,
                     },
                     {
                       className: `${userType === "1" || userType == "5" || userType === "0" ? "" : "d-none"}`,
@@ -305,7 +305,7 @@ const Sidebar = (props) => {
               {
                 key: "2",
                 icon: <BiUserCircle />,
-                label: <div>{uType == 5? "Sub Admin Details": uType == 0?"Super Master Detail":uType == 1?"Master Detail": uType == 2?"Agent Detail":""}</div>,
+                label: <div>{uType == 5? "Sub Admin Details": uType == 0?"Master Detail":uType == 1?"Super Detail": uType == 2?"Agent Detail":""}</div>,
                 children: [
                   {
                     className: `${userType != "5" ? "d-none" : ""}`,
@@ -313,7 +313,7 @@ const Sidebar = (props) => {
                       <Link
                         to="/client/list-super"
                         onClick={() => props?.action()}>
-                        Super Master
+                        Master
                       </Link>
                     ),
                   },
@@ -323,7 +323,7 @@ const Sidebar = (props) => {
                       <Link
                         to="/client/list-agent"
                         onClick={() => props?.action()}>
-                        Master
+                        Super
                       </Link>
                     ),
                   },
@@ -411,7 +411,7 @@ const Sidebar = (props) => {
                       <Link
                         onClick={() => props?.action()}
                         to="/client/ledger-super">
-                        Super Master Ledger
+                        Master Ledger
                       </Link>
                     ),
                   },
@@ -421,7 +421,7 @@ const Sidebar = (props) => {
                       <Link
                         onClick={() => props?.action()}
                         to="/client/ledger-master">
-                        Master Ledger
+                        Super Ledger
                       </Link>
                     ),
                   },
@@ -458,7 +458,7 @@ const Sidebar = (props) => {
                       <Link
                         to="/client/txn-super"
                         onClick={() => props?.action()}>
-                        Debit/Credit Entry(SM)
+                        Debit/Credit Entry(M)
                       </Link>
                     ),
                   },
@@ -468,7 +468,7 @@ const Sidebar = (props) => {
                       <Link
                         to="/client/txn-master"
                         onClick={() => props?.action()}>
-                        Debit/Credit Entry(M)
+                        Debit/Credit Entry(S)
                       </Link>
                     ),
                   },
@@ -511,7 +511,7 @@ const Sidebar = (props) => {
                           <Link
                           to="/report/super"
                             onClick={() => props?.action()}>
-                            Super Master
+                            Master
                           </Link>
                         ),
                       },
@@ -521,7 +521,7 @@ const Sidebar = (props) => {
                           <Link
                           to="/report/master"
                             onClick={() => props?.action()}>
-                            Master 
+                            Super 
                           </Link>
                         ),
                       },
@@ -558,7 +558,7 @@ const Sidebar = (props) => {
                           <Link
                             to="/client/comm-report-super"
                             onClick={() => props?.action()}>
-                            Super Master
+                            Master
                           </Link>
                         ),
                       },
@@ -568,7 +568,7 @@ const Sidebar = (props) => {
                           <Link
                             to="/client/comm-report-master"
                             onClick={() => props?.action()}>
-                            Master
+                            Super
                           </Link>
                         ),
                       },

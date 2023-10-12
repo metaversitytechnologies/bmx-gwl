@@ -86,9 +86,9 @@ const NewCreateUser = ({ createName, userTyep  }) => {
   useEffect(() => {
     getData({
       userId: hostname.includes("create-super")
-        ? "S" + createUserId
-        : hostname.includes("create-agent")
         ? "M" + createUserId
+        : hostname.includes("create-agent")
+        ? "S" + createUserId
         : hostname.includes("create-dealer")
         ? "A" + createUserId
         : "C" + createUserId,
@@ -118,9 +118,9 @@ const NewCreateUser = ({ createName, userTyep  }) => {
     setLuPassword("");
     const userData = {
       userId: hostname.includes("create-super")
-        ? "S" + createUserId?.trim()
-        : hostname.includes("create-agent")
         ? "M" + createUserId?.trim()
+        : hostname.includes("create-agent")
+        ? "S" + createUserId?.trim()
         : hostname.includes("create-dealer")
         ? "A" + createUserId?.trim()
         : "C" + createUserId?.trim(),
@@ -200,7 +200,7 @@ const NewCreateUser = ({ createName, userTyep  }) => {
               Create {createName}
             </div>
             <div className="show_btn">
-              {/* <button onClick={()=>nav(-1)}>Back</button> */}
+            {userTypeCheck == userTyep && <button onClick={()=>nav(-1)}>Back</button>}
             </div>
           </div>
         </div>

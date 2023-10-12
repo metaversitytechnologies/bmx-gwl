@@ -77,7 +77,7 @@ export const supermasteAccountStatementApi = createApi({
     }),
     createTransaction: build.mutation({
       query: (body) => ({
-        url: `/bmx/create-cash-transection`,
+        url: `/bmx/create-cash-transection-v2`,
         method: "POST",
         body,
       }),
@@ -91,7 +91,7 @@ export const supermasteAccountStatementApi = createApi({
     }),
     DeleteByUserID: build.mutation({
       query: (body) => ({
-        url: `/bmx/delete-cash-transection`,
+        url: `/bmx/delete-cash-transection-v2`,
         method: "POST",
         body,
       }),

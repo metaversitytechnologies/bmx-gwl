@@ -70,7 +70,7 @@ const RecursiveTable = ({ data, title }) => {
       returnArr.push(
         <tr className="master_color">
           <td colSpan={2}>&nbsp;</td>
-          <td style={{ whiteSpace: "nowrap" }}>SUPER Master </td>
+          <td style={{ whiteSpace: "nowrap" }}>Master </td>
           <td colSpan={32}>
             <strong>{title}</strong>
           </td>
@@ -79,7 +79,7 @@ const RecursiveTable = ({ data, title }) => {
     } else if (data?.groupName === "master") {
       returnArr.push(
         <tr className="super_color">
-          <td colSpan={3}>&nbsp;</td> <td>MASTER </td>
+          <td colSpan={3}>&nbsp;</td> <td>Super </td>
           <td colSpan={31}>
             <strong>{title}</strong>
           </td>

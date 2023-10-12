@@ -26,9 +26,9 @@ const ListSuper = ({ userTyep, Listname }) => {
   };
 
   const handleCreate = () => {
-    if (Listname === "Super Master") {
+    if (Listname === "Master") {
       nav("/client/create-super");
-    } else if (Listname === "Master") {
+    } else if (Listname === "Super") {
       nav("/client/create-agent");
     } else if (Listname === "Agent") {
       nav("/client/create-dealer");

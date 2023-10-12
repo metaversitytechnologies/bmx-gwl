@@ -22,14 +22,14 @@ const LadgerDetails = () => {
           },
           {
             image: <BiUserCircle />,
-            name: "Super Master",
+            name: "Master",
             path:"/client/ledger-super",
             size:"20",
             userType:0
           },
           {
             image: <BiUserCircle />,
-            name: "Master",
+            name: "Super",
             path:"/client/ledger-master",
             size:"20",
             userType:1

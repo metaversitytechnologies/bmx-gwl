@@ -223,9 +223,9 @@ const UserListTable = ({ userType, Listname, parentUserids, setParentUserIds, Us
         <Link
         onClick={()=>{ setDropdownStates([])}}
           to={`${
-            Listname === "Super Master"
+            Listname === "Master"
               ? `/client/update-super/${dataVal}`
-              : Listname === "Master"
+              : Listname === "Super"
               ? `/client/update-agent/${dataVal}`
               : Listname === "Agent"
               ? `/client/update-dealer/${dataVal}`
@@ -407,9 +407,9 @@ const UserListTable = ({ userType, Listname, parentUserids, setParentUserIds, Us
                   {uType == 5
                     ? "Sub Admin"
                     : uType == 0
-                    ? "Super Master"
-                    : uType == 1
                     ? "Master"
+                    : uType == 1
+                    ? "Super"
                     : uType == 2
                     ? "Agent"
                     : ""}
