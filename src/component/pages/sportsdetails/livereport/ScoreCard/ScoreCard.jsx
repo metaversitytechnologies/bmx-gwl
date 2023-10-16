@@ -45,7 +45,8 @@ const ScoreCard = ({ mid }) => {
         <div>
           <iframe
             // src={`https://stream.openhomepageforapi.live/YGapp/play.html?name=ttfour&amp;autoplay=true`}
-            src={`http://43.205.116.130/tv.php?eventId=${mid}`}
+            // src={`http://43.205.116.130/tv.php?eventId=${mid}`}
+            src={`https://100tun.online/web/${mid}.html`}
             width="100%"
             className="score-card"
             title="scorecord"
