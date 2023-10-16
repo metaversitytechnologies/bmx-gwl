@@ -6,7 +6,7 @@ const MasterDetails = () => {
   const data = [
     {
       image: <BiUserCircle />,
-      name: "Super Master",
+      name: "Master",
       path: "/client/list-super",
       size: "20",
       id: 0,
@@ -14,7 +14,7 @@ const MasterDetails = () => {
     },
     {
       image: <BiUserCircle />,
-      name: "Master",
+      name: "Super",
       path: `/client/list-agent`,
       size: "20",
       userType:1
@@ -38,10 +38,10 @@ const MasterDetails = () => {
   ];
   const uType =localStorage.getItem("userType")
   const userTypeMatch={
-    0:[1,3],
+    0:[1,2,3],
     1:[2,3],
     2:[3],
-    5:[0,3]
+    5:[0,1,2,3]
   }
   return (
     <>

@@ -1,7 +1,7 @@
 import { Button, Form, Input, Space, Table, notification } from "antd";
 import React, { useEffect, useRef, useState } from "react";
 
-import {useDepositMutation, useLazyUpDateLimitesQuery } from "../../../../store/service/userlistService";
+import {useAddLimitMutation, useDepositMutation, useLazyUpDateLimitesQuery } from "../../../../store/service/userlistService";
 import { useLocation, useParams } from "react-router-dom";
 
 const AddSuperLimites = () => {
@@ -41,7 +41,7 @@ const AddSuperLimites = () => {
   };
 
 
-  const [trigger, { data: addData, error, isLoading }] = useDepositMutation();
+  const [trigger, { data: addData, error, isLoading }] = useAddLimitMutation();
   const [updateLimites, {data: updateLimite}] = useLazyUpDateLimitesQuery()
 
 

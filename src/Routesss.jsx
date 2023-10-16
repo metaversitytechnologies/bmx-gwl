@@ -8,7 +8,6 @@ const Routesss = () => {
     <div>
         <Routes>
             <Route path="/" element={<LayOut/>}>
-
             </Route>
         </Routes>
       

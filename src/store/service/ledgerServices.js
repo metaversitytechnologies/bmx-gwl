@@ -20,7 +20,7 @@ export const ledgerApi = createApi({
     }),
     downlineLedger: build.query({
       query: (body) => ({
-        url: "/bmx/report/get-ledger-by-user-type",
+        url: "/bmx/report/get-ledger-by-user-type-v2",
         method: "POST",
         body
       }),

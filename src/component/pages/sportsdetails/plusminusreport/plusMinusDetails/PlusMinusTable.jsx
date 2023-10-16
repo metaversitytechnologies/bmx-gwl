@@ -70,7 +70,7 @@ const RecursiveTable = ({ data, title }) => {
       returnArr.push(
         <tr className="master_color">
           <td colSpan={2}>&nbsp;</td>
-          <td style={{ whiteSpace: "nowrap" }}>SUPER Master </td>
+          <td style={{ whiteSpace: "nowrap" }}>Master </td>
           <td colSpan={32}>
             <strong>{title}</strong>
           </td>
@@ -79,7 +79,7 @@ const RecursiveTable = ({ data, title }) => {
     } else if (data?.groupName === "master") {
       returnArr.push(
         <tr className="super_color">
-          <td colSpan={3}>&nbsp;</td> <td>MASTER </td>
+          <td colSpan={3}>&nbsp;</td> <td>Super </td>
           <td colSpan={31}>
             <strong>{title}</strong>
           </td>
@@ -340,6 +340,7 @@ const RecursiveTable = ({ data, title }) => {
                 {title}
               </th>
               <th
+              className="sub_agent_heading"
                 colSpan={2}
                 >
               </th>
@@ -442,41 +443,40 @@ const RecursiveTable = ({ data, title }) => {
                     ? ""
                     : "d_none"
                 }>
-                <strong>TOL. COM </strong>
+                <strong>TOL. COM</strong>
               </td>
               <td
-                className={
-                  uType == 5 || uType == 0 || uType == 1 ? "" : "d_none"
+                className={uType == 5 || uType == 0 || uType == 1 || uType == 2 ? "" : "d_none"
                 }>
                 <strong>M. COM</strong>
               </td>
               <td
                 className={
-                  uType == 5 || uType == 0 || uType == 1 ? "" : "d_none"
+                  uType == 5 || uType == 0 || uType == 1 || uType == 2 ? "" : "d_none"
                 }>
                 <strong>S. COM</strong>
               </td>
               <td
                 className={
-                  uType == 5 || uType == 0 || uType == 1 ? "" : "d_none"
+                  uType == 5 || uType == 0 || uType == 1 || uType == 2 ? "" : "d_none"
                 }>
                 <strong>TOL. COM</strong>
               </td>
               <td
                 className={
-                  uType == 5 || uType == 0 || uType == 1 ? "" : "d_none"
+                  uType == 5 || uType == 0 || uType == 1 || uType == 2 ? "" : "d_none"
                 }>
                 <strong>NET AMT</strong>
               </td>
               <td
                 className={
-                  uType == 5 || uType == 0 || uType == 1 ? "" : "d_none"
+                  uType == 5 || uType == 0 || uType == 1 || uType == 2 ?  "" : "d_none"
                 }>
                 <strong>SHR AMT</strong>
               </td>
               <td
                 className={
-                  uType == 5 || uType == 0 || uType == 1 ? "" : "d_none"
+                  uType == 5 || uType == 0 || uType == 1 || uType == 2 ? "" : "d_none"
                 }
                 style={{
                   borderRightWidth: 2,

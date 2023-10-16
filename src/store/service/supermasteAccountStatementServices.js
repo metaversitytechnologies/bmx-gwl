@@ -77,21 +77,21 @@ export const supermasteAccountStatementApi = createApi({
     }),
     createTransaction: build.mutation({
       query: (body) => ({
-        url: `/bmx/create-cash-transection`,
+        url: `/bmx/create-cash-transection-v2`,
         method: "POST",
         body,
       }),
     }),
     userList: build.query({
       query: (body) => ({
-        url: `/bmx/bmx-user-details`,
+        url: `/bmx/bmx-user-details-v2`,
         method: "POST",
         body,
       }),
     }),
     DeleteByUserID: build.mutation({
       query: (body) => ({
-        url: `/bmx/delete-cash-transection`,
+        url: `/bmx/delete-cash-transection-v2`,
         method: "POST",
         body,
       }),
@@ -113,7 +113,7 @@ export const supermasteAccountStatementApi = createApi({
     }),
     superuserList: build.mutation({
       query: (body) => ({
-        url: "/bmx/user/get-user-list",
+        url: "/bmx/user/get-user-list-v2",
         method: "POST",
         body
       }),
@@ -129,7 +129,7 @@ export const supermasteAccountStatementApi = createApi({
     }),
     blockBetting: build.mutation({
       query: (body) => ({
-        url: "/user/update-bet-account-status",
+        url: "/bmx/user/update-bet-account-status-v2",
         method: "POST",
         body,
       }),
@@ -154,7 +154,7 @@ export const supermasteAccountStatementApi = createApi({
     }),
     upDateStatus: build.mutation({
       query: (body) => ({
-        url: "/bmx/user/update-status",
+        url: "/bmx/user/update-status-v2",
         method: "POST",
         body,
       }),
@@ -187,14 +187,14 @@ export const supermasteAccountStatementApi = createApi({
     }),
     dataReport: build.mutation({
       query: (body) => ({
-        url: `/bmx/report/bmx-data-reports`,
+        url: `/bmx/report/bmx-data-reports-v2`,
         method: "POST",
         body
       }),
     }),
     commReport: build.mutation({
       query: (body) => ({
-        url: `/bmx/report/bmx-casino-reports`,
+        url: `/bmx/report/bmx-casino-reports-v2`,
         method: "POST",
         body
       }),
@@ -204,6 +204,13 @@ export const supermasteAccountStatementApi = createApi({
         url: `/login/is-self-by-app-url`,
         method: "POST",
         body
+      }),
+    }),
+    createParentList: build.query({
+      query: (body) => ({
+        url: `/bmx/bmx-user-details-v2`,
+        method: "POST",
+        body,
       }),
     }),
 
@@ -237,5 +244,6 @@ export const {
   useCreateCasinoListQuery,
   useDataReportMutation,
   useCommReportMutation,
-  useIt_Self_By_APP_URLQuery
+  useIt_Self_By_APP_URLQuery, 
+  useLazyCreateParentListQuery
 } = supermasteAccountStatementApi;

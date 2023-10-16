@@ -32,7 +32,7 @@ import {  useSuperuserListMutation, useUpDateStatusMutation } from "../../store/
 import {
   usePartnershipMutation,
 } from "../../store/service/userlistService";
-import { openNotification } from "../../App";
+import { openNotification, openNotificationError } from "../../App";
 import CasinoLockModals from "./CasinoLockModals";
 
 const routeFromUSerType = {
@@ -114,7 +114,7 @@ const UserListTable = ({ userType, Listname, parentUserids, setParentUserIds, Us
   const [getData, { data: results, isLoading, isFetching, isError }] =
   useSuperuserListMutation();
 
-  const [activeData, { data: Activestatus }] = useUpDateStatusMutation();
+  const [activeData, { data: Activestatus, error }] = useUpDateStatusMutation();
 
   useEffect(()=>{
     setParentUserIds(results?.data?.users[0]?.parent)
@@ -126,6 +126,16 @@ const UserListTable = ({ userType, Listname, parentUserids, setParentUserIds, Us
       userId: dataVal,
     });
   };
+
+  useEffect(()=>{
+    if(error?.status === 400){
+      openNotificationError(error?.data?.message)
+    }
+    
+  },[error])
+
+  console.log(getData, "dasdasda")
+
   useEffect(() => {
     getData({
       userType: userType,
@@ -137,14 +147,16 @@ const UserListTable = ({ userType, Listname, parentUserids, setParentUserIds, Us
   }, [id, userType, paginationTotal, indexData, Activestatus?.status]);
 
   const [userIdData, setUserIdData] = useState("");
+  const [clientUserType, setClientUserType] = useState("");
 
-  const handleParentId = (val, bal, user, parentUserID, betStatus, accStatus) => {
+  const handleParentId = (val, bal, user, parentUserID, betStatus, accStatus, userType) => {
     setParentUserId(val);
     setBalance(bal);
     setUserIdData(user);
     setParentUserIds(parentUserID);
-    setBetStatus(betStatus),
-    setAccStatus(accStatus)
+    setBetStatus(betStatus);
+    setAccStatus(accStatus);
+    setClientUserType(userType)
   };
 
 
@@ -170,27 +182,24 @@ const UserListTable = ({ userType, Listname, parentUserids, setParentUserIds, Us
   const nav = useNavigate();
 
   const handleUpdateLimites = (data) => {
+    console.log(dataVal, "sdfsdfs")
     setDropdownStates([])
-    const infoData = {
-      name: userName,
-      uBalance: userBalance,
-    };
-    nav(`/client/limitplusminus-super/${dataVal}`, { state: infoData });
+    nav(`/client/limitplusminus-super/${dataVal}`, { state: clientUserType });
   };
 
   const items = [
     {
-      className: `${parentUserids == userId ? "" : "d_none"}`,
+      // className: `${parentUserids == userId ? "" : "d_none"}`,
       label: <div onClick={showDepositModal}>Deposit</div>,
       key: "0",
     },
     {
-      className: `${parentUserids == userId ? "" : "d_none"}`,
+      // className: `${parentUserids == userId ? "" : "d_none"}`,
       label: <div onClick={showWithdrawnModal}>Withdrawn</div>,
       key: "1",
     },
     {
-      className: `${parentUserids == userId ? "" : "d_none"}`,
+      // className: `${parentUserids == userId ? "" : "d_none"}`,
       label: (
         <div onClick={handleActive}>{`${
           activeStatus === true ? "inActive" : "Active"
@@ -199,24 +208,24 @@ const UserListTable = ({ userType, Listname, parentUserids, setParentUserIds, Us
       key: "2",
     },
     {
-      className: `${parentUserids == userId ? "" : "d_none"}`,
+      // className: `${parentUserids == userId ? "" : "d_none"}`,
       label: <div onClick={handleBlockBettting}>Block Betting</div>,
       key: "3",
     },
     {
-      className: `${parentUserids == userId ? "" : "d_none"}`,
+      // className: `${parentUserids == userId ? "" : "d_none"}`,
       label: <div onClick={handleBlockCasino}>Block Casino</div>,
       key: "4",
     },
     {
-      className: `${parentUserids == userId ? "" : "d_none"}`,
+      // className: `${parentUserids == userId ? "" : "d_none"}`,
       label: (
         <Link
         onClick={()=>{ setDropdownStates([])}}
           to={`${
-            Listname === "Super Master"
+            Listname === "Master"
               ? `/client/update-super/${dataVal}`
-              : Listname === "Master"
+              : Listname === "Super"
               ? `/client/update-agent/${dataVal}`
               : Listname === "Agent"
               ? `/client/update-dealer/${dataVal}`
@@ -228,7 +237,7 @@ const UserListTable = ({ userType, Listname, parentUserids, setParentUserIds, Us
       key: "5",
     },
     {
-      className: `${parentUserids == userId ? "" : "d_none"}`,
+      // className: `${parentUserids == userId ? "" : "d_none"}`,
       label: (
         <div onClick={() => handleUpdateLimites(dataVal)}>Update Limit</div>
       ),
@@ -398,9 +407,9 @@ const UserListTable = ({ userType, Listname, parentUserids, setParentUserIds, Us
                   {uType == 5
                     ? "Sub Admin"
                     : uType == 0
-                    ? "Super Master"
-                    : uType == 1
                     ? "Master"
+                    : uType == 1
+                    ? "Super"
                     : uType == 2
                     ? "Agent"
                     : ""}
@@ -441,7 +450,8 @@ const UserListTable = ({ userType, Listname, parentUserids, setParentUserIds, Us
                             res?.userid,
                             res?.parent,
                             res?.betlock,
-                            res?.accountlock
+                            res?.accountlock,
+                            res?.usertype
                           )
                         }> 
                         <Dropdown

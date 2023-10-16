@@ -62,8 +62,6 @@ const AgentTransactions = ({ userType, Listname }) => {
     createTran(createTranstions);
     form?.resetFields();
   };
-
-
   
 
   const [userList, resultData] = useLazyUserListQuery();

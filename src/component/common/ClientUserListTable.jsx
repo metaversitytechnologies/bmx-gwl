@@ -375,9 +375,9 @@ const ClientUserListTable = ({ userType, Listname, UserId }) => {
                   {uType == 5
                     ? "Sub Admin"
                     : uType == 0
-                    ? "Super Master"
-                    : uType == 1
                     ? "Master"
+                    : uType == 1
+                    ? "Super"
                     : uType == 2
                     ? "Agent"
                     : ""}

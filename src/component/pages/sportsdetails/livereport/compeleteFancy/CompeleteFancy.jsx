@@ -83,7 +83,7 @@ const CompeleteFancy = () => {
                         ? "text_danger"
                         : "text_success"
                     }>
-                    {completeFancyData?.data?.total?.pnl}
+                    {(completeFancyData?.data?.total?.pnl)?.toFixed(2)}
                   </td>
                   <td></td>
                   <td
@@ -92,7 +92,7 @@ const CompeleteFancy = () => {
                         ? "text_success"
                         : "text_danger"
                     }>
-                    {completeFancyData?.data?.total?.netpnl}
+                    {(completeFancyData?.data?.total?.netpnl)?.toFixed(2)}
                   </td>
                   <td></td>
                 </tr>
@@ -106,14 +106,14 @@ const CompeleteFancy = () => {
                       className={`${
                         res?.pnl < 0 ? "text_danger" : "text_success"
                       }`}>
-                      {res?.pnl}
+                      {(res?.pnl)?.toFixed(2)}
                     </td>
                     <td>{res?.result}</td>
                     <td
                       className={`${
                         res?.pnl < 0 ? "text_danger" : "text_success"
                       }`}>
-                      {res?.netpnl}
+                      {(res?.netpnl)?.toFixed(2)}
                     </td>
                     <td>
                       <button

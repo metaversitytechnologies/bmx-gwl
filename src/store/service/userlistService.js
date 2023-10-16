@@ -27,35 +27,37 @@ export const userlistApi = createApi({
     }),
     deposit: build.mutation({
       query: (body) => ({
-        url: "/dwc/dcr",
+        url: "/bmx/user/deposit-chips-pnl-v2",
         method: "POST",
         body,
       }),
     }),
+
     withdraw: build.mutation({
       query: (body) => ({
-        url: "/dwc/wcr",
+        url: "/bmx/user/withdraw-chips-pnl-v2",
         method: "POST",
         body,
       }),
     }),
+
     depositAndWithdraw: build.query({
       query: (body) => ({
-        url: "/dwc/depositwithdrawdata",
+        url: "/bmx/user/depositwithdrawdata-v2",
         method: "POST",
         body,
       }),
     }),
     addLimit: build.mutation({
       query: (body) => ({
-        url: "/dwc/deposit-chips-pnl",
+        url: "/bmx/user/dcr-v2",
         method: "POST",
         body,
       }),
     }),
     minusLimit: build.mutation({
       query: (body) => ({
-        url: "/dwc/withdraw-chips-pnl",
+        url: "/bmx/user/wcr-v2",
         method: "POST",
         body,
       }),
@@ -76,14 +78,14 @@ export const userlistApi = createApi({
     }),
     createUser: build.mutation({
       query: (body) => ({
-        url: "/bmx/user/create",
+        url: "/bmx/user/create/v2",
         method: "POST",
         body,
       }),
     }),
     updateUser: build.mutation({
       query: (body) => ({
-        url: "/bmx/user/update",
+        url: "/bmx/user/update-v2",
         method: "POST",
         body,
       }),
@@ -118,7 +120,7 @@ export const userlistApi = createApi({
     }),
     upDateLimites: build.query({
       query: (body) => ({
-        url: "/dwc/creditdata",
+        url: "/bmx/user/creditdata-v2",
         method: "POST",
         body,
       }),

@@ -66,8 +66,8 @@ const ModalsData = ({ partnershipDetails, loading }) => {
                 <tr>
                   <th>Up Line</th>
                   <th className={uType != 5 && "d_none"}>Sub Admin</th>
-                  <th className={(uType == 0 || uType == 5) ?"": "d_none"}>Super Master</th>
-                  <th className={(uType == 0 || uType == 5 || uType == 1) ?"": "d_none"}>Master</th>
+                  <th className={(uType == 0 || uType == 5) ?"": "d_none"}>Master</th>
+                  <th className={(uType == 0 || uType == 5 || uType == 1) ?"": "d_none"}>Super</th>
                   <th>Agent</th>
                 </tr>
                 <tr>
@@ -90,8 +90,8 @@ const ModalsData = ({ partnershipDetails, loading }) => {
               <table className="">
                 <tr>
                   <th className={uType != 5 && "d_none"}>Sub Admin</th>
-                  <th className={(uType == 0 || uType == 5) ?"": "d_none"}>Super Master</th>
-                  <th className={(uType == 0 || uType == 5 || uType == 1) ?"": "d_none"}>Master</th>
+                  <th className={(uType == 0 || uType == 5) ?"": "d_none"}>Master</th>
+                  <th className={(uType == 0 || uType == 5 || uType == 1) ?"": "d_none"}>Super</th>
                   <th>Agent</th>
                   <th>Client</th>
                 </tr>
@@ -116,8 +116,8 @@ const ModalsData = ({ partnershipDetails, loading }) => {
               <table className="">
                 <tr>
                   <th className={uType != 5 && "d_none"}>Sub Admin</th>
-                  <th className={(uType == 0 || uType == 5) ?"": "d_none"}>Super Master</th>
-                  <th className={(uType == 0 || uType == 5 || uType == 1) ?"": "d_none"}>Master</th>
+                  <th className={(uType == 0 || uType == 5) ?"": "d_none"}>Master</th>
+                  <th className={(uType == 0 || uType == 5 || uType == 1) ?"": "d_none"}>Super</th>
                   <th>Agent</th>
                   <th>Client</th>
                 </tr>
@@ -143,7 +143,7 @@ const ModalsData = ({ partnershipDetails, loading }) => {
                 <tr>
                   <th>Up Line</th>
                   <th className={uType != 5 && "d_none"}>Sub Admin</th>
-                  <th className={(uType == 0 || uType == 5) ?"": "d_none"}>Super Master</th>
+                  <th className={(uType == 0 || uType == 5) ?"": "d_none"}>Master</th>
                   <th className={(uType == 0 || uType == 5 || uType == 1) ?"": "d_none"}>Master</th>
                   <th>Agent</th>
                 </tr>
@@ -167,8 +167,8 @@ const ModalsData = ({ partnershipDetails, loading }) => {
               <table className="">
                 <tr>
                   <th className={uType != 5 && "d_none"}>Sub Admin</th>
-                  <th className={(uType == 0 || uType == 5) ?"": "d_none"}>Super Master</th>
-                  <th className={(uType == 0 || uType == 5 || uType == 1) ?"": "d_none"}>Master</th>
+                  <th className={(uType == 0 || uType == 5) ?"": "d_none"}>Master</th>
+                  <th className={(uType == 0 || uType == 5 || uType == 1) ?"": "d_none"}>Super</th>
                   <th>Agent</th>
                   <th>Client</th>
                 </tr>

@@ -52,13 +52,16 @@ import MasterReport from "../../pages/dataReport/masterReport/MasterReport";
 import CommReport from "../../pages/dataReport/commReport/CommReport";
 import { useIt_Self_By_APP_URLQuery } from "../../../store/service/supermasteAccountStatementServices";
 import { useEffect } from "react";
+import NewCreateUser from "../../pages/newCreateUser/NewCreateUser";
 
 
 const Main = ({setOpenRules}) => {
 
-  const {data: logoData} = useIt_Self_By_APP_URLQuery({
-    appUrl: window.location.hostname, 
-  // appUrl: "subadmin.11bet24.com",
+  let appUrl = (window.location.hostname).split(".");
+  appUrl.shift();
+  appUrl=appUrl.join(".");
+  const {data: logoData} = useIt_Self_By_APP_URLQuery({ 
+    appUrl
 }, {refetchOnMountOrArgChange: true});
 
 useEffect(() => {
@@ -98,42 +101,48 @@ useEffect(() => {
             <Route path="/fancy-slips/:id" element={<FancySlips type={1} name={"Session Bet"}/>} />
             <Route path="/completed-fancy-slips/:id" element={<CompletedFancySlips/>} />
             <Route path="/rejectedBetsByEvent/:id" element={<RejectedBetsByEvent />} />
-            <Route path="/client/list-super" element={<ListSuper userTyep={0} Listname={"Super Master"}/>} />
-            <Route path="/client/list-agent" element={<ListSuper userTyep={1} Listname={"Master"} /> } />
+            <Route path="/client/list-super" element={<ListSuper userTyep={0} Listname={"Master"}/>} />
+            <Route path="/client/list-agent" element={<ListSuper userTyep={1} Listname={"Super"} /> } />
             <Route path="/client/list-dealer" element={<ListSuper userTyep={2} Listname={"Agent"}/> } />
             <Route path="/client/list-client" element={<ListSuper userTyep={3} Listname={"Client"}/> } />
-            <Route path="/client/list-super/:id" element={<ListSuper userTyep={0} Listname={"Super Master"}/> } />
-            <Route path="/client/list-agent/:id" element={<ListSuper userTyep={1} Listname={"Master"}/> } />
+            <Route path="/client/list-super/:id" element={<ListSuper userTyep={0} Listname={"Master"}/> } />
+            <Route path="/client/list-agent/:id" element={<ListSuper userTyep={1} Listname={"Super"}/> } />
             <Route path="/client/list-dealer/:id" element={<ListSuper userTyep={2} Listname={"Agent"}/> } />
             <Route path="/client/list-clent/:id" element={<ListSuper userTyep={3} Listname={"Client"}/> } />
-            <Route path="/client/update-super/:id" element={<UpdateSuper updateName={"Super Master"}/>} />
-            <Route path="/client/update-agent/:id" element={<UpdateSuper updateName={"Master"}/>} />
+            <Route path="/client/update-super/:id" element={<UpdateSuper updateName={"Master"}/>} />
+            <Route path="/client/update-agent/:id" element={<UpdateSuper updateName={"Super"}/>} />
             <Route path="/client/update-client/:id" element={<UpdateSuper updateName={"Client"}/>} />
             <Route path="/client/update-dealer/:id" element={<UpdateSuper updateName={"Agent"}/>} />
             <Route path="/client/account-operations/:id" element={<AccountOperations />} />
             <Route path="/account-operation" element={<AccountOperations />} />
             <Route path="/client/login-report" element={<LoginReport />} />
             <Route path="/client/login-report/:id" element={<LoginReport />} />
-            <Route path="/client/create-super" element={<CreateSuperAgent createName={"Super Master"}/>}/>
-            <Route path="/client/create-agent" element={<CreateSuperAgent createName={"Master"}/>}/>
+            <Route path="/client/create-super" element={<NewCreateUser createName={"Master"} userTyep={5}/>}/>
+            <Route path="/client/create-agent" element={<NewCreateUser createName={"Super"} userTyep={0}/>}/>
+            <Route path="/client/create-dealer" element={<NewCreateUser createName={"Agent"} userTyep={1}/>}/>
+            <Route path="/client/create-client" element={<NewCreateUser createName={"Client"} userTyep={2}/>}/>
+            
+            {/* <Route path="/client/create-super" element={<CreateSuperAgent createName={"Master"}/>}/>
+            <Route path="/client/create-agent" element={<CreateSuperAgent createName={"Super"}/>}/>
             <Route path="/client/create-dealer" element={<CreateSuperAgent createName={"Agent"}/>} />
-            <Route path="/client/create-client" element={<CreateSuperAgent createName={"Client"}/>} />
+            <Route path="/client/create-client" element={<CreateSuperAgent createName={"Client"}/>} /> */}
+
             <Route path="/client/limitplusminus-super/:id" element={<SuperAgentLimitDetails />} />
             <Route path="/client/limitplusminus-agent" element={<AgentLimitDetails />} />
             
             <Route path="/client/limitplusminus-client" element={<ClientLimitDetails />}/>
             <Route path="/client/my-ledger" element={<MyLedger />}/>
-            <Route path="/client/ledger-super" element={<SuperAgentLedger userTyep={0} Listname={"Super Master"}/>}/>
-            <Route path="/client/ledger-master" element={<SuperAgentLedger userTyep={1} Listname={"Master"}/>}/>
+            <Route path="/client/ledger-super" element={<SuperAgentLedger userTyep={0} Listname={"Master"}/>}/>
+            <Route path="/client/ledger-master" element={<SuperAgentLedger userTyep={1} Listname={"Super"}/>}/>
             <Route path="/client/ledger-agent" element={<SuperAgentLedger userTyep={2} Listname={"Agent"}/>}/>
             <Route path="/client/ledger-client" element={<SuperAgentLedger userTyep={3} Listname={"Client"}/>}/>
             <Route path="/Events/matchledger" element={<MatchLedger/>}/>
             <Route path="/client/cash-transanction" element={<CashTransanction/>}/>
             {/* <Route path="/client/txn-super" element={<SuperAgentTransactions/>}/> */}
-            <Route path="/client/txn-super" element={<AgentTransactions  userType={0} Listname={"Super Master"}/>}/>
+            <Route path="/client/txn-super" element={<AgentTransactions  userType={0} Listname={"Master"}/>}/>
             <Route path="/client/txn-agent" element={<AgentTransactions  userType={2} Listname={"Agent"}/>}/>
             <Route path="/client/txn-client" element={<AgentTransactions userType={3} Listname={"Client"}/>}/>
-            <Route path="/client/txn-master" element={<AgentTransactions userType={1} Listname={"Master"}/>}/>
+            <Route path="/client/txn-master" element={<AgentTransactions userType={1} Listname={"Super"}/>}/>
             {/* <Route path="/client/txn-client" element={<ClientTransactions/>}/> */}
             <Route path="/markets" element={<Settings/>}/>
             <Route path="/account-statement" element={<AccountStatement/>}/>
@@ -143,7 +152,10 @@ useEffect(() => {
             <Route path="/Casino/today-pandl" element={<TodayProfitLoss/>}/>
             <Route path="/client/mobile-app-report" element={<SelectClient/>}/>
             <Route path="/client/secure-code-report" element={<SecureCodeReport/>}/>
-            <Route path="/casino/aura-details" element={<RouletteDetail/>}/>
+
+            <Route path="/casino/aura-details" element={<RouletteDetail isAura={true} Id={323334}/>}/>
+            <Route path="/casino/supernowa" element={<RouletteDetail isAura={false} Id={323338}/>}/>
+            
             <Route path="/casino/:id/plus-minus-type" element={<RoulettePlusMinus/>}/>
             <Route path="/casino/:id/all-games" element={<RouletteAllGame/>}/>
             <Route path="/casino/show-bets/:id" element={<ShowBets/>}/>
@@ -159,13 +171,13 @@ useEffect(() => {
             <Route path="/client/deletedlenden/:id" element={<DeletedLenden/>}/>
             <Route path="/rules" element={<Rulespage/>}/>
 
-            <Route path="/report/master" element={<MasterReport userType={1} reportName={"Master"}/>}/>
-            <Route path="/report/super" element={<MasterReport userType={0} reportName={"Super Master"}/>}/>
+            <Route path="/report/super" element={<MasterReport userType={0} reportName={"Master"}/>}/>
+            <Route path="/report/master" element={<MasterReport userType={1} reportName={"Super"}/>}/>
             <Route path="/report/agent" element={<MasterReport userType={2} reportName={"Agent"}/>}/>
             <Route path="/report/client" element={<MasterReport userType={3} reportName={"Clients"}/>}/>
             
-            <Route path="/client/comm-report-super" element={<CommReport userType={0} reportName={"Super Master"}/>}/>
-            <Route path="/client/comm-report-master" element={<CommReport userType={1} reportName={"Master"}/>}/>
+            <Route path="/client/comm-report-super" element={<CommReport userType={0} reportName={"Master"}/>}/>
+            <Route path="/client/comm-report-master" element={<CommReport userType={1} reportName={"Super"}/>}/>
             <Route path="/client/comm-report-agent" element={<CommReport userType={2} reportName={"Agent"}/>}/>
             <Route path="/client/comm-report-client" element={<CommReport userType={3} reportName={"Clients"}/>}/>
             

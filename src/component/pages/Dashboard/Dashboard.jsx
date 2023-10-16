@@ -57,7 +57,7 @@ const Dashboard = () => {
                 <BiUserCircle />
               </div>
               <div className="tital_card_section">
-                <p style={{ fontSize: "14px" }}>{uType == 5? "Sub Admin Details": uType == 0?"Super Master Detail":uType == 1?"Master Detail": uType == 2?"Agent Detail":""}</p>
+                <p style={{ fontSize: "14px" }}>{uType == 5? "Sub Admin Details": uType == 0?"Master Detail":uType == 1?"Super Detail": uType == 2?"Agent Detail":""}</p>
               </div>
             </div>
           </Link>
@@ -142,9 +142,9 @@ const Dashboard = () => {
                 {uType == 5
                   ? "Sub Admin"
                   : uType == 0
-                  ? "Super Master"
-                  : uType == 1
                   ? "Master"
+                  : uType == 1
+                  ? "Super"
                   : uType == 2
                   ? "Agent"
                   : "Client"}
@@ -152,6 +152,7 @@ const Dashboard = () => {
             </div>
           </div>
         </Card.Grid>
+        
         <Card.Grid hoverable={false} style={gridStyle}>
           <div className="main_card_section">
             <div className="icon_card_section">

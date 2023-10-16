@@ -1,9 +1,9 @@
 import { Button, Form, Input, notification } from "antd";
 import React, { useEffect, useState } from "react";
-import { useLazyUpDateLimitesQuery, useWithdrawMutation } from "../../../../store/service/userlistService";
+import { useLazyUpDateLimitesQuery, useMinusLimitMutation, useWithdrawMutation } from "../../../../store/service/userlistService";
 import { useLocation, useParams } from "react-router-dom";
 
-const MinusLimit = () => {
+const MinusLimit = (props) => {
   const [addTotal, setAddTotal] = useState(0);
   const [chipsValue, setChipsValue] = useState();
   const [passWord, setPassword] = useState("");
@@ -20,7 +20,7 @@ const MinusLimit = () => {
     setPassword(e.target.value);
   };
 
-  const [trigger, { data: addData, error,isLoading }] = useWithdrawMutation();
+  const [trigger, { data: addData, error,isLoading }] = useMinusLimitMutation();
   const [updateLimitsData, {data: updateLimite}] = useLazyUpDateLimitesQuery()
 
   useEffect(()=>{
@@ -67,6 +67,9 @@ const MinusLimit = () => {
       openNotificationError(addData?.message || error?.data?.message);
     }
   }, [addData?.data, error]);
+
+
+
   return (
     <>
       {contextHolder}
