@@ -10,7 +10,7 @@ export const supermasteAccountStatementApi = createApi({
       return headers;
     },
   }),
-  tagTypes:["deleteByUser", 'superUserList', "casinoList"],
+  tagTypes:["deleteByUser", 'superUserList', "casinoList", "dashboard"],
   endpoints: (build) => ({
     accountstatement: build.query({
       query: (body) => ({
@@ -47,12 +47,7 @@ export const supermasteAccountStatementApi = createApi({
         body,
       }),
     }),
-    dashboard: build.query({
-      query: () => ({
-        url: "/bmx/user/bmx-dashboard",
-        method: "POST",
-      }),
-    }),
+   
     completeFancy: build.query({
       query: (body) => ({
         url: "/bmx/completed-fancy",
@@ -223,7 +218,6 @@ export const {
   useLazyAccountstatementQuery,
   useLazySearchBetMarketIdQuery,
   useChangePasswordMutation,
-  useDashboardQuery,
   useLazyCompleteFancyQuery,
   useComplteFancyOddsClientsQuery,
   useLazyFilterbyClientQuery,

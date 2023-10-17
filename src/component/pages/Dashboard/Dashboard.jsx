@@ -12,8 +12,9 @@ import "./Dashboard.scss";
 import ActiveMatch from "../../common/ActiveMatch/ActiveMatch";
 import { Link, useNavigate } from "react-router-dom";
 import { useLogoutMutation } from "../../../store/service/authService";
-import { useCreateCasinoListQuery, useDashboardQuery } from "../../../store/service/supermasteAccountStatementServices";
+import { useCreateCasinoListQuery } from "../../../store/service/supermasteAccountStatementServices";
 import CasinoModalsDash from "./CasinoModalsDash";
+import { useDashboardQuery } from "../../../store/service/userlistService";
 
 const Dashboard = () => {
 
@@ -47,6 +48,7 @@ const Dashboard = () => {
   const uType = localStorage.getItem("userType");
   
   const {data: casinoDetails} = useCreateCasinoListQuery({}, {refetchOnMountOrArgChange: true});
+
   return (
     <>
       <Card>

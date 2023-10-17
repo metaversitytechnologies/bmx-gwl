@@ -154,7 +154,9 @@ const NewCreateUser = ({ createName, userTyep  }) => {
     if (UserList?.status === true) {
       openNotification(UserList?.message);
       form?.resetFields();
-      trigger();
+      trigger({
+        parentId: "" || parentId
+    });
     } else if (UserList?.status === false || error?.data?.message) {
       openNotificationError(UserList?.message || error?.data?.message);
     }
