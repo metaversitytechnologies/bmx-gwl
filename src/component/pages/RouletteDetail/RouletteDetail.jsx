@@ -19,8 +19,6 @@ const RouletteDetail = ({isAura, Id}) => {
   const [isAuraDetails, setIsAuraDetails] = useState();
 
   const navigate = useNavigate();
-
-  console.log(Id, "isAura");
   
   const handleBackbtn = () => {
     navigate(-1);
@@ -127,8 +125,8 @@ const RouletteDetail = ({isAura, Id}) => {
             <tr>
               <th style={{width:"4%"}}></th>
               <th>Name</th>
-              {/* <th className="text-right">Plus Minus</th> */}
-              {/* <th className="text-right">Comm</th> */}
+              <th className="text-right">Comm Liya</th>
+              <th className="text-right">Comm Diya</th>
               <th className="text-right">Pnl</th>
             </tr>
             {isLoading || isFetching ? (
@@ -163,18 +161,14 @@ const RouletteDetail = ({isAura, Id}) => {
                   <td>
                     {res?.name} {res?.date}
                   </td>
-                  {/* <td
-                    className={`text-right ${
-                      res?.netPnl < 0 ? "text_danger" : "text_success"
-                    }`}>
-                    {(res?.netPnl)?.toFixed(2)}
-                  </td> */}
-                  {/* <td
-                    className={`text-right ${
-                      res?.comm < 0 ? "text_danger" : "text_success"
-                    }`}>
-                    {res?.comm}
-                  </td> */}
+                  <td className="text-right"
+                    >
+                    {(res?.comm)?.toFixed(2)}
+                  </td>
+                  <td className="text-right"
+                    >
+                    {res?.commDiya || 0}
+                  </td>
                   <td
                     className={`text-right ${
                       res?.netPnl - res?.comm < 0

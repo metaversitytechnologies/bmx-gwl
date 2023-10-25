@@ -84,12 +84,18 @@ const RoulettePlusMinus = () => {
         </span>
       ),
     },
-    // {
-    //   title: "Casino Comm",
-    //   dataIndex: "comm",
-    //   key: "comm",
-    //   align: "right",
-    // },
+    {
+      title: "Comm",
+      dataIndex: "comm",
+      key: "comm",
+      align: "right",
+      render: (text, record) => (
+        <span>
+          {record?.isLedgerCreated ? record?.comm :"0"}
+        </span>
+      ),
+      hideen: true 
+    },
     {
       title: "Total Amount",
       dataIndex: "totalAmount",
@@ -174,8 +180,6 @@ const RoulettePlusMinus = () => {
 
   const uType = localStorage.getItem("userType");
 
-  console.log(state?.isAuraDetails, "sdasdasda")
-
   return (
     <>
       <div className="main_live_section list_supers">
@@ -185,7 +189,7 @@ const RoulettePlusMinus = () => {
               style={{ padding: "5px 8px", fontSize: "22px" }}
               className="team_name">
               <p>{
-                `${uType == 5? "Sub Admin ": uType == 0?"Master ":uType == 1?"Super": uType == 2?"Agent ":""} Company Report`
+                `${uType == 5? "Sub Admin ": uType == 0?"Super Master ":uType == 1?"Master ": uType == 2?"Agent ":""} Company Report`
               }</p>
               <p style={{ fontSize: "16px" }}>
                 {`${state?.isAuraDetails?"AURA":"Super Nowa"} ${state?.rouletteDate}`}{" "}
