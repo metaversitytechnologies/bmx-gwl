@@ -84,12 +84,18 @@ const RoulettePlusMinus = () => {
         </span>
       ),
     },
-    // {
-    //   title: "Casino Comm",
-    //   dataIndex: "comm",
-    //   key: "comm",
-    //   align: "right",
-    // },
+    {
+      title: "Comm",
+      dataIndex: "comm",
+      key: "comm",
+      align: "right",
+      render: (text, record) => (
+        <span>
+          {record?.isLedgerCreated ? record?.comm :"0"}
+        </span>
+      ),
+      hideen: true 
+    },
     {
       title: "Total Amount",
       dataIndex: "totalAmount",
@@ -173,8 +179,6 @@ const RoulettePlusMinus = () => {
   }, [plusMinus]);
 
   const uType = localStorage.getItem("userType");
-
-  console.log(state?.isAuraDetails, "sdasdasda")
 
   return (
     <>
