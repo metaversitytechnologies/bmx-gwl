@@ -126,6 +126,11 @@ const Sidebar = (props) => {
                     <Link to="/casino/supernowa">Super Nowa Detail</Link>
                   ),
                 },
+                {
+                  label: (
+                    <Link to="/casino/qtech">QTech Detail</Link>
+                  ),
+                },
                 // {
                 //   label: (
                 //     <Link to="/Casino/andar-bahar-details">
@@ -377,6 +382,15 @@ const Sidebar = (props) => {
                       to="/casino/supernowa"
                         onClick={() => props?.action()}>
                         Super Nowa Detail
+                      </Link>
+                    ),
+                  },
+                  {
+                    label: (
+                      <Link
+                      to="/casino/qtech"
+                        onClick={() => props?.action()}>
+                        QTech Detail
                       </Link>
                     ),
                   },

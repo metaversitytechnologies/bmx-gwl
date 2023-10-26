@@ -153,8 +153,9 @@ useEffect(() => {
             <Route path="/client/mobile-app-report" element={<SelectClient/>}/>
             <Route path="/client/secure-code-report" element={<SecureCodeReport/>}/>
 
-            <Route path="/casino/aura-details" element={<RouletteDetail isAura={true} Id={323334}/>}/>
-            <Route path="/casino/supernowa" element={<RouletteDetail isAura={false} Id={323338}/>}/>
+            <Route path="/casino/aura-details" element={<RouletteDetail isAura={"Aura"} Id={323334}/>}/>
+            <Route path="/casino/supernowa" element={<RouletteDetail isAura={"Super Nowa"} Id={323338}/>}/>
+            <Route path="/casino/qtech" element={<RouletteDetail isAura={"QTech"} Id={323337}/>}/>
             
             <Route path="/casino/:id/plus-minus-type" element={<RoulettePlusMinus/>}/>
             <Route path="/casino/:id/all-games" element={<RouletteAllGame/>}/>

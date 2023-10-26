@@ -42,7 +42,7 @@ const RouletteDetail = ({isAura, Id}) => {
     {
       label: (
         <p onClick={handlePlusMinus} className="title_section">
-         { `${isAura?"Aura":"Super Nowa"} Plus Minus`}
+         { `${isAura} Plus Minus`}
         </p>
       ),
       key: "0",
@@ -105,7 +105,7 @@ const RouletteDetail = ({isAura, Id}) => {
     <>
       <Card
         className="sport_detail roulette"
-        title={isAura?"AURA Detail":"Super Nowa Detail"}
+        title={`${isAura} Details`}
         extra={
           <>
             <button onClick={console.log("")}>Book</button>
