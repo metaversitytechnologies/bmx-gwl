@@ -9,6 +9,7 @@ import {
   useLazyUserListQuery,
 } from "../../../../store/service/supermasteAccountStatementServices";
 import { useLocation, useNavigate } from "react-router-dom";
+import DownloadReport from "../../../common/DownloadReport/DownloadReport";
 
 const MasterReport = ({ reportName, userType }) => {
   const timeBefore = moment().subtract(14, "days").format("YYYY-MM-DD");
@@ -68,6 +69,30 @@ const MasterReport = ({ reportName, userType }) => {
         userId:clientId || ""
       });
   }
+
+
+  const dataSource = loginReport?.data?.map((curElm) => {
+    console.log(curElm?.ipaddress, "dsfsdfasf")
+    return {
+      userid: curElm?.userid,
+      action: curElm?.action?.slice(7),
+      old: curElm?.old,
+      newvalue: curElm?.newvalue,
+      actionby: curElm?.actionby,
+      createdon: curElm?.createdon,
+      ipaddress: curElm?.ipaddress,
+    };
+  });
+
+  const headerField = [
+    "User",
+    "Type",
+    "Old",
+    "New",
+    "Done By",
+    "Date",
+    "IP",
+  ];
 
   return (
     <Card
@@ -135,14 +160,16 @@ const MasterReport = ({ reportName, userType }) => {
               </Form.Item>
             </Col>
           </Row>
-          <Form.Item wrapperCol={{ span: 24 }}>
-            <Button
-              loading={isLoading}
-              type="primary"
-              htmlType="submit">
-              Submit
-            </Button>
-          </Form.Item>
+          <div className="report_download">
+            <Form.Item>
+              <Button loading={isLoading} type="primary" htmlType="submit">
+                Submit
+              </Button>
+            </Form.Item>
+            <Form.Item>
+              <DownloadReport reportName={`${reportName.replace(/ /g,"_")}_reports`} dataSource={dataSource} headerField={headerField}  reportType="dataReport"/>
+            </Form.Item>
+          </div>
         </Form>
       </div>
       <ReportTable data={loginReport?.data} isLoading={isLoading}/>

@@ -1,3 +1,9 @@
-.report_date_picker{
-    
+.report_download{
+    display: flex;
+    @media screen and (max-width:800px) {
+        justify-content: space-between;
+    }
+    .download{
+        margin-left: 24px;
+    }
 }

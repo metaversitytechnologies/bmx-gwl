@@ -39,3 +39,18 @@
         font-size: 18px;
     }
 }
+
+.login_report_data{
+    display: flex;
+    align-items: center;
+    @media screen and (max-width: 800px) {
+        display: block;        
+    }
+    .form_data{
+        width: 27%;
+        @media screen and (max-width: 800px) {
+            width: 100%;
+            
+        }
+    }
+}

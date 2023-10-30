@@ -1,10 +1,11 @@
 import { Card, DatePicker, Empty, Pagination, Table } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
-import './AccountOperations.scss'
+import "./AccountOperations.scss";
 import moment from "moment";
 import React, { useState } from "react";
-import dayjs from 'dayjs'
+import dayjs from "dayjs";
 import { useAccountOprationQuery } from "../../../../store/service/userlistService";
+import DownloadReport from "../../../common/DownloadReport/DownloadReport";
 
 // const handleChange = (value) => {
 //   console.log(`selected ${value}`);
@@ -12,34 +13,32 @@ import { useAccountOprationQuery } from "../../../../store/service/userlistServi
 
 const { RangePicker } = DatePicker;
 
-
 const AccountOperations = () => {
-
-  
   const timeBefore = moment().subtract(14, "days").format("YYYY-MM-DD");
   const time = moment().format("YYYY-MM-DD");
-  
-  const [dateData, setDateData] = useState([timeBefore,time])
-  const onChange = (date,dateString) => {
+
+  const [dateData, setDateData] = useState([timeBefore, time]);
+  const onChange = (date, dateString) => {
     setDateData(dateString);
   };
 
-  const {id} = useParams()
+  const { id } = useParams();
 
   const nav = useNavigate();
   const handleBackClick = () => {
     nav(-1);
   };
 
-  const {data, isFetching, isLoading} = useAccountOprationQuery({
-    index: 0,
-    noOfRecords: 500,
-    userId: id || "anku121",
-    startDate: dateData[0],
-    endDate: dateData[1],
-
-  }, {refetchOnMountOrArgChange:true})
-
+  const { data, isFetching, isLoading } = useAccountOprationQuery(
+    {
+      index: 0,
+      noOfRecords: 500,
+      userId: id || "anku121",
+      startDate: dateData[0],
+      endDate: dateData[1],
+    },
+    { refetchOnMountOrArgChange: true }
+  );
 
   const columns = [
     {
@@ -65,6 +64,18 @@ const AccountOperations = () => {
     },
   ];
 
+  const dataSource = data?.data?.data?.map((curElm) => {
+    console.log(curElm, "DSfsfsd");
+    return {
+      createdon: curElm?.createdon,
+      action: curElm?.action,
+      actionby: curElm?.actionby,
+      description: curElm?.description,
+    };
+  });
+
+  const headerField = ["Date", "Operation", "Done By", "Description"];
+
   return (
     <>
       <div className="match_slip account_match_slip">
@@ -77,21 +88,33 @@ const AccountOperations = () => {
             className="sport_detail acc_name"
             title={`List Of All Transactions ( ${data?.data?.data?.length} )`}
             extra={<button onClick={handleBackClick}>Back</button>}>
-            <div className="" style={{margin:"10px 2px"}}>
-              <RangePicker className="acc_datepicker" defaultValue={[dayjs(timeBefore), dayjs(time)]} onChange={onChange}/>
+            <div className="acc_download">
+              <RangePicker
+                // style={{ margin: "10px 12px" }}
+                className="acc_datepicker"
+                defaultValue={[dayjs(timeBefore), dayjs(time)]}
+                onChange={onChange}
+              />
+              <div style={{ marginTop: "12px" }}>
+                <DownloadReport
+                  dataSource={dataSource}
+                  headerField={headerField}
+                  reportType="ActionLog"
+                  reportName="account-operations"
+                />
+              </div>
             </div>
-
 
             <div className="table_section statement_tabs_data">
               <div className="table_section">
                 <Table
-                  className="live_table agent_master" 
+                  className="live_table agent_master"
                   bordered
                   columns={columns}
                   dataSource={data?.data?.data || []}
-                  loading={isLoading||isFetching}></Table>
+                  loading={isLoading || isFetching}></Table>
               </div>
-          </div>
+            </div>
 
             {/* <div className="table_section statement_tabs_data">
             <table className="">
@@ -120,7 +143,6 @@ const AccountOperations = () => {
               }
           </div> */}
           </Card>
-          
         </div>
       </div>
     </>
