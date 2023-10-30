@@ -1,0 +1,80 @@
+.download{
+    border: unset;
+    background-color: rgb(81, 82, 78);
+    padding: 8px 26px 8px 10px;
+    color: white;
+    font-weight: 500;
+    border-radius: 3px;
+    outline: unset;
+    display: flex;
+    position: relative;
+    align-items: center;
+    background-color: #333;
+
+    // &:hover{
+    //   background-color: #333;
+    //   color: white;
+    // }
+    &::after, &::before{
+      content: ' ';
+      display: block;
+      position: absolute;
+      right: 15px;
+      top: 52%;
+    }
+    &::before{
+      width: 11px;
+      height: 2px;
+      border-style: solid;
+      border-width: 0 2px 2px;
+      right: 12px;
+    }
+    &::after{
+      width: 0;
+      height: 0;
+      margin-left: 3px;
+      margin-top: -7px; 
+      border-style: solid;
+      border-width: 4px 4px 0 4px;
+      border-color: transparent;
+      border-top-color: inherit;
+      animation: downloadArrow 2s linear infinite;
+      animation-play-state: paused;
+    }
+    &:hover:before {
+      border-color: #4CC713;
+    }
+    &:hover:after {
+      border-top-color: #4CC713;
+      animation-play-state: running;
+    }
+    span{
+      padding-right: 10px;
+    }
+    svg{
+      font-weight: 600;
+      font-size: 16px;
+    }
+  
+  }
+  
+  @keyframes downloadArrow {
+      0% {
+          margin-top: -7px;
+          opacity: 1;
+      }
+    
+      0.001%{
+          margin-top: -15px;
+          opacity: 0;
+      }
+      
+      50% {
+          opacity: 1;
+      }
+      
+      100% {
+          margin-top: 0;
+          opacity: 0;
+      }
+  }

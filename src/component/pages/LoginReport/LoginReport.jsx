@@ -10,28 +10,18 @@ import {
   Spin,
   Tooltip,
 } from "antd";
-import {
-  useLocation,
-  useNavigate,
-  useParams,
-} from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import "./LoginReport.scss";
 import { useLazyLoginReportQuery } from "../../../store/service/loginReportServices";
 import React, { useEffect, useState } from "react";
 import { useLazyUserListQuery } from "../../../store/service/supermasteAccountStatementServices";
 import { CaretDownOutlined, CaretUpOutlined } from "@ant-design/icons";
 import { AiFillEye } from "react-icons/ai";
+import DownloadReport from "../../common/DownloadReport/DownloadReport";
 
 const LoginReport = () => {
-  // const timeBefore = moment().subtract(14, "days").format("YYYY-MM-DD");
-  // const time = moment().format("YYYY-MM-DD");
-
   const userId = localStorage.getItem("userId");
   const { id } = useParams();
-
-  console.log(id?id:userId, "dsadfsdsdsa")
-
-
 
   const [clientId, setClientId] = useState(userId);
   const [paginationTotal, setPaginationTotal] = useState(50);
@@ -43,12 +33,10 @@ const LoginReport = () => {
     nav(-1);
   };
 
-
   const [userList, resultData] = useLazyUserListQuery();
 
   const [loginReport, { data, isLoading, isFetching, isError }] =
     useLazyLoginReportQuery();
-
 
   const handleChange = (value) => {
     userList({
@@ -67,13 +55,12 @@ const LoginReport = () => {
     setClientId(value);
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     userList({
       userType: null,
       userName: "",
     });
-  }, [])
-
+  }, []);
 
   useEffect(() => {
     loginReport({
@@ -83,6 +70,17 @@ const LoginReport = () => {
       orderByIp: ipOrder,
     });
   }, [clientId, paginationTotal, indexData, ipOrder, id]);
+
+  const dataSource = data?.data?.list?.map((curElm) => {
+    return {
+      userid: curElm?.userid,
+      ip: curElm?.ip,
+      lastLogin: curElm?.lastLogin,
+      deviceInfo: curElm?.deviceInfo,
+    };
+  });
+
+  const headerField = ["User Name", "IP-Address", "Login Date", "Detail"];
 
   return (
     <>
@@ -95,17 +93,13 @@ const LoginReport = () => {
           className="sport_detail  team_name"
           title="Login Report"
           extra={<button onClick={handleBackClick}>Back</button>}>
+            <div className="login_report_data">
           <Form
-            className="form_data mt-16 cash_data"
+            className="form_data mt-16 cash_data "
             name="basic"
-            // form={form}
-            labelCol={{ span: 8 }}
-            wrapperCol={{ span: 16 }}
             initialValues={{ remember: true }}
-            // onFinish={onFinish}
             autoComplete="off">
-            <Row>
-              <Col xl={8} lg={8} md={24} xs={24}>
+            
                 <Form.Item
                   // label="Client"
                   name="client"
@@ -117,7 +111,7 @@ const LoginReport = () => {
                     },
                   ]}>
                   <Select
-                    placeholder={id? id: clientId }
+                    placeholder={id ? id : clientId}
                     options={
                       resultData.data?.data.map((i) => ({
                         label: i,
@@ -130,9 +124,14 @@ const LoginReport = () => {
                     onSelect={handleSelect}
                     onSearch={handleChange}></Select>
                 </Form.Item>
-              </Col>
-            </Row>
+              
           </Form>
+         
+            <div style={{ marginBottom: "12px" }}>
+            <DownloadReport reportName="LoginReport" dataSource={dataSource} headerField={headerField}  reportType="LoginReport"/>
+            </div>
+            </div>
+         
           {/* <div className="table_section statement_tabs_data">
               <div className="table_section">
                 <Table
@@ -152,7 +151,9 @@ const LoginReport = () => {
                 <th>
                   <div className="ip_section">
                     <p>IP-Address</p>
-                    <p style={{cursor:"pointer"}} onClick={() => setipOrder(!ipOrder)}>
+                    <p
+                      style={{ cursor: "pointer" }}
+                      onClick={() => setipOrder(!ipOrder)}>
                       {ipOrder ? <CaretUpOutlined /> : <CaretDownOutlined />}
                     </p>
                   </div>
@@ -174,7 +175,7 @@ const LoginReport = () => {
                       <td>{res?.userid}</td>
                       <td>{res?.ip}</td>
                       <td>{res?.lastLogin}</td>
-                      <td style={{cursor:"pointer"}} className="divice-info">
+                      <td style={{ cursor: "pointer" }} className="divice-info">
                         <Tooltip title={res?.deviceInfo}>
                           <span>
                             <AiFillEye />

@@ -57,3 +57,15 @@
     }
   }
 }
+
+.account_download {
+  position: absolute;
+  right: 19px;
+  top: -60px;
+  @media screen and (max-width: 800px) {
+    top: -49px;
+  }
+}
+.datepicker{
+  position: relative;
+}

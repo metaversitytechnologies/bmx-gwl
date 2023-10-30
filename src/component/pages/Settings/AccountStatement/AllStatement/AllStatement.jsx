@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { setData } from "../../../../../store/global/slice";
 import AccountModals from "../AccountModals";
 import { useParams } from "react-router-dom";
+import DownloadReport from "../../../../common/DownloadReport/DownloadReport";
 
 const AllStatement = ({clientId, dateData, gameType }) => {
   const [trigger, {data, isFetching, isLoading}] = useLazyAccountstatementQuery();
@@ -113,8 +114,38 @@ const AllStatement = ({clientId, dateData, gameType }) => {
   } 
   // console.log(marketId, "Sdfsdafsdf")
 
+  const dataSource = data?.data?.dataList?.map((curElm) => {
+    return {
+      date: curElm?.date,
+      fromto: curElm?.fromto,
+      prevBal:0,
+      credit: curElm?.credit,
+      debit: curElm?.debit,
+      commPlus: 0,
+      commMinus: 0,
+      pts: curElm?.pts,
+      remark: curElm?.remark,
+    };
+  });
+
+  const headerField = [
+    "Date",
+    "Description",
+    "Prev. Bal",
+    "CR",
+    "DR",
+    "Comm+",
+    "Comm-",
+    "Balance",
+    "Remark"
+  ];
+
   return (
     <>
+    <div className=" account_download">
+    <DownloadReport dataSource={dataSource} headerField={headerField}  reportName="account-statement" reportType="AccountStatementReport"/>
+    </div>
+   
       <div className="table_section statement_tabs_data">
         <div className="table_section">
           <Table

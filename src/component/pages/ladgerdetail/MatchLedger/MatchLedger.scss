@@ -58,3 +58,15 @@
         }
     }
 }
+
+.matchladger_total{
+    @media screen and (max-width: 800px) {
+        
+        margin-top: 12px;
+    }
+}
+.rep_download{
+    @media screen and (max-width: 800px) {
+       float: right;
+    }
+}

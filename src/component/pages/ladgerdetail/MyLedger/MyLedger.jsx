@@ -5,6 +5,7 @@ import moment from "moment";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import dayjs from 'dayjs'
+import DownloadReport from "../../../common/DownloadReport/DownloadReport";
 
 const columns = [
   {
@@ -90,7 +91,43 @@ const MyLedger = () => {
     index: 0,
     noOfRecords:100
   }, {refetchOnMountOrArgChange: true});
+
+  const dataSource = data?.data?.list?.map((curElm) => {
+    return {
+      date: curElm?.date,
+      collectionName: curElm?.collectionName,
+      debit: curElm?.debit,
+      credit: curElm?.credit,
+      balance: Math.abs(curElm?.balance),
+      paymentType: curElm?.paymentType,
+      remarks: curElm?.remarks,
+      isRollback: curElm?.isRollback ? "Yes" : "NO",
+    };
+  });
+
+  const headerField = [
+    "Date",
+    "Collection Name",
+    "Debit",
+    "Credit",
+    "Balance",
+    "Payment Type",
+    "Remark",
+    "Rollback",
+  ];
   
+  const lenadenaHeading = [
+    "Lena",
+    "Dena",
+    "Balance",
+  ];
+
+
+  const arrBalance= [{
+    lena:data?.data?.data?.credit?.toFixed(2),
+    dena:data?.data?.data?.debit?.toFixed(2),
+    balance:data?.data?.data?.balance?.toFixed(2)
+  }]
 
   return (
     <>
@@ -98,7 +135,6 @@ const MyLedger = () => {
         className="sport_detail ledger_data"
         title="My Ledger"
         extra={<button onClick={handleBackbtn}>Back</button>}>
-
         <div className="my_ledger">
         <Col lg={8} xs={24} className="match_ladger">
           <DatePicker.RangePicker style={{margin: "10px 0px 10px 0px"}} defaultValue={[dayjs(timeBefore), dayjs(time)]}  onChange={onChange}/>
@@ -118,6 +154,15 @@ const MyLedger = () => {
               Balance: {Math.abs(data?.data?.data?.balance?.toFixed(2))}  {data?.data?.data?.balance>0?"( Dena )":"( Lena )"} 
             </h3>
           </div>
+          <DownloadReport
+              balanceData={arrBalance}
+              lenadenaHeading={lenadenaHeading}
+              reportType="MyLedger"
+              reportName="MyLedger"
+              dataSource={dataSource}
+              headerField={headerField}
+            />
+          {/* <DownloadReport dataSource={dataSource} headerField={headerField} reportType="MyLedger"/> */}
         </div>
         <div className="table_section">
           <Table
