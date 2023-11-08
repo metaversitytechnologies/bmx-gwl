@@ -78,3 +78,62 @@
           opacity: 0;
       }
   }
+
+  .report_excel {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: absolute;
+    z-index: 99;
+    background: #fff;
+    padding: 10px 16px; 
+    right: 2px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    @media screen and (max-width: 800px) {
+      left: 0;
+      right: auto;
+    }
+    p{
+      margin: 2px;
+    }
+    .excel_icon {
+      display: flex;
+      background: #217346;
+      padding: 0px 10px;
+      color: white;
+      align-items: center;
+      box-shadow: 0px 5px 6px -6px #000;
+      height: 34px;
+      cursor: pointer;
+    }
+    .pdf_icon {
+      display: flex;
+      align-items: center;
+      background: #cb0606;
+      padding: 0px 10px;
+      color: white;
+      box-shadow: 0px 5px 6px -6px #000;
+      height: 34px;
+      cursor: pointer;
+  
+    }
+  }
+  
+  .report_overlay{
+      position: absolute;
+      height: calc(100% - 96px);
+      width: calc(100% - 300px);
+      background-color: transparent;
+      z-index: 22;
+  }
+  .report_overlay1{
+      position: absolute;
+      height: calc(100% - 96px);
+      width: 100%;
+      background-color: transparent;
+      z-index: 22;
+  }
+  
+  .main_download{
+    position: relative;
+  }

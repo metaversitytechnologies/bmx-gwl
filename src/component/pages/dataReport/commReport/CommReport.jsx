@@ -31,6 +31,8 @@ const CommReport = ({ reportName, userType }) => {
   const { pathname } = useLocation();
   const [userList, { data: resultData }] = useLazyUserListQuery();
   const [trigger, { data: commReport, isLoading }] = useCommReportMutation();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
 
   useEffect(() => {
     trigger({
@@ -90,6 +92,11 @@ const CommReport = ({ reportName, userType }) => {
   const headerField = ["User", "Match Name", "Comm Diya", "Comm Liye", "Date"];
 
   return (
+    <>
+     {
+    
+    isModalOpen && <div onClick={()=>setIsModalOpen(false)} className="report_overlay"></div>
+    }
     <Card
       className="sport_detail ledger_data"
       title={`${reportName} Comm Reports`}
@@ -138,9 +145,21 @@ const CommReport = ({ reportName, userType }) => {
               </Form.Item>
             </Col>
             <Col xl={4} lg={4} md={12} xs={12}>
-              {/* <DownloadReport dataSource={dataSource} headerField={headerField} reportType="CasinoCommReport"/> */}
-              <DownloadReport reportName={`${reportName.replace(/ /g,"_")}_Comm_Reports`} dataSource={dataSource} headerField={headerField}  reportType="CasinoCommReport"/>
-
+              <Form.Item>
+                  <DownloadReport
+                  startDate= {dateData[0]}
+                  endDate= {dateData[1]}
+                    userType={userType}
+                    reportName={`${reportName?.replace(
+                      / /g,
+                      "_"
+                    )}_Comm_Reports`}
+                    headerField={headerField}
+                    reportType="CasinoCommReport"
+                    isModalOpen={isModalOpen}
+                    setIsModalOpen={setIsModalOpen}
+                  />
+              </Form.Item>
             </Col>
           </Row>
         </Form>
@@ -156,6 +175,8 @@ const CommReport = ({ reportName, userType }) => {
         isLoading={isLoading}
       />
     </Card>
+    </>
+    
   );
 };
 

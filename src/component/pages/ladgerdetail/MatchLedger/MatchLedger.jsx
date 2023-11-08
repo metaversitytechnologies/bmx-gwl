@@ -54,6 +54,8 @@ const MatchLedger = () => {
   const [totalPage, setTotalPage] = useState();
   const [indexData, setIndexData] = useState(0);
   const [paginationTotal, setPaginationTotal] = useState(50);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
 
   const onChange = (date, dateString) => {
     setDateData(dateString);
@@ -75,17 +77,6 @@ const MatchLedger = () => {
 
   const nav = useNavigate();
 
-  // console.log(data?.data?.list?.length , "sdasdas");
-
-  const dataSource = data?.data?.list?.map((curElm) => {
-    return {
-      date: curElm?.date,
-      title: curElm?.matchName,
-      debit: curElm?.netPnl < 0 ? curElm?.netPnl : "0",
-      credit: curElm?.netPnl > 0 ? curElm?.netPnl : "0",
-    };
-  });
-
   const headerField = ["Date", "Title", "CR", "DR"];
   const lenadenaHeading = ["Total"];
 
@@ -96,6 +87,12 @@ const MatchLedger = () => {
   ];
 
   return (
+    <>
+      {
+    
+    isModalOpen && <div onClick={()=>setIsModalOpen(false)} className="report_overlay"></div>
+    }
+   
     <Card
       className="sport_detail my_ledger main_match_ledger"
       title="Profit/Loss"
@@ -120,17 +117,21 @@ const MatchLedger = () => {
             </p>
           </div>
         </Col>
-        <Col lg={6} xs={11}>
+        <Col lg={3} xs={24}>
           <div className="matchladger_total rep_download">
-            {/* <DownloadReport dataSource={dataSource} headerField={headerField} reportType="MyLedgerProfitLoss"/> */}
-            <DownloadReport
-              balanceData={arrBalance}
-              lenadenaHeading={lenadenaHeading}
-              dataSource={dataSource}
-              headerField={headerField}
-              reportType="MyLedgerProfitLoss"
-              reportName="profit/loss"
-            />
+            <div>
+              <DownloadReport
+                lenadenaHeading={lenadenaHeading}
+                balanceData={arrBalance}
+                headerField={headerField}
+                reportType="MyLedgerProfitLoss"
+                reportName="profit/loss"
+                startDate={dateData[0]}
+                endDate={dateData[1]}
+                isModalOpen={isModalOpen}
+                setIsModalOpen={setIsModalOpen}
+              />
+            </div>
           </div>
         </Col>
       </Row>
@@ -181,6 +182,7 @@ const MatchLedger = () => {
         )}
       </div>
     </Card>
+    </>
   );
 };
 

@@ -16,6 +16,7 @@ const MasterReport = ({ reportName, userType }) => {
   const time = moment().format("YYYY-MM-DD");
   const [dateData, setDateData] = useState([timeBefore, time]);
   const [clientId, setClientId] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const nav = useNavigate();
 
@@ -70,20 +71,6 @@ const MasterReport = ({ reportName, userType }) => {
       });
   }
 
-
-  const dataSource = loginReport?.data?.map((curElm) => {
-    console.log(curElm?.ipaddress, "dsfsdfasf")
-    return {
-      userid: curElm?.userid,
-      action: curElm?.action?.slice(7),
-      old: curElm?.old,
-      newvalue: curElm?.newvalue,
-      actionby: curElm?.actionby,
-      createdon: curElm?.createdon,
-      ipaddress: curElm?.ipaddress,
-    };
-  });
-
   const headerField = [
     "User",
     "Type",
@@ -95,7 +82,12 @@ const MasterReport = ({ reportName, userType }) => {
   ];
 
   return (
-    <Card
+    <>
+     {
+    
+    isModalOpen && <div onClick={()=>setIsModalOpen(false)} className="report_overlay"></div>
+    }
+     <Card
       className="sport_detail ledger_data"
       title={`${reportName} Reports`}
       extra={<button onClick={()=>nav(-1)}>Back</button>}
@@ -167,13 +159,24 @@ const MasterReport = ({ reportName, userType }) => {
               </Button>
             </Form.Item>
             <Form.Item>
-              <DownloadReport reportName={`${reportName.replace(/ /g,"_")}_reports`} dataSource={dataSource} headerField={headerField}  reportType="dataReport"/>
+              <DownloadReport
+                startDate={dateData[0]}
+                endDate={dateData[1]}
+                userType={userType}
+                reportName={`${reportName.replace(/ /g, "_")}_reports`}
+                headerField={headerField}
+                reportType="dataReport"
+                isModalOpen={isModalOpen}
+                setIsModalOpen={setIsModalOpen}
+              />
             </Form.Item>
           </div>
         </Form>
       </div>
       <ReportTable data={loginReport?.data} isLoading={isLoading}/>
     </Card>
+    </>
+   
   );
 };
 
