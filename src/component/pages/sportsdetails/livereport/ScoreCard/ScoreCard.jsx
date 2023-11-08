@@ -56,7 +56,8 @@ const ScoreCard = ({ mid }) => {
       {scoreTv && (
         <div>
           <iframe
-          src={`https://internal-consumer-apis.jmk888.com/go-score/template/4/${mid}`}
+          // src={`https://internal-consumer-apis.jmk888.com/go-score/template/4/${mid}`}
+          src={`https://score.247idhub.com/go-score/template/4/${mid}`}
           width="100%"
           height="284px;"
           className="score-card"

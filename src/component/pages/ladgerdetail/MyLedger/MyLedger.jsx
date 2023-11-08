@@ -76,7 +76,7 @@ const MyLedger = () => {
   const handleBackbtn = () => {
     nav(-1);
   };
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const timeBefore = moment().subtract(30, "days").format("YYYY-MM-DD");
   const time = moment().format("YYYY-MM-DD");
   const [dateData, setDateData] = useState([timeBefore,time]);
@@ -92,18 +92,6 @@ const MyLedger = () => {
     noOfRecords:100
   }, {refetchOnMountOrArgChange: true});
 
-  const dataSource = data?.data?.list?.map((curElm) => {
-    return {
-      date: curElm?.date,
-      collectionName: curElm?.collectionName,
-      debit: curElm?.debit,
-      credit: curElm?.credit,
-      balance: Math.abs(curElm?.balance),
-      paymentType: curElm?.paymentType,
-      remarks: curElm?.remarks,
-      isRollback: curElm?.isRollback ? "Yes" : "NO",
-    };
-  });
 
   const headerField = [
     "Date",
@@ -131,6 +119,10 @@ const MyLedger = () => {
 
   return (
     <>
+    {
+    
+    isModalOpen && <div onClick={()=>setIsModalOpen(false)} className="report_overlay"></div>
+    }
       <Card
         className="sport_detail ledger_data"
         title="My Ledger"
@@ -154,15 +146,18 @@ const MyLedger = () => {
               Balance: {Math.abs(data?.data?.data?.balance?.toFixed(2))}  {data?.data?.data?.balance>0?"( Dena )":"( Lena )"} 
             </h3>
           </div>
-          <DownloadReport
-              balanceData={arrBalance}
+          <div>
+            <DownloadReport
               lenadenaHeading={lenadenaHeading}
               reportType="MyLedger"
               reportName="MyLedger"
-              dataSource={dataSource}
               headerField={headerField}
+              startDate={dateData[0]}
+              endDate={dateData[1]}
+              isModalOpen={isModalOpen}
+              setIsModalOpen={setIsModalOpen}
             />
-          {/* <DownloadReport dataSource={dataSource} headerField={headerField} reportType="MyLedger"/> */}
+          </div>
         </div>
         <div className="table_section">
           <Table

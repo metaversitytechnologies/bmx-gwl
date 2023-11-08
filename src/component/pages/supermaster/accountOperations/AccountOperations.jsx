@@ -16,7 +16,7 @@ const { RangePicker } = DatePicker;
 const AccountOperations = () => {
   const timeBefore = moment().subtract(14, "days").format("YYYY-MM-DD");
   const time = moment().format("YYYY-MM-DD");
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [dateData, setDateData] = useState([timeBefore, time]);
   const onChange = (date, dateString) => {
     setDateData(dateString);
@@ -78,6 +78,11 @@ const AccountOperations = () => {
 
   return (
     <>
+    {isModalOpen && (
+        <div
+          onClick={() => setIsModalOpen(false)}
+          className="report_overlay"></div>
+      )}
       <div className="match_slip account_match_slip">
         <div>
           <Card
@@ -96,12 +101,18 @@ const AccountOperations = () => {
                 onChange={onChange}
               />
               <div style={{ marginTop: "12px" }}>
+              <div style={{width:"200px"}}>
                 <DownloadReport
-                  dataSource={dataSource}
-                  headerField={headerField}
+                  isModalOpen={isModalOpen}
+                  setIsModalOpen={setIsModalOpen}
+                  userId={id}
                   reportType="ActionLog"
                   reportName="account-operations"
+                  headerField={headerField}
+                  startDate= {dateData[0]}
+                  endDate= {dateData[1]}
                 />
+              </div>
               </div>
             </div>
 

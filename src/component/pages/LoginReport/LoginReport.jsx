@@ -22,7 +22,7 @@ import DownloadReport from "../../common/DownloadReport/DownloadReport";
 const LoginReport = () => {
   const userId = localStorage.getItem("userId");
   const { id } = useParams();
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [clientId, setClientId] = useState(userId);
   const [paginationTotal, setPaginationTotal] = useState(50);
   const [indexData, setIndexData] = useState(0);
@@ -71,19 +71,15 @@ const LoginReport = () => {
     });
   }, [clientId, paginationTotal, indexData, ipOrder, id]);
 
-  const dataSource = data?.data?.list?.map((curElm) => {
-    return {
-      userid: curElm?.userid,
-      ip: curElm?.ip,
-      lastLogin: curElm?.lastLogin,
-      deviceInfo: curElm?.deviceInfo,
-    };
-  });
-
   const headerField = ["User Name", "IP-Address", "Login Date", "Detail"];
 
   return (
     <>
+      {isModalOpen && (
+        <div
+          onClick={() => setIsModalOpen(false)}
+          className="report_overlay"></div>
+      )}
       <div className="match_slip login_report">
         <Card
           style={{
@@ -93,45 +89,49 @@ const LoginReport = () => {
           className="sport_detail  team_name"
           title="Login Report"
           extra={<button onClick={handleBackClick}>Back</button>}>
-            <div className="login_report_data">
-          <Form
-            className="form_data mt-16 cash_data "
-            name="basic"
-            initialValues={{ remember: true }}
-            autoComplete="off">
-            
-                <Form.Item
-                  // label="Client"
-                  name="client"
-                  required
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please select Client",
-                    },
-                  ]}>
-                  <Select
-                    placeholder={id ? id : clientId}
-                    options={
-                      resultData.data?.data.map((i) => ({
-                        label: i,
-                        value: i,
-                      })) || []
-                    }
-                    showSearch
-                    allowClear
-                    // value={clientId}
-                    onSelect={handleSelect}
-                    onSearch={handleChange}></Select>
-                </Form.Item>
-              
-          </Form>
-         
-            <div style={{ marginBottom: "12px" }}>
-            <DownloadReport reportName="LoginReport" dataSource={dataSource} headerField={headerField}  reportType="LoginReport"/>
-            </div>
-            </div>
-         
+          {/* <div className="login_report_data"> */}
+          <Row style={{ marginTop: "12px" }}>
+            <Col xl={8} lg={8} md={24} xs={24}>
+              <Form.Item
+                // label="Client"
+                name="client"
+                required
+                rules={[
+                  {
+                    required: true,
+                    message: "Please select Client",
+                  },
+                ]}>
+                <Select
+                  placeholder={id ? id : clientId}
+                  options={
+                    resultData.data?.data.map((i) => ({
+                      label: i,
+                      value: i,
+                    })) || []
+                  }
+                  showSearch
+                  allowClear
+                  // value={clientId}
+                  onSelect={handleSelect}
+                  onSearch={handleChange}></Select>
+              </Form.Item>
+            </Col>
+            <Col xl={3} lg={3} md={24} xs={24}>
+              <div style={{ marginBottom: "12px" }}>
+                <DownloadReport
+                  isModalOpen={isModalOpen}
+                  setIsModalOpen={setIsModalOpen}
+                  parentId={id || clientId}
+                  reportName="LoginReport"
+                  headerField={headerField}
+                  reportType="LoginReport"
+                />
+              </div>
+            </Col>
+          </Row>
+          {/* </div> */}
+
           {/* <div className="table_section statement_tabs_data">
               <div className="table_section">
                 <Table

@@ -9,6 +9,7 @@ import DownloadReport from "../../../../common/DownloadReport/DownloadReport";
 
 const AllStatement = ({clientId, dateData, gameType }) => {
   const [trigger, {data, isFetching, isLoading}] = useLazyAccountstatementQuery();
+  const [isModalOpen1, setIsModalOpen1] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [marketId, setMarketId] = useState("");
   const [remark, setRemark] = useState("");
@@ -103,12 +104,12 @@ const AllStatement = ({clientId, dateData, gameType }) => {
   ];
 
   const handleCancel = () => {
-    setIsModalOpen(false);
+    setIsModalOpen1(false);
   };
 
   const handelAccountModals = (e, id, rem) =>{
     e.preventDefault();
-    setIsModalOpen(true);
+    setIsModalOpen1(true);
     setMarketId(id)
     setRemark(rem)
   } 
@@ -142,8 +143,20 @@ const AllStatement = ({clientId, dateData, gameType }) => {
 
   return (
     <>
+    {isModalOpen && (
+        <div
+          onClick={() => setIsModalOpen(false)}
+          className="report_overlay"></div>
+      )}
     <div className=" account_download">
-    <DownloadReport dataSource={dataSource} headerField={headerField}  reportName="account-statement" reportType="AccountStatementReport"/>
+    <DownloadReport startDate={dateData[0]}
+      endDate= {dateData[1]} 
+      userId= {clientId || id}
+      type={gameType} reportType="AccountStatementReport" reportName="account-statement" 
+      headerField={headerField}
+      isModalOpen={isModalOpen}
+      setIsModalOpen={setIsModalOpen}
+      />
     </div>
    
       <div className="table_section statement_tabs_data">
@@ -175,7 +188,7 @@ const AllStatement = ({clientId, dateData, gameType }) => {
       {
         marketId != "" && <Modal title="Bet List" 
         className="bet_list"
-        open={isModalOpen} 
+        open={isModalOpen1} 
         onCancel={handleCancel}
         footer={null}
         >
