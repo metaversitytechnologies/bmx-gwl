@@ -39,8 +39,15 @@ export const casinoDetailsApi = createApi({
         body
       }),
     }),
+    casinoBetListNew: build.query({
+      query: (body) => ({
+        url: `/bmx/report/casino-plus-minus-real-new`,
+        method: "POST",
+        body
+      }),
+    }),
     
   }),
 });
 
-export const {useRouletteDetailsQuery, useRoulettePlusMinusQuery, useAllGameQuery, useCasinoBetListQuery, useCasinoListQuery } = casinoDetailsApi;
+export const {useRouletteDetailsQuery, useRoulettePlusMinusQuery, useAllGameQuery, useCasinoBetListQuery, useCasinoBetListNewQuery } = casinoDetailsApi;

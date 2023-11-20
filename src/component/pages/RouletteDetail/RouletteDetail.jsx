@@ -127,6 +127,7 @@ const RouletteDetail = ({isAura, Id}) => {
               <th>Name</th>
               <th className="text-right">Comm Liya</th>
               <th className="text-right">Comm Diya</th>
+              <th className="text-right">Comm Liya Share Wise</th>
               <th className="text-right">Pnl</th>
             </tr>
             {isLoading || isFetching ? (
@@ -167,7 +168,11 @@ const RouletteDetail = ({isAura, Id}) => {
                   </td>
                   <td className="text-right"
                     >
-                    {res?.commDiya || 0}
+                    {(res?.commDiya)?.toFixed(2) || 0}
+                  </td>
+                  <td className="text-right"
+                    >
+                    {(res?.commLiyaShareWise)?.toFixed(2) || 0}
                   </td>
                   <td
                     className={`text-right ${
