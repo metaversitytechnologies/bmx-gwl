@@ -19,6 +19,8 @@ const CommReportTable = ({ data, isLoading, setPaginationTotal, paginationTotal,
 
 //   console.log(commLiya, commDiya, "dscdscs");
 
+console.log(data, "adssssa")
+
   return (
     <>
       <div className="table_section statement_tabs_data ant-spin-nested-loading">
@@ -38,8 +40,10 @@ const CommReportTable = ({ data, isLoading, setPaginationTotal, paginationTotal,
             <tr>
               <th>User</th>
               <th>Match Name</th>
-              <th className="text-right">Comm Diya</th>
+              <th className="text-right">Comm Diya </th>
               <th className="text-right">Comm Liye</th>
+              <th className="text-right">Comm Diya Share Wise</th>
+              <th className="text-right">Comm Liye Share Wise</th>
               <th>Date</th>
             </tr>
             {isLoading ? <Spin className="spin_icon" size="large"></Spin> : ""}
@@ -54,6 +58,12 @@ const CommReportTable = ({ data, isLoading, setPaginationTotal, paginationTotal,
                   <td className={`text-right ${res?.comm > 0 ?"text_success": res?.comm < 0?"text_danger":""}`}>
                     {res?.comm}
                   </td>
+                  <td className={`text-right ${res?.commDiyaS != null && res?.comm > 0 ?"text_success": res?.comm < 0?"text_danger":""}`}>
+                    {res?.commDiyaS == null ?"NA":res?.commDiyaS}
+                  </td>
+                  <td className={`text-right ${res?.commS != null && res?.comm > 0 ?"text_success": res?.comm < 0?"text_danger":""}`}>
+                    {res?.commS == null ?"NA":res?.commS}
+                  </td>
                   <td>
                     {res?.date}
                   </td>
@@ -65,6 +75,8 @@ const CommReportTable = ({ data, isLoading, setPaginationTotal, paginationTotal,
               <td className="text-center" style={{fontWeight: "900"}} colSpan={2}>Total</td>
               <td className={`text-right ${commDiya>0?"text_success":commDiya<0?"text_danger":""}`}>{commDiya?.toFixed(2)}</td>
               <td className={`text-right ${commLiya>0?"text_success":commLiya<0?"text_danger":""}`}>{commLiya?.toFixed(2)}</td>
+              <td></td>
+              <td></td>
               <td></td>
           </tr>
             }
