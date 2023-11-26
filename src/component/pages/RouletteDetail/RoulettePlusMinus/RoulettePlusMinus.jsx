@@ -278,7 +278,7 @@ const RecursiveTable = ({ data, title }) => {
       returnArr.push(
         <tr className="master_color">
           <td colSpan={2}>&nbsp;</td>
-          <td style={{ whiteSpace: "nowrap" }}>SUPER Master </td>
+          <td style={{ whiteSpace: "nowrap" }}>MASTER </td>
           <td colSpan={32}>
             <strong>{title}</strong>
           </td>
@@ -287,7 +287,7 @@ const RecursiveTable = ({ data, title }) => {
     } else if (data?.groupName === "master") {
       returnArr.push(
         <tr className="super_color">
-          <td colSpan={3}>&nbsp;</td> <td>MASTER </td>
+          <td colSpan={3}>&nbsp;</td> <td>SUPER </td>
           <td colSpan={31}>
             <strong>{title}</strong>
           </td>
@@ -574,14 +574,14 @@ const RecursiveTable = ({ data, title }) => {
                   uType == 0 || uType == 1 || uType == 5 ? "" : "d_none"
                 }`}
                 colSpan={4}>
-                MASTER PLUS MINUS
+                SUPER PLUS MINUS
               </th>
               <th
                 className={`sub_agent_heading ${
                   uType == 0 || uType == 5 ? "" : "d_none"
                 }`}
                 colSpan={4}>
-                SUPERMASTER PLUS MINUS
+                MASTER PLUS MINUS
               </th>
               <th
                 className={`sub_agent_heading ${uType != 5 ? "d_none" : ""}`}
