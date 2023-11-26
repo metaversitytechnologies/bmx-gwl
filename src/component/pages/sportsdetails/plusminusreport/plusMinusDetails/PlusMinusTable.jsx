@@ -367,14 +367,14 @@ const RecursiveTable = ({ data, title }) => {
                   uType == 0 || uType == 1 || uType == 5 ? "" : "d_none"
                 }`}
                 colSpan={6}>
-                MASTER PLUS MINUS
+                SUPER PLUS MINUS
               </th>
               <th
                 className={`sub_agent_heading ${
                   uType == 0 || uType == 5 ? "" : "d_none"
                 }`}
                 colSpan={6}>
-                SUPERMASTER PLUS MINUS
+               MASTER PLUS MINUS
               </th>
               <th
                 className={`sub_agent_heading ${uType != 5 ? "d_none" : ""}`}
