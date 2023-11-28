@@ -24,13 +24,13 @@ const data = [
         size:"14",
         userType:2
       },
-      {
-        image: <BiUserCircle />,
-        name: "Dr/Cr Entry Client",
-        path:"/client/txn-client",
-        size:"14",
-        userType:3
-      },
+      // {
+      //   image: <BiUserCircle />,
+      //   name: "Dr/Cr Entry Client",
+      //   path:"/client/txn-client",
+      //   size:"14",
+      //   userType:3
+      // },
 ]
 
 const CashTransanction = () => {

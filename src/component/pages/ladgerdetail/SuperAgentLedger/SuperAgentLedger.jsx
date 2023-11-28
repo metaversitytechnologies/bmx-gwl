@@ -1,6 +1,6 @@
 import { Card, Col, Divider, Pagination, Row, Table } from "antd";
 import "./SuperAgentLedger.scss";
-import { useDownlineLedgerQuery } from "../../../../store/service/ledgerServices";
+import { useClientLedgerMutation, useDownlineLedgerQuery } from "../../../../store/service/ledgerServices";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -38,14 +38,32 @@ const nav = useNavigate()
     userType:userTyep
   }, {refetchOnMountOrArgChange:true})
 
+  const [trigger, {data: clientData}] = useClientLedgerMutation();
 
   useEffect(()=>{
+    if(Listname === "Client"){
+      trigger()
+    }
+  }, [Listname])
+
+
+
+  useEffect(()=>{
+    if(Listname === "Client"){
+      const lenaData = clientData?.data?.lena?.map((res)=>res?.balance).reduce((prev, curr) => Number(prev) + Number(curr), 0);
+      const denaData = clientData?.data?.dena?.map((res)=>res?.balance).reduce((prev, curr) => Number(prev) + Number(curr), 0);
+      const clearData = clientData?.data?.clear?.map((res)=>res?.balance).reduce((prev, curr) => Number(prev) + Number(curr), 0);
+      setLenaBalance(lenaData);
+      setDenaBalance(denaData);
+      setClearData(clearData);
+    }else{
     const lenaData = ledger?.data?.lena?.map((res)=>res?.balance).reduce((prev, curr) => Number(prev) + Number(curr), 0);
     const denaData = ledger?.data?.dena?.map((res)=>res?.balance).reduce((prev, curr) => Number(prev) + Number(curr), 0);
     const clearData = ledger?.data?.clear?.map((res)=>res?.balance).reduce((prev, curr) => Number(prev) + Number(curr), 0);
     setLenaBalance(lenaData);
     setDenaBalance(denaData);
     setClearData(clearData);
+  }
   }, [ledger?.data])
 
 
@@ -59,7 +77,7 @@ const nav = useNavigate()
           <Col  xl={8} xs={24} lg={8} md={24} span={8}>
             <div className="super_ledger item1">
               <div>Lena</div>
-              <div>{leneBalance?.toFixed(2)}</div>
+              <div>{Math.abs(leneBalance)?.toFixed(2)}</div>
             </div>
             <div >
               <div className="table_section">
@@ -69,7 +87,7 @@ const nav = useNavigate()
               pagination={false}
               columns={columns}
               loading={isLoading||isFetching}
-              dataSource={ledger?.data?.lena}>
+              dataSource={Listname === "Client"? clientData?.data?.lena: ledger?.data?.lena}>
             </Table>
               </div>
             </div>
@@ -87,7 +105,7 @@ const nav = useNavigate()
               pagination={false}
               columns={columns}
               loading={isLoading||isFetching}
-              dataSource={ledger?.data?.dena}>
+              dataSource={Listname === "Client"? clientData?.data?.dena:ledger?.data?.dena}>
             </Table>
               </div>
             </div>
@@ -96,7 +114,7 @@ const nav = useNavigate()
             <div className="last_item">
             <div className="super_ledger item3">
               <div>Clear</div>
-              <div>{(clearData?.toFixed)}</div>
+              <div>{(clearData?.toFixed(2))}</div>
             </div>
             <div>
               <div className="table_section">
@@ -106,7 +124,7 @@ const nav = useNavigate()
               pagination={false}
               columns={columns}
               loading={isLoading||isFetching}
-              dataSource={ledger?.data?.clear}>
+              dataSource={Listname === "Client"? clientData?.data?.clear:ledger?.data?.clear}>
             </Table>
               </div>
             </div>

@@ -196,11 +196,11 @@ const Sidebar = (props) => {
                     <Link to="/client/txn-agent">Debit/Credit Entry(A)</Link>
                   ),
                 },
-                {
-                  label: (
-                    <Link to="/client/txn-client">Debit/Credit Entry(C)</Link>
-                  ),
-                },
+                // {
+                //   label: (
+                //     <Link to="/client/txn-client">Debit/Credit Entry(C)</Link>
+                //   ),
+                // },
               ],
             },
             {
@@ -274,7 +274,7 @@ const Sidebar = (props) => {
             {
               key: "8",
               icon: <SlDiamond />,
-              label: <Link to="/markets" onClick={()=>setOpenKeys([])}>WBT Setting</Link>,
+              label: <Link to="/markets" onClick={()=>setOpenKeys([])}>Setting</Link>,
             },
           ]}
         />
@@ -497,15 +497,15 @@ const Sidebar = (props) => {
                       </Link>
                     ),
                   },
-                  {
-                    label: (
-                      <Link
-                        to="/client/txn-client"
-                        onClick={() => props?.action()}>
-                        Debit/Credit Entry(C)
-                      </Link>
-                    ),
-                  },
+                  // {
+                  //   label: (
+                  //     <Link
+                  //       to="/client/txn-client"
+                  //       onClick={() => props?.action()}>
+                  //       Debit/Credit Entry(C)
+                  //     </Link>
+                  //   ),
+                  // },
                 ],
               },
               {
@@ -665,7 +665,7 @@ const Sidebar = (props) => {
                 icon: <SlDiamond />,
                 label: (
                   <Link to="/markets" onClick={() => {props?.action(); setOpenKeys([])}}>
-                    WBT Setting
+                    Setting
                   </Link>
                 ),
               },
