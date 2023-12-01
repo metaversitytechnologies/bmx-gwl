@@ -49,22 +49,18 @@ const nav = useNavigate()
 
 
   useEffect(()=>{
-    if(Listname === "Client"){
-      const lenaData = clientData?.data?.lena?.map((res)=>res?.balance).reduce((prev, curr) => Number(prev) + Number(curr), 0);
-      const denaData = clientData?.data?.dena?.map((res)=>res?.balance).reduce((prev, curr) => Number(prev) + Number(curr), 0);
-      const clearData = clientData?.data?.clear?.map((res)=>res?.balance).reduce((prev, curr) => Number(prev) + Number(curr), 0);
-      setLenaBalance(lenaData);
-      setDenaBalance(denaData);
-      setClearData(clearData);
-    }else{
-    const lenaData = ledger?.data?.lena?.map((res)=>res?.balance).reduce((prev, curr) => Number(prev) + Number(curr), 0);
-    const denaData = ledger?.data?.dena?.map((res)=>res?.balance).reduce((prev, curr) => Number(prev) + Number(curr), 0);
-    const clearData = ledger?.data?.clear?.map((res)=>res?.balance).reduce((prev, curr) => Number(prev) + Number(curr), 0);
-    setLenaBalance(lenaData);
-    setDenaBalance(denaData);
-    setClearData(clearData);
-  }
-  }, [ledger?.data])
+  const processData = (data) =>
+      data?.map((res) => res?.balance).reduce((prev, curr) => Number(prev) + Number(curr), 0);
+    if (Listname === "Client") {
+      setLenaBalance(processData(clientData?.data?.lena));
+      setDenaBalance(processData(clientData?.data?.dena));
+      setClearData(processData(clientData?.data?.clear));
+    } else {
+      setLenaBalance(processData(ledger?.data?.lena));
+      setDenaBalance(processData(ledger?.data?.dena));
+      setClearData(processData(ledger?.data?.clear));
+    }
+  }, [ledger?.data, clientData?.data])
 
 
   return (
