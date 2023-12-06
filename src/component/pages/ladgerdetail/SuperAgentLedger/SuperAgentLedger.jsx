@@ -7,6 +7,8 @@ import {
 } from "../../../../store/service/ledgerServices";
 import LedgerPopUp from "../LedgerPopUp";
 import "./SuperAgentLedger.scss";
+import Withdraw from "../../../common/Withdraw";
+import Deposit from "../../../common/Deposit";
 
 const SuperAgentLedger = ({ userTyep, Listname }) => {
   const [lenaBalance, setLenaBalance] = useState(0);
@@ -15,6 +17,8 @@ const SuperAgentLedger = ({ userTyep, Listname }) => {
   const [isDepositeModalOpen, setIsDepositeModalOpen] = useState(false);
   const [userData, setUserData] = useState({});
   const [modalsName, setModalsName] = useState("");
+  const [clientDataState, setClientDataState] = useState(false)
+  
   const nav = useNavigate();
 
   const handleBackbtn = () => {
@@ -29,10 +33,11 @@ const SuperAgentLedger = ({ userTyep, Listname }) => {
     setUserData(val);
     setModalsName(name);
     setIsDepositeModalOpen(true);
-    if(name == "Clear" || userTyep == 3){
-    setIsDepositeModalOpen(false);
-    }
+    // if (name == "Clear" || userTyep == 3) {
+    //   setIsDepositeModalOpen(false);
+    // }
   };
+
 
   const columns = [
     {
@@ -48,15 +53,17 @@ const SuperAgentLedger = ({ userTyep, Listname }) => {
     },
   ];
 
-  const renderActionButton = (record, name) => (
-    <span>
-      <button
-        onClick={() => handleDenaModals(record, name)}
-        className="dena_button">
-        {name}
-      </button>
-    </span>
-  );
+  const renderActionButton = (record, name) => {
+    return (
+      <span>
+        <button
+          onClick={() => handleDenaModals(record, name)}
+          className="dena_button">
+          {name}
+        </button>
+      </span>
+    );
+  };
 
   // const renderActionButton = (record, name) => (
   //   <span>
@@ -88,6 +95,17 @@ const SuperAgentLedger = ({ userTyep, Listname }) => {
         render: (text, record) => renderActionButton(record, actionName),
         hidden: userTyep === 3 || actionName == "Clear" ? true : false,
       },
+      {
+        title: "Settlement",
+        dataIndex: "Settlement",
+        key: "Settlement",
+        render: (text, record) =>
+          renderActionButton(
+            record,
+            actionName == "Lena" ? "Deposit" : "Withdraw"
+          ),
+        hidden: userTyep !== 3 || actionName == "Clear" ? true : false,
+      },
     ].filter((item) => !item.hidden);
 
   const {
@@ -107,7 +125,7 @@ const SuperAgentLedger = ({ userTyep, Listname }) => {
     if (Listname === "Client") {
       trigger();
     }
-  }, [Listname]);
+  }, [Listname, clientDataState]);
 
   useEffect(() => {
     const processData = (data) =>
@@ -172,11 +190,30 @@ const SuperAgentLedger = ({ userTyep, Listname }) => {
         okButtonProps={{ style: { display: "none" } }}
         cancelButtonProps={{ style: { display: "none" } }}
         footer={false}>
-        <LedgerPopUp
-          handleClose={() => setIsDepositeModalOpen(false)}
-          userData={userData}
-          modalsName={modalsName}
-        />
+          {
+            modalsName == "Withdraw" &&  <Withdraw
+            userIdData={userData?.userId}
+            handleClose={() => setIsDepositeModalOpen(false)}
+            data={userData?.userId}
+            setClientDataState={setClientDataState}
+          />
+          }{
+            modalsName == "Deposit" &&  <Deposit
+            userIdData={userData?.userId}
+            handleClose={() => setIsDepositeModalOpen(false)}
+            data={userData?.userId}
+            
+            setClientDataState={setClientDataState}
+          />
+          }
+          {
+            (modalsName == "Lena" || modalsName == "Dena") && <LedgerPopUp
+            handleClose={() => setIsDepositeModalOpen(false)}
+            userData={userData}
+            modalsName={modalsName}
+          />
+          }
+        
       </Modal>
     </>
   );

@@ -4,7 +4,7 @@ import './Deposit.scss'
 import { useDepositAndWithdrawQuery, useDepositMutation } from "../../store/service/userlistService";
 import { openNotification, openNotificationError } from "../../App";
 
-const Deposit = ({data: datadeposit, userIdData, handleClose}) => {
+const Deposit = ({data: datadeposit, userIdData, handleClose, setClientDataState}) => {
   const [form]= Form.useForm();
 
 
@@ -29,6 +29,7 @@ useEffect(()=>{
     if(data?.status === true){
         openNotification(data?.message);
         form?.resetFields();
+        setClientDataState(true)
         handleClose()
     }else if(data?.status === false || error?.data?.message){
         openNotificationError(data?.message || error?.data?.message);
@@ -49,7 +50,7 @@ useEffect(()=>{
         )}
     
       <div>
-        <p>Curr Coins : <span className={depositeWithdraw?.data?.childUplineAmount < 0?"text_danger":"text_success"}>{depositeWithdraw?.data?.childUplineAmount}</span> </p>
+        <p style={{fontSize:"22px", paddingBottom:"12px"}}>Curr Coins : <span className={depositeWithdraw?.data?.childUplineAmount < 0?"text_danger":"text_success"}>{depositeWithdraw?.data?.childUplineAmount}</span> </p>
       </div>
       <div className="form_modals">
         <Form
