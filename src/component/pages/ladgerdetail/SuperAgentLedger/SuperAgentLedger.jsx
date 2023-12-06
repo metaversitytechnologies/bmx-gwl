@@ -86,7 +86,7 @@ const SuperAgentLedger = ({ userTyep, Listname }) => {
         dataIndex: actionName.toLowerCase(),
         key: actionName.toLowerCase(),
         render: (text, record) => renderActionButton(record, actionName),
-        hidden: userTyep === 3 ? true : false,
+        hidden: userTyep === 3 || actionName == "Clear" ? true : false,
       },
     ].filter((item) => !item.hidden);
 
