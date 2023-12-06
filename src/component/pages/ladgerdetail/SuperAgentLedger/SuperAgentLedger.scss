@@ -3,7 +3,7 @@
 
 .ant-row.main_super_super_ledger{
   margin: 24px 0;
-  .ant-col.ant-col-8{
+  .ant-col{
       &:first-child{
           padding-right :12px;
       }
@@ -97,3 +97,25 @@ margin: 24px 0;
 }
 }
 
+.dena_button{
+  text-decoration: none !important;
+    background-image: none;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+    border-radius: 2px;
+    color: #fff;
+    background-color: #5d7074;
+    padding: 7px 12px;
+    font-weight: 600;
+    outline: unset;
+    border: unset;
+}
+
+.lena_dena_modals{
+  .ant-modal-content {
+    padding: 0px 14px !important;
+}
+.ant-modal-title{
+  font-size: 12px;
+  padding-top: 11px;
+}
+}
