@@ -7,7 +7,7 @@ import {
 } from "../../store/service/userlistService";
 import { openNotification, openNotificationError } from "../../App";
 
-const Withdraw = ({ data: datadeposit, userIdData, handleClose }) => {
+const Withdraw = ({ data: datadeposit, handleClose, setClientDataState, userIdData }) => {
   const [form]= Form.useForm();
 
 
@@ -29,7 +29,9 @@ const Withdraw = ({ data: datadeposit, userIdData, handleClose }) => {
 
   useEffect(() => {
     if (data?.status === true) {
+      
       openNotification(data?.message);
+      setClientDataState(true)
       form?.resetFields();
       handleClose();
     } else if (data?.status === false || error?.data?.message) {
@@ -48,7 +50,7 @@ const Withdraw = ({ data: datadeposit, userIdData, handleClose }) => {
           </>
         )}
       <div>
-        <p>Curr Coins : <span className={depositeWithdraw?.data?.childUplineAmount < 0?"text_danger":"text_success"}>{depositeWithdraw?.data?.childUplineAmount}</span></p>
+        <p style={{fontSize:"22px", paddingBottom:"12px"}}>Curr Coins : <span className={depositeWithdraw?.data?.childUplineAmount < 0?"text_danger":"text_success"}>{depositeWithdraw?.data?.childUplineAmount}</span></p>
       </div>
       <div className="form_modals">
        

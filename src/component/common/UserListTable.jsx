@@ -58,6 +58,7 @@ const UserListTable = ({ userType, Listname, parentUserids, setParentUserIds, Us
   const [userIds, setUserIds] = useState("");
   
   const [betStatus, setBetStatus] = useState(false);
+  const [lientDataState, setClientDataState] = useState(false);
   const [accStatus, setAccStatus] = useState(false);
   const [droupSearch, setDroupSearch] = useState(false);
   const [userName, setUserName] = useState("");
@@ -552,8 +553,9 @@ const UserListTable = ({ userType, Listname, parentUserids, setParentUserIds, Us
         footer={null}>
         <Deposit
           handleClose={() => SetisDepositeModalOpen(false)}
-          userIdData={userIdData}
+          setClientDataState={setClientDataState}
           data={dataVal}
+          userIdData={userIdData}
         />
       </Modal>
 
@@ -575,6 +577,7 @@ const UserListTable = ({ userType, Listname, parentUserids, setParentUserIds, Us
           userIdData={userIdData}
           handleClose={() => SetWithdrawnModal(false)}
           data={dataVal}
+          setClientDataState={setClientDataState}
         />
       </Modal>
 
