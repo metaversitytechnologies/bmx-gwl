@@ -8,3 +8,31 @@
         }
     }
 }
+.loading-icon {
+    color: rgb(115, 118, 111);
+    font-size: 2rem;
+    font-weight: 800;
+    cursor: pointer;
+    
+  }
+
+  .loading-icon-animation{
+    animation: animate 2s infinite;
+
+}
+
+
+  
+  @keyframes animate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(-720deg);
+    }
+  }
+
+  .user_id{
+    display: flex;
+    align-items: center;
+  }
