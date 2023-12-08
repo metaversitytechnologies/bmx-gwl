@@ -117,10 +117,10 @@ useEffect(() => {
             <Route path="/account-operation" element={<AccountOperations />} />
             <Route path="/client/login-report" element={<LoginReport />} />
             <Route path="/client/login-report/:id" element={<LoginReport />} />
-            <Route path="/client/create-super" element={<NewCreateUser createName={"Master"} userTyep={5}/>}/>
-            <Route path="/client/create-agent" element={<NewCreateUser createName={"Super"} userTyep={0}/>}/>
-            <Route path="/client/create-dealer" element={<NewCreateUser createName={"Agent"} userTyep={1}/>}/>
-            <Route path="/client/create-client" element={<NewCreateUser createName={"Client"} userTyep={2}/>}/>
+            <Route path="/client/create-super" element={<NewCreateUser  userTypeOrder={0} createName={"Master"} userTyep={5}/>}/>
+            <Route path="/client/create-agent" element={<NewCreateUser  userTypeOrder={1} createName={"Super"} userTyep={0}/>}/>
+            <Route path="/client/create-dealer" element={<NewCreateUser userTypeOrder={2}  createName={"Agent"} userTyep={1}/>}/>
+            <Route path="/client/create-client" element={<NewCreateUser userTypeOrder={3}  createName={"Client"} userTyep={2}/>}/>
             
             {/* <Route path="/client/create-super" element={<CreateSuperAgent createName={"Master"}/>}/>
             <Route path="/client/create-agent" element={<CreateSuperAgent createName={"Super"}/>}/>

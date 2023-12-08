@@ -136,6 +136,14 @@ export const userlistApi = createApi({
       }),
       providesTags: ["dashboard"],
     }),
+    getUserId: build.mutation({
+      query: (body) => ({
+        url: "/bmx/user/get-ordered-user-id",
+        method: "POST",
+        body,
+      }),
+      providesTags: ["dashboard"],
+    }),
   }),
 });
 
@@ -155,6 +163,6 @@ export const {
   useAccountOprationQuery,
   useDashboardQuery,
   useLazyIsUserIdQuery,
-  useLazyUpDateLimitesQuery
-
+  useLazyUpDateLimitesQuery,
+  useGetUserIdMutation
 } = userlistApi;
