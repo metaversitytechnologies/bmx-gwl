@@ -1,7 +1,37 @@
-import { Button, Card, Col, Form, Row, Select, notification } from "antd";
+import {
+  Button,
+  Card,
+  Col,
+  Form,
+  Row,
+  Select,
+  Table,
+  notification,
+} from "antd";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSetCommissionMutation } from "../../../store/service/CasinoServices";
+import {
+  useGetCommissionMutation,
+  useSetCommissionMutation,
+} from "../../../store/service/CasinoServices";
+
+const columns = [
+  {
+    title: "Odds Comm",
+    dataIndex: "oddsCommission",
+    key: "casinoCommission",
+  },
+  {
+    title: "Casino Comm",
+    dataIndex: "casinoCommission",
+    key: "casinoCommission",
+  },
+  {
+    title: "Fancy Comm",
+    dataIndex: "casinoCommission",
+    key: "casinoCommission",
+  },
+];
 
 const SetCommission = () => {
   const [api, contextHolder] = notification.useNotification();
@@ -18,7 +48,6 @@ const SetCommission = () => {
   ];
   const casinoComm = ["0.00", "0.25", "0.50", "0.75", "1.00"];
   const [trigger, { data, isLoading, error }] = useSetCommissionMutation();
-
 
   const nav = useNavigate();
   const [form] = Form.useForm();
@@ -48,15 +77,27 @@ const SetCommission = () => {
     });
   };
 
-  useEffect(()=>{
-    if(data?.status == true){
-        openNotification(data?.message)
-        form.resetFields();
-    }else if(error?.status == 400 || error?.data?.status == false || data?.status == false){
-        openNotificationError(error?.data?.message || data?.message);
-        form.resetFields();
+  useEffect(() => {
+    if (data?.status == true) {
+      openNotification(data?.message);
+    getComm();
+      form.resetFields();
+    } else if (
+      error?.status == 400 ||
+      error?.data?.status == false ||
+      data?.status == false
+    ) {
+      openNotificationError(error?.data?.message || data?.message);
+      form.resetFields();
     }
-  }, [data, error])
+  }, [data, error]);
+
+  const [getComm, { data: getCommData, isLoading: loading }] =
+    useGetCommissionMutation();
+
+  useEffect(() => {
+    getComm();
+  }, []);
 
   return (
     <>
@@ -65,7 +106,7 @@ const SetCommission = () => {
         className="sport_detail ledger_data"
         title="Set Commission"
         extra={<button onClick={() => nav(-1)}>Back</button>}>
-        <div style={{marginTop:"5px"}}>
+        <div style={{ marginTop: "5px" }}>
           <Form
             className="form_data mt-16 cash_data"
             name="basic"
@@ -76,26 +117,26 @@ const SetCommission = () => {
             onFinish={onFinish}
             autoComplete="off">
             <Row>
-            <Col xl={8} lg={8} md={24} xs={24}>
-            <Form.Item
-              label="Odds Comm"
-              name="oddscomm"
-              rules={[
-                {
-                  required: true,
-                  message: "Odds Commission is required!",
-                },
-              ]}>
-              <Select placeholder="Select Odds Comm">
-                {fancyComm?.map((curElm) => {
-                  return (
-                    <>
-                      <Select.Option value={curElm}>{curElm}</Select.Option>
-                    </>
-                  );
-                })}
-              </Select>
-            </Form.Item>
+              <Col xl={8} lg={8} md={24} xs={24}>
+                <Form.Item
+                  label="Odds Comm"
+                  name="oddscomm"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Odds Commission is required!",
+                    },
+                  ]}>
+                  <Select placeholder="Select Odds Comm">
+                    {fancyComm?.map((curElm) => {
+                      return (
+                        <>
+                          <Select.Option value={curElm}>{curElm}</Select.Option>
+                        </>
+                      );
+                    })}
+                  </Select>
+                </Form.Item>
               </Col>
               <Col xl={8} lg={8} md={24} xs={24}>
                 <Form.Item
@@ -146,8 +187,20 @@ const SetCommission = () => {
               </Button>
             </Form.Item>
           </Form>
+
+          
         </div>
+        <div style={{marginTop:"12px"}} className="table_section oddscomm">
+            <Table
+              className="live_table roulette_table"
+              bordered
+              columns={columns}
+              loading={loading}
+              dataSource={[getCommData?.data]}
+              pagination={false}/>
+          </div>
       </Card>
+      
     </>
   );
 };
