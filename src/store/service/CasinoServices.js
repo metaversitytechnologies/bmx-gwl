@@ -46,8 +46,15 @@ export const casinoDetailsApi = createApi({
         body
       }),
     }),
+    setCommission: build.mutation({
+      query: (body) => ({
+        url: `/commission-set-subadmin/set-commission`,
+        method: "POST",
+        body
+      }),
+    }),
     
   }),
 });
 
-export const {useRouletteDetailsQuery, useRoulettePlusMinusQuery, useAllGameQuery, useCasinoBetListQuery, useCasinoBetListNewQuery } = casinoDetailsApi;
+export const {useRouletteDetailsQuery, useRoulettePlusMinusQuery, useAllGameQuery, useCasinoBetListQuery, useCasinoBetListNewQuery, useSetCommissionMutation } = casinoDetailsApi;

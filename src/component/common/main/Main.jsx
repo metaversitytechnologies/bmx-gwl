@@ -53,9 +53,10 @@ import CommReport from "../../pages/dataReport/commReport/CommReport";
 import { useIt_Self_By_APP_URLQuery } from "../../../store/service/supermasteAccountStatementServices";
 import { useEffect } from "react";
 import NewCreateUser from "../../pages/newCreateUser/NewCreateUser";
+import SetCommission from "../../pages/setCommission/SetCommission";
 
 
-const Main = ({setOpenRules}) => {
+const Main = () => {
 
   let appUrl = (window.location.hostname).split(".");
   appUrl.shift();
@@ -89,7 +90,7 @@ useEffect(() => {
        <Routes>
           <Route path="/" element={<Signin logo={logoData?.data?.logo}/>}/>
           <Route path="/signin" element={<Signin logo={logoData?.data?.logo}/>}/>
-          <Route path="" element={<LayOut logo={logoData?.data?.logo} />}> 
+          <Route path="" element={<LayOut logoData={logoData} logo={logoData?.data?.logo} />}> 
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/client/details-master" element={<MasterDetails />} />
             <Route path="/Events/ladger-details" element={<LadgerDetails />} />
@@ -181,6 +182,7 @@ useEffect(() => {
             <Route path="/client/comm-report-master" element={<CommReport userType={1} reportName={"Super"}/>}/>
             <Route path="/client/comm-report-agent" element={<CommReport userType={2} reportName={"Agent"}/>}/>
             <Route path="/client/comm-report-client" element={<CommReport userType={3} reportName={"Clients"}/>}/>
+            <Route path="/set-commission" element={<SetCommission/>}/>
             
           </Route>
         </Routes>

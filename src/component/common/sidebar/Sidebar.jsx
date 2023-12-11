@@ -34,7 +34,6 @@ const Sidebar = (props) => {
 
   const uType = localStorage.getItem("userType");
 
-// console.log(props?.logo, "fsdfsd")
 
   return (
     <>
@@ -83,24 +82,46 @@ const Sidebar = (props) => {
             {
               key: "1",
               icon: <AiOutlineHome />,
-              label: <Link to="/dashboard" onClick={()=>setOpenKeys([])}>Dashboard</Link>,
+              label: (
+                <Link to="/dashboard" onClick={() => setOpenKeys([])}>
+                  Dashboard
+                </Link>
+              ),
               // onClick:{handleDashBoard}
             },
             {
               key: "2",
               icon: <BiUserCircle />,
-              label: <div>{uType == 5? "Sub Admin Details": uType == 0?"Master Detail":uType == 1?"Super Detail": uType == 2?"Agent Detail":""}</div>,
+              label: (
+                <div>
+                  {uType == 5
+                    ? "Sub Admin Details"
+                    : uType == 0
+                    ? "Master Detail"
+                    : uType == 1
+                    ? "Super Detail"
+                    : uType == 2
+                    ? "Agent Detail"
+                    : ""}
+                </div>
+              ),
               children: [
                 {
                   className: `${userType != "5" ? "d-none" : ""}`,
                   label: <Link to="/client/list-super">Master</Link>,
                 },
                 {
-                  className: `${userType === "0" || userType == "5"  ? "" : "d-none"}`,
+                  className: `${
+                    userType === "0" || userType == "5" ? "" : "d-none"
+                  }`,
                   label: <Link to="/client/list-agent">Super</Link>,
                 },
                 {
-                  className: `${userType === "1" || userType == "5" || userType === "0" ? "" : "d-none"}`,
+                  className: `${
+                    userType === "1" || userType == "5" || userType === "0"
+                      ? ""
+                      : "d-none"
+                  }`,
                   label: <Link to="/client/list-dealer">Agent</Link>,
                 },
                 {
@@ -117,19 +138,13 @@ const Sidebar = (props) => {
                   label: <Link to="/Events/sports-details">Sports Detail</Link>,
                 },
                 {
-                  label: (
-                    <Link to="/casino/aura-details">Aura Detail</Link>
-                  ),
+                  label: <Link to="/casino/aura-details">Aura Detail</Link>,
                 },
                 {
-                  label: (
-                    <Link to="/casino/supernowa">Super Nowa Detail</Link>
-                  ),
+                  label: <Link to="/casino/supernowa">Super Nowa Detail</Link>,
                 },
                 {
-                  label: (
-                    <Link to="/casino/qtech">QTech Detail</Link>
-                  ),
+                  label: <Link to="/casino/qtech">QTech Detail</Link>,
                 },
                 // {
                 //   label: (
@@ -159,11 +174,17 @@ const Sidebar = (props) => {
                   label: <Link to="/client/ledger-super">Master Ledger</Link>,
                 },
                 {
-                  className: `${userType === "0" || userType == "5"  ? "" : "d-none"}`,
+                  className: `${
+                    userType === "0" || userType == "5" ? "" : "d-none"
+                  }`,
                   label: <Link to="/client/ledger-master">Super Ledger</Link>,
                 },
                 {
-                  className: `${userType === "1" || userType == "5" || userType === "0" ? "" : "d-none"}`,
+                  className: `${
+                    userType === "1" || userType == "5" || userType === "0"
+                      ? ""
+                      : "d-none"
+                  }`,
                   label: <Link to="/client/ledger-agent">Agent Ledger</Link>,
                 },
                 {
@@ -176,7 +197,6 @@ const Sidebar = (props) => {
               icon: <BiUserCircle />,
               label: "Cash Transaction",
               children: [
-                
                 {
                   className: `${userType == "5" ? "" : "d-none"}`,
                   label: (
@@ -184,14 +204,20 @@ const Sidebar = (props) => {
                   ),
                 },
                 {
-                  className: `${userType === "0" || userType == "5"  ? "" : "d-none"}`,
+                  className: `${
+                    userType === "0" || userType == "5" ? "" : "d-none"
+                  }`,
                   label: (
                     <Link to="/client/txn-master">Debit/Credit Entry(S)</Link>
                   ),
                 },
-                
+
                 {
-                  className: `${userType === "1" || userType == "5" || userType === "0" ? "" : "d-none"}`,
+                  className: `${
+                    userType === "1" || userType == "5" || userType === "0"
+                      ? ""
+                      : "d-none"
+                  }`,
                   label: (
                     <Link to="/client/txn-agent">Debit/Credit Entry(A)</Link>
                   ),
@@ -209,56 +235,73 @@ const Sidebar = (props) => {
               label: "Reports",
               children: [
                 {
-                  key:"11",
+                  key: "11",
                   label: "Data Report",
-                  children:[{
-                    className: `${userType != "5" ? "d-none" : ""}`,
-                    label: <Link to="/report/super">Master </Link>,
-                  },
-                  {
-                    className: `${userType === "0" || userType == "5"  ? "" : "d-none"}`,
-                    label: <Link to="/report/master">Super</Link>,
-                  },
-                  
-                  {
-                    className: `${userType === "1" || userType == "5" || userType === "0" ? "" : "d-none"}`,
-                    label: <Link to="/report/agent">Agent </Link>,
-                  },
-                  {
-                    label: <Link to="/report/client">Client </Link>,
-                  },]
+                  children: [
+                    {
+                      className: `${userType != "5" ? "d-none" : ""}`,
+                      label: <Link to="/report/super">Master </Link>,
+                    },
+                    {
+                      className: `${
+                        userType === "0" || userType == "5" ? "" : "d-none"
+                      }`,
+                      label: <Link to="/report/master">Super</Link>,
+                    },
+
+                    {
+                      className: `${
+                        userType === "1" || userType == "5" || userType === "0"
+                          ? ""
+                          : "d-none"
+                      }`,
+                      label: <Link to="/report/agent">Agent </Link>,
+                    },
+                    {
+                      label: <Link to="/report/client">Client </Link>,
+                    },
+                  ],
                 },
                 {
-                  key:"12",
+                  key: "12",
                   label: "Commission Report",
-                  children:[
+                  children: [
                     {
                       className: `${userType != "5" ? "d-none" : ""}`,
                       label: <Link to="/client/comm-report-super">Master</Link>,
                     },
                     {
-                      className: `${userType === "0" || userType == "5"  ? "" : "d-none"}`,
+                      className: `${
+                        userType === "0" || userType == "5" ? "" : "d-none"
+                      }`,
                       label: <Link to="/client/comm-report-master">Super</Link>,
                     },
                     {
-                      className: `${userType === "1" || userType == "5" || userType === "0" ? "" : "d-none"}`,
+                      className: `${
+                        userType === "1" || userType == "5" || userType === "0"
+                          ? ""
+                          : "d-none"
+                      }`,
                       label: <Link to="/client/comm-report-agent">Agent</Link>,
                     },
                     {
-                      label: <Link to="/client/comm-report-client">Client</Link>,
+                      label: (
+                        <Link to="/client/comm-report-client">Client</Link>
+                      ),
                     },
-                  ]
+                  ],
                 },
                 {
-                  key:"13",
+                  key: "13",
                   label: "Login Reports",
-                  children:[
+                  children: [
                     {
-                      label: <Link to="/client/login-report">Login Report</Link>,
-                    }
-                  ]
-                }
-                
+                      label: (
+                        <Link to="/client/login-report">Login Report</Link>
+                      ),
+                    },
+                  ],
+                },
               ],
             },
             // {
@@ -271,10 +314,38 @@ const Sidebar = (props) => {
             //     },
             //   ],
             // },
+            // {
+            //   key: "8",
+            //   icon: <SlDiamond />,
+            //   label: (
+            //     <Link to="/markets" onClick={() => setOpenKeys([])}>
+            //       Setting
+            //     </Link>
+            //   ),
+            // },
             {
               key: "8",
               icon: <SlDiamond />,
-              label: <Link to="/markets" onClick={()=>setOpenKeys([])}>Setting</Link>,
+              label: "Setting",
+              children: [
+                {
+                  className:`${props?.logoData?.data?.selfAllowed ?"":"d-none"}`,
+                  label: (
+                    <Link
+                      to="/set-commission">
+                      Set Commission
+                    </Link>
+                  ),
+                },
+                {
+                  label: (
+                    <Link
+                      to="/markets">
+                      Setting
+                    </Link>
+                  ),
+                },
+              ],
             },
           ]}
         />
@@ -302,7 +373,12 @@ const Sidebar = (props) => {
                 key: "1",
                 icon: <AiOutlineHome />,
                 label: (
-                  <Link to="/dashboard" onClick={(() => {props?.action(); setOpenKeys([])})}>
+                  <Link
+                    to="/dashboard"
+                    onClick={() => {
+                      props?.action();
+                      setOpenKeys([]);
+                    }}>
                     Dashboard
                   </Link>
                 ),
@@ -310,7 +386,19 @@ const Sidebar = (props) => {
               {
                 key: "2",
                 icon: <BiUserCircle />,
-                label: <div>{uType == 5? "Sub Admin Details": uType == 0?"Master Detail":uType == 1?"Super Detail": uType == 2?"Agent Detail":""}</div>,
+                label: (
+                  <div>
+                    {uType == 5
+                      ? "Sub Admin Details"
+                      : uType == 0
+                      ? "Master Detail"
+                      : uType == 1
+                      ? "Super Detail"
+                      : uType == 2
+                      ? "Agent Detail"
+                      : ""}
+                  </div>
+                ),
                 children: [
                   {
                     className: `${userType != "5" ? "d-none" : ""}`,
@@ -323,7 +411,9 @@ const Sidebar = (props) => {
                     ),
                   },
                   {
-                    className: `${userType === "0" || userType == "5"  ? "" : "d-none"}`,
+                    className: `${
+                      userType === "0" || userType == "5" ? "" : "d-none"
+                    }`,
                     label: (
                       <Link
                         to="/client/list-agent"
@@ -333,7 +423,11 @@ const Sidebar = (props) => {
                     ),
                   },
                   {
-                    className: `${userType === "1" || userType == "5" || userType === "0" ? "" : "d-none"}`,
+                    className: `${
+                      userType === "1" || userType == "5" || userType === "0"
+                        ? ""
+                        : "d-none"
+                    }`,
                     label: (
                       <Link
                         to="/client/list-dealer"
@@ -379,7 +473,7 @@ const Sidebar = (props) => {
                   {
                     label: (
                       <Link
-                      to="/casino/supernowa"
+                        to="/casino/supernowa"
                         onClick={() => props?.action()}>
                         Super Nowa Detail
                       </Link>
@@ -387,9 +481,7 @@ const Sidebar = (props) => {
                   },
                   {
                     label: (
-                      <Link
-                      to="/casino/qtech"
-                        onClick={() => props?.action()}>
+                      <Link to="/casino/qtech" onClick={() => props?.action()}>
                         QTech Detail
                       </Link>
                     ),
@@ -430,7 +522,9 @@ const Sidebar = (props) => {
                     ),
                   },
                   {
-                    className: `${userType === "0" || userType == "5"  ? "" : "d-none"}`,
+                    className: `${
+                      userType === "0" || userType == "5" ? "" : "d-none"
+                    }`,
                     label: (
                       <Link
                         onClick={() => props?.action()}
@@ -440,7 +534,11 @@ const Sidebar = (props) => {
                     ),
                   },
                   {
-                    className: `${userType === "1" || userType == "5" || userType === "0" ? "" : "d-none"}`,
+                    className: `${
+                      userType === "1" || userType == "5" || userType === "0"
+                        ? ""
+                        : "d-none"
+                    }`,
                     label: (
                       <Link
                         onClick={() => props?.action()}
@@ -465,7 +563,6 @@ const Sidebar = (props) => {
                 icon: <BiUserCircle />,
                 label: "Cash Transaction",
                 children: [
-                  
                   {
                     className: `${userType == "5" ? "" : "d-none"}`,
                     label: (
@@ -477,7 +574,9 @@ const Sidebar = (props) => {
                     ),
                   },
                   {
-                    className: `${userType === "0" || userType == "5"  ? "" : "d-none"}`,
+                    className: `${
+                      userType === "0" || userType == "5" ? "" : "d-none"
+                    }`,
                     label: (
                       <Link
                         to="/client/txn-master"
@@ -486,9 +585,13 @@ const Sidebar = (props) => {
                       </Link>
                     ),
                   },
-                  
+
                   {
-                    className: `${userType === "1" || userType == "5" || userType === "0" ? "" : "d-none"}`,
+                    className: `${
+                      userType === "1" || userType == "5" || userType === "0"
+                        ? ""
+                        : "d-none"
+                    }`,
                     label: (
                       <Link
                         to="/client/txn-agent"
@@ -510,43 +613,50 @@ const Sidebar = (props) => {
               },
               {
                 key: "6",
-                className:"data_report_list",
+                className: "data_report_list",
                 icon: <BiUserCircle />,
                 label: "Reports",
                 children: [
                   {
-                    key:"12",
+                    key: "12",
                     label: "Data Reports",
-                    children:[
+                    children: [
                       {
-                        
                         className: `${userType != "5" ? "d-none" : ""}`,
                         label: (
                           <Link
-                          to="/report/super"
+                            to="/report/super"
                             onClick={() => props?.action()}>
                             Master
                           </Link>
                         ),
                       },
                       {
-                        className: `${userType === "0" || userType == "5"  ? "" : "d-none"}`,
+                        className: `${
+                          userType === "0" || userType == "5" ? "" : "d-none"
+                        }`,
                         label: (
                           <Link
-                          to="/report/master"
+                            to="/report/master"
                             onClick={() => props?.action()}>
-                            Super 
+                            Super
                           </Link>
                         ),
                       },
-                      
+
                       {
-                        className: `${userType === "1" || userType == "5" || userType === "0" ? "" : "d-none"}`,
+                        className: `${
+                          userType === "1" ||
+                          userType == "5" ||
+                          userType === "0"
+                            ? ""
+                            : "d-none"
+                        }`,
                         label: (
                           <Link
-                          to="/report/agent"
+                            to="/report/agent"
                             onClick={() => props?.action()}>
-                            Agent 
+                            Agent
                           </Link>
                         ),
                       },
@@ -555,17 +665,16 @@ const Sidebar = (props) => {
                           <Link
                             to="/report/client"
                             onClick={() => props?.action()}>
-                            Client 
+                            Client
                           </Link>
                         ),
                       },
-                    ]
-                    
+                    ],
                   },
                   {
-                    key:"13",
+                    key: "13",
                     label: "Commission Report",
-                    children:[
+                    children: [
                       {
                         className: `${userType != "5" ? "d-none" : ""}`,
                         label: (
@@ -577,7 +686,9 @@ const Sidebar = (props) => {
                         ),
                       },
                       {
-                        className: `${userType === "0" || userType == "5"  ? "" : "d-none"}`,
+                        className: `${
+                          userType === "0" || userType == "5" ? "" : "d-none"
+                        }`,
                         label: (
                           <Link
                             to="/client/comm-report-master"
@@ -587,7 +698,13 @@ const Sidebar = (props) => {
                         ),
                       },
                       {
-                        className: `${userType === "1" || userType == "5" || userType === "0" ? "" : "d-none"}`,
+                        className: `${
+                          userType === "1" ||
+                          userType == "5" ||
+                          userType === "0"
+                            ? ""
+                            : "d-none"
+                        }`,
                         label: (
                           <Link
                             to="/client/comm-report-agent"
@@ -605,12 +722,12 @@ const Sidebar = (props) => {
                           </Link>
                         ),
                       },
-                    ]
-                  }, 
+                    ],
+                  },
                   {
-                    key:"14",
+                    key: "14",
                     label: "Login Reports",
-                    children:[
+                    children: [
                       {
                         label: (
                           <Link
@@ -620,10 +737,8 @@ const Sidebar = (props) => {
                           </Link>
                         ),
                       },
-                    ]
-                  }
-                  
-                 
+                    ],
+                  },
                 ],
               },
               // {
@@ -663,11 +778,34 @@ const Sidebar = (props) => {
               {
                 key: "7",
                 icon: <SlDiamond />,
-                label: (
-                  <Link to="/markets" onClick={() => {props?.action(); setOpenKeys([])}}>
-                    Setting
-                  </Link>
-                ),
+                label: "Setting",
+                children: [
+                  {
+                    className:`${props?.logoData?.data?.selfAllowed ?"":"d-none"}`,
+                    label: (
+                      <Link
+                        to="/set-commission"
+                        onClick={() => {
+                          props?.action();
+                          setOpenKeys([]);
+                        }}>
+                        Set Commission
+                      </Link>
+                    ),
+                  },
+                  {
+                    label: (
+                      <Link
+                        to="/markets"
+                        onClick={() => {
+                          props?.action();
+                          setOpenKeys([]);
+                        }}>
+                        Setting
+                      </Link>
+                    ),
+                  },
+                ],
               },
             ]}
           />
