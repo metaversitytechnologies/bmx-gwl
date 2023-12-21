@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const ScoreCard = ({ mid }) => {
@@ -6,6 +6,9 @@ const ScoreCard = ({ mid }) => {
   const [scoreTv, setScoreTv] = useState(false);
   const nav = useNavigate()
 
+  const ref = useRef(null)
+  const scale = (ref.current?.clientWidth || 300) / 280
+  
   const handleShowTv = ()=>{
     if(setShowTv === true){
       setShowTv(false);
@@ -42,13 +45,18 @@ const ScoreCard = ({ mid }) => {
         </div>
       </div>
       {showTv && (
-        <div>
+        <div className="tv-score-container">
           <iframe
+          ref={ref}
             // src={`https://stream.openhomepageforapi.live/YGapp/play.html?name=ttfour&amp;autoplay=true`}
             // src={`http://43.205.116.130/tv.php?eventId=${mid}`}
             src={`https://100tun.online/web/${mid}.html`}
             width="100%"
-            className="score-card"
+            style={{
+              aspectRatio: "16/9",
+              transform: `scale(${scale})`,
+            }}
+            className="score-card tv-iframe"
             title="scorecord"
             allowFullScreen={true}></iframe>
         </div>
@@ -62,7 +70,6 @@ const ScoreCard = ({ mid }) => {
           height="284px;"
           className="score-card"
           title="scorecord"
-        
           allowFullScreen={true}></iframe>
         </div>
       )}
