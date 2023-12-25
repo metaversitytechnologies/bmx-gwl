@@ -509,10 +509,10 @@ const NewCreateUser = ({ createName, userTyep, userTypeOrder }) => {
                   data={data}
                   userData={userData}
                 />
-                <CasinoCommission
+                {/* <CasinoCommission
                   createName={createName}
                   commiType={commiType}
-                />
+                /> */}
                 <CasinoDetailsAllow casinoDetalisData={casinoDetalisData} />
 
                 <Row className="super_agent sub_super">

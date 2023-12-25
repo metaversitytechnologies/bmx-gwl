@@ -217,7 +217,7 @@ const Dashboard = () => {
             </div>
           </div>
         </Card.Grid>
-        <Card.Grid hoverable={false} style={gridStyle}>
+        {/* <Card.Grid hoverable={false} style={gridStyle}>
           <div className="main_card_section">
             <div className="icon_card_section"></div>
             <div className="tital_card_section f-w">
@@ -225,7 +225,7 @@ const Dashboard = () => {
               <p>Casino Commission</p>
             </div>
           </div>
-        </Card.Grid>
+        </Card.Grid> */}
         <Card.Grid hoverable={false} style={gridStyle}>
           <div className="main_card_section">
             <div className="icon_card_section">

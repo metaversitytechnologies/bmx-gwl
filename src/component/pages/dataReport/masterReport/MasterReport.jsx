@@ -133,7 +133,7 @@ const MasterReport = ({ reportName, userType }) => {
                   <Option value="Password">Password</Option>
                   <Option value="Mobile">Mobile</Option>
                   <Option value="UserName">UserName</Option>
-                  <Option value="Casino Commission">Casino Commission</Option>
+                  {/* <Option value="Casino Commission">Casino Commission</Option> */}
                   <Option value="Session Commission">Session Commission</Option>
                   <Option value="Match Commission">Match Commission</Option>
                 </Select>
