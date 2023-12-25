@@ -86,7 +86,6 @@ const UpdateSuper = ({ updateName }) => {
   };
   const { Option } = Select;
 
-
   useEffect(() => {
     getData({
       userId: id,
@@ -159,7 +158,7 @@ const UpdateSuper = ({ updateName }) => {
               },
               {
                 name: "sess_comm",
-                value: (resuilt?.data?.data.sessionComm)?.toFixed(2),
+                value: resuilt?.data?.data.sessionComm?.toFixed(2),
               },
               {
                 name: "matchcomm",
@@ -183,7 +182,7 @@ const UpdateSuper = ({ updateName }) => {
               },
               {
                 name: "Supermatchcomm",
-                value: (resuilt?.data?.data.matchComm)?.toFixed(2),
+                value: resuilt?.data?.data.matchComm?.toFixed(2),
               },
               {
                 name: "supercasinoShare",
@@ -223,14 +222,13 @@ const UpdateSuper = ({ updateName }) => {
                         message: "Please enter your username!",
                       },
                     ]}>
-                    <Input onKeyDown={(e) => {
-                        if (
-                          !e.key.match(/^[a-zA-Z ]$/) &&
-                          e.key.length === 1
-                        ) {
+                    <Input
+                      onKeyDown={(e) => {
+                        if (!e.key.match(/^[a-zA-Z ]$/) && e.key.length === 1) {
                           e.preventDefault();
                         }
-                      }}/>
+                      }}
+                    />
                   </Form.Item>
                   <Form.Item label="Reference" name="reference">
                     <Input placeholder="Enter Reference" />
@@ -325,7 +323,7 @@ const UpdateSuper = ({ updateName }) => {
                   <>
                     <Col lg={12} xs={24}>
                       <Form.Item
-                        label= {`${updateName} match comm(%)`}
+                        label={`${updateName} match comm(%)`}
                         name="matchcomm"
                         required={false}>
                         <Input type="number" disabled />
@@ -340,9 +338,9 @@ const UpdateSuper = ({ updateName }) => {
                           {
                             required: true,
                             message: "Please enter odds commission",
-                          }
+                          },
                         ]}>
-                       <Select
+                        <Select
                           defaultValue="Select Match comm(%)"
                           options={[
                             {
@@ -380,7 +378,7 @@ const UpdateSuper = ({ updateName }) => {
                             {
                               value: "2.00",
                               label: "2.00",
-                            }
+                            },
                           ]}
                         />
                       </Form.Item>
@@ -402,9 +400,9 @@ const UpdateSuper = ({ updateName }) => {
                           {
                             required: true,
                             message: "Please enter session commission",
-                          }
+                          },
                         ]}>
-                          <Select
+                        <Select
                           defaultValue="Select Sess Comm(%)"
                           options={[
                             {
@@ -473,16 +471,17 @@ const UpdateSuper = ({ updateName }) => {
                 ) : (
                   ""
                 )}
-                
               </Row>
-              {
-                commType == "bbb" &&  <div>
-                <h2 style={{marginLeft:"0px"}} className="update_agent_text">
-                  Casino  Comm
-                </h2>
-              </div>
-              }
-              
+              {/* {commType == "bbb" && (
+                <div>
+                  <h2
+                    style={{ marginLeft: "0px" }}
+                    className="update_agent_text">
+                    Casino Comm
+                  </h2>
+                </div>
+              )} */}
+
               <Row className="super_agent  update_agent">
                 {/* <Col lg={12} xs={24}>
                   <Form.Item
@@ -507,28 +506,28 @@ const UpdateSuper = ({ updateName }) => {
                   </Form.Item>
                 </Col> */}
 
-                {
-                  commType == "bbb" && <>
-                  <Col lg={12} xs={24}>
-                  <Form.Item
-                    label={`${updateName} casino comm(%)`}
-                    name="casinoComm"
-                    required={false}>
-                    <Input disabled />
-                  </Form.Item>
-                </Col>
-                <Col lg={12} xs={24}>
-                  <Form.Item
-                    label="Casino comm(%)"
-                    name="Supercasinocomm"
-                    required
-                    rules={[
-                      {
-                        required: true,
-                        message: "Please enter valid Casino commission",
-                      }
-                    ]}>
-                    <Select
+                {/* {commType == "bbb" && (
+                  <>
+                    <Col lg={12} xs={24}>
+                      <Form.Item
+                        label={`${updateName} casino comm(%)`}
+                        name="casinoComm"
+                        required={false}>
+                        <Input disabled />
+                      </Form.Item>
+                    </Col>
+                    <Col lg={12} xs={24}>
+                      <Form.Item
+                        label="Casino comm(%)"
+                        name="Supercasinocomm"
+                        required
+                        rules={[
+                          {
+                            required: true,
+                            message: "Please enter valid Casino commission",
+                          },
+                        ]}>
+                        <Select
                           defaultValue="Select Casino Comm(%)"
                           options={[
                             {
@@ -569,11 +568,11 @@ const UpdateSuper = ({ updateName }) => {
                             },
                           ]}
                         />
-                  </Form.Item>
-                </Col>
+                      </Form.Item>
+                    </Col>
                   </>
-                }
-                
+                )} */}
+
                 <Col lg={12} xs={24}>
                   <Form.Item
                     label="Transaction Password"

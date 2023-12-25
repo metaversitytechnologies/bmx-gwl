@@ -682,7 +682,7 @@ const CreateSuperAgent = ({ createName }) => {
                 )}
               </Row>
 
-              {commiType === "bbb" && (
+              {/* {commiType === "bbb" && (
                 <div>
                   <h2 className="match_share">
                     {createName} Casino Commission
@@ -757,7 +757,7 @@ const CreateSuperAgent = ({ createName }) => {
                     </Col>
                   </>
                 )}
-              </Row>
+              </Row> */}
 
               {casinoDetalisData?.data?.length != 0 && (
                 <div>
