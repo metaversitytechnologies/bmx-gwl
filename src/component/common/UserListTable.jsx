@@ -199,15 +199,15 @@ const UserListTable = ({ userType, Listname, parentUserids, setParentUserIds, Us
       label: <div onClick={showWithdrawnModal}>Withdrawn</div>,
       key: "1",
     },
-    {
-      // className: `${parentUserids == userId ? "" : "d_none"}`,
-      label: (
-        <div onClick={handleActive}>{`${
-          activeStatus === true ? "inActive" : "Active"
-        }`}</div>
-      ),
-      key: "2",
-    },
+    // {
+    //   // className: `${parentUserids == userId ? "" : "d_none"}`,
+    //   label: (
+    //     <div onClick={handleActive}>{`${
+    //       activeStatus === true ? "inActive" : "Active"
+    //     }`}</div>
+    //   ),
+    //   key: "2",
+    // },
     {
       // className: `${parentUserids == userId ? "" : "d_none"}`,
       label: <div onClick={handleBlockBettting}>Block Betting</div>,

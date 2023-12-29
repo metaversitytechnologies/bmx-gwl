@@ -91,14 +91,14 @@ const BetlockModal = ({
                       </div>
                     ),
                   },
-                  {
-                    value: "acc",
-                    label: (
-                      <div>
-                        {accStatus ? "UnBlock Account" : "Account Block"}
-                      </div>
-                    ),
-                  },
+                  // {
+                  //   value: "acc",
+                  //   label: (
+                  //     <div>
+                  //       {accStatus ? "UnBlock Account" : "Account Block"}
+                  //     </div>
+                  //   ),
+                  // },
                 ]}
               />
             </Form.Item>
