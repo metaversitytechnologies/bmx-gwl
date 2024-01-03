@@ -32,7 +32,14 @@ export const oddsPnlApi = createApi({
         body
       }),
     }),
+    WinnerPnl: build.mutation({
+      query: (body) => ({
+        url: `/bets/winner-pnl`,
+        method: "POST",
+        body
+      }),
+    }),
   }),
 });
 
-export const {useLazyOddsQuPnlQuery, useFancyPnlQuery} = oddsPnlApi;
+export const {useLazyOddsQuPnlQuery, useFancyPnlQuery, useWinnerPnlMutation} = oddsPnlApi;

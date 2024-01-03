@@ -77,8 +77,14 @@ const SuperAgentLedger = ({ userTyep, Listname }) => {
   const generateColumns = (actionName) =>
     [
       {
-        title: "User Detail",
+        title: "User ID",
         dataIndex: "userId",
+        key: "userId",
+        // render: (text, record) => renderActionButton(record, actionName),
+      },
+      {
+        title: "User Name",
+        dataIndex: "userName",
         key: "userId",
         // render: (text, record) => renderActionButton(record, actionName),
       },
