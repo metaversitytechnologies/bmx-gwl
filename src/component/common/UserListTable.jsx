@@ -498,8 +498,8 @@ const UserListTable = ({ userType, Listname, parentUserids, setParentUserIds, Us
                       </td>
                       <td>{Number(res?.matchCommission)?.toFixed(2)}</td>
                       <td>{Number(res?.sessionCommission)?.toFixed(2)}</td>
-                      <td className="text-right">{userType == 3? res?.balancePlusPnl : res?.availablebalance}</td>
-                      <td className="text-right">{res?.creditref}</td>
+                      <td className="text-right">{userType == 3? Number(res?.balancePlusPnl)?.toFixed(2) : Number(res?.availablebalance)?.toFixed(2)}</td>
+                      <td className="text-right">{Number(res?.creditref)?.toFixed(2)}</td>
                       <td>{res?.active === true ? "Active" : "InActive"}</td>
                     </tr>
                   );

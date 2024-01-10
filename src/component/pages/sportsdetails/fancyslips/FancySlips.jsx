@@ -153,10 +153,10 @@ useLazySessionFancyBetDetailQuery();
                     <Select
                       placeholder="Select User"
                       options={
-                        resultData.isError
+                        resultData?.isError
                           ? []
-                          : resultData.data?.data?.map((i) => ({
-                              label: i.text,
+                          : resultData?.data?.data?.map((i) => ({
+                            label: `${i.text} (${i?.userName})`,
                               value: i.id,
                             })) || []
                       }
