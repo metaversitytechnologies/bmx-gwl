@@ -106,8 +106,8 @@ const LoginReport = () => {
                   placeholder={id ? id : clientId}
                   options={
                     resultData.data?.data.map((i) => ({
-                      label: i,
-                      value: i,
+                      label: `${i?.userId}  (${i?.userName})`,
+                      value: i?.userId,
                     })) || []
                   }
                   showSearch

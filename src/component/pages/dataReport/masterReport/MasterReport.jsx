@@ -110,8 +110,8 @@ const MasterReport = ({ reportName, userType }) => {
                   placeholder="Select Client"
                   options={
                     resultData?.data.map((i) => ({
-                      label: i,
-                      value: i,
+                      label: `${i?.userId}  (${i?.userName})`,
+                      value: i?.userId,
                     })) || []
                   }
                   showSearch
