@@ -159,8 +159,8 @@ const AgentTransactions = ({ userType, Listname }) => {
                     placeholder="Select Client"
                     options={
                       resultData.data?.data.map((i) => ({
-                        label: i,
-                        value: i,
+                        label: `${i?.userId} (${i?.userName})`,
+                        value: i?.userId,
                       })) || []
                     }
                     showSearch
