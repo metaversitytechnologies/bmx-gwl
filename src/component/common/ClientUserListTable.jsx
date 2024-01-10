@@ -464,8 +464,8 @@ const ClientUserListTable = ({ userType, Listname, UserId }) => {
                       </td>
                       <td>{Number(res?.matchCommission)?.toFixed(2)}</td>
                       <td>{Number(res?.sessionCommission)?.toFixed(2)}</td>
-                      <td className="text-right">{ res?.balancePlusPnl}</td>
-                      <td className="text-right">{res?.creditref}</td>
+                      <td className="text-right">{ Number(res?.balancePlusPnl)?.toFixed(2)}</td>
+                      <td className="text-right">{Number(res?.creditref)?.toFixed(2)}</td>
                       <td>{res?.active === true ? "Active" : "InActive"}</td>
                     </tr>
                   );

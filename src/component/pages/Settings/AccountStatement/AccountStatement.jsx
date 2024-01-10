@@ -128,8 +128,8 @@ const AccountStatement = () => {
                     <Select
                       placeholder={id ? id : "Select User"}
                       options={
-                        resultData.isError ?[] :resultData.data?.data?.map((i) => ({
-                          label: i.text,
+                        resultData?.isError ?[] :resultData?.data?.data?.map((i) => ({
+                          label: `${i.text} (${i?.userName})`,
                           value: i.id,
                         })) || []
                       }
