@@ -35,8 +35,8 @@ const SelectUpline = ({data, handleChange, handleSelect}) => {
                       placeholder="Select Parent"
                       options={
                         data?.map((i) => ({
-                          label: i,
-                          value: i,
+                          label: `${i?.userId} (${i?.userName})`,
+                          value: i?.userId,
                         })) || []
                       }
                       showSearch
