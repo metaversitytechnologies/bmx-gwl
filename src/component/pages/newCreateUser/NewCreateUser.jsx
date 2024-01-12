@@ -164,7 +164,7 @@ const NewCreateUser = ({ createName, userTyep, userTypeOrder }) => {
       oddLossCommission: commiType === "nocomm" ? "0" : values?.Match_comm,
       lupassword: values?.lupassword,
       liveCasinoLock: false,
-      casinoPartnership: values?.casino_Share || 0,
+      casinoPartnership:values?.MyCasinoShare - values?.casinoShare || 0,
       fancyLossCommission: commiType === "nocomm" ? "0" : values?.sess_comm,
       casinoCommission: values?.cassino_Comm || 0,
       commType: values?.Commtype,
