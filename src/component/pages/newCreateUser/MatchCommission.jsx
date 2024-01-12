@@ -255,7 +255,7 @@ const MatchCommission = ({
         )}
       </Row>
 
-      <div>
+      {/* <div>
         {
           window.location.pathname.includes("create-client") ? null : <h2 className="match_share">{createName} Casino Share </h2>
         }
@@ -322,7 +322,7 @@ const MatchCommission = ({
           </>
         )}
       </Row>
-      </div>
+      </div> */}
     </>
   );
 };
