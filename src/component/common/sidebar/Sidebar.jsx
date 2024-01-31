@@ -1,15 +1,15 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
-import { Drawer, Menu, Space } from "antd";
+import { Drawer, Menu } from "antd";
 import { AiOutlineHome } from "react-icons/ai";
 import { BiUserCircle } from "react-icons/bi";
 import { LuBarChart4 } from "react-icons/lu";
 import { SlDiamond } from "react-icons/sl";
-import { MdMenu } from "react-icons/md";
 import "./Sidebar.scss";
 import { Button } from "antd";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import Sider from "antd/es/layout/Sider";
-import { Link, json, useNavigate } from "react-router-dom";
+import { Link,  useNavigate } from "react-router-dom";
 
 const rootSubmenuKeys = ["1", "2", "3", "4", "5", "6", "7"];
 
@@ -145,6 +145,47 @@ const Sidebar = (props) => {
                 },
                 {
                   label: <Link to="/casino/qtech">QTech Detail</Link>,
+                },
+                // {
+                //   label: (
+                //     <Link to="/Casino/andar-bahar-details">
+                //       AndarBahar Detail
+                //     </Link>
+                //   ),
+                // },
+                // {
+                //   label: <Link to="/Casino/casino-details">Casino Detail</Link>,
+                // },
+              ],
+            },
+            {
+              key: "13",
+              icon: <LuBarChart4 />,
+              label: "Casino Details",
+              children: [
+                {
+                  label: <Link to="/60/casino">ANDAR BAHAR</Link>,
+                },
+                {
+                  label: <Link to="/54/casino">AMAR AKBAR ANTHONY</Link>,
+                },
+                {
+                  label: <Link to="/55/casino">BOLLYWOOD TABLE</Link>,
+                },
+                {
+                  label: <Link to="/52/casino">20-20 DRAGON TIGER</Link>,
+                },
+                {
+                  label: <Link to="/61/casino">1 DAY DRAGON TIGER</Link>,
+                },
+                {
+                  label: <Link to="/53/casino">LUCKY 7 - B</Link>,
+                },
+                {
+                  label: <Link to="/51/casino">20-20 Teenpatti</Link>,
+                },
+                {
+                  label: <Link to="/57/casino">1 DAY TEENPATTI</Link>,
                 },
                 // {
                 //   label: (

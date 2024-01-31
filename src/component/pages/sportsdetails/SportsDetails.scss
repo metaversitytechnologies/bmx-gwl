@@ -148,6 +148,10 @@
 
 .title_section {
   font-weight: 500 !important;
+  color:#5d7074 !important ;
+  &:hover{
+    color: #fff !important;
+  }
 }
 
 .pagination_main {

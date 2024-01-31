@@ -14,17 +14,22 @@
     "@reduxjs/toolkit": "^1.9.5",
     "antd": "^5.6.1",
     "axios": "^1.4.0",
+    "bootstrap": "^5.3.2",
+    "clsx": "^2.1.0",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-fast-marquee": "^1.6.0",
+    "react-hot-toast": "^2.4.1",
     "react-icons": "^4.9.0",
     "react-map-interaction": "^2.1.0",
     "react-popper": "^2.3.0",
     "react-redux": "^8.1.1",
     "react-router-dom": "^6.12.1",
     "react-scroll": "^1.8.9",
-    "sass": "^1.63.3"
+    "react-slick": "^0.30.1",
+    "sass": "^1.63.3",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",

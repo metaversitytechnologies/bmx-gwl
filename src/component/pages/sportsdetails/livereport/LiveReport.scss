@@ -198,7 +198,7 @@
   .sportName {
     padding: 0px 8px;
     a {
-      color: #5d7074;
+      color: #5d7074 !important;
       .sport_title {
         padding-top: 8px;
       }
@@ -501,6 +501,7 @@
 .sub_live_section{
   display: flex;
   justify-content: space-between;
+  align-items: center;
   .show_btn {button{
     border: unset;
     border-radius: unset;

@@ -71,6 +71,11 @@ li.ant-pagination-item {
   border-radius: 2px !important;
 }
 
+.ant-pagination-item{
+  a{
+    color: #1d1d1d !important;
+  }
+}
 
 @media screen and (min-width: 350px) and (max-width: 520px) {
     .deleted_sec {

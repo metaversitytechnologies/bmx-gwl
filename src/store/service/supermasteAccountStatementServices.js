@@ -208,6 +208,24 @@ export const supermasteAccountStatementApi = createApi({
         body,
       }),
     }),
+    getStackBtn: build.mutation({
+      query: (body) => {
+        return {
+          url: "/enduser/get-stake-button",
+          method: "POST",
+          body
+        };
+      },
+    }),
+    CasinoResult: build.mutation({
+      query: (body) => {
+        return {
+          url: "/diamond/api/gtype",
+          method: "POST",
+          body
+        };
+      },
+    }),
 
   }),
 });
@@ -239,5 +257,7 @@ export const {
   useDataReportMutation,
   useCommReportMutation,
   useIt_Self_By_APP_URLQuery, 
-  useLazyCreateParentListQuery
+  useLazyCreateParentListQuery,
+  useGetStackBtnMutation,
+  useCasinoResultMutation
 } = supermasteAccountStatementApi;

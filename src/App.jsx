@@ -2,8 +2,10 @@ import "./App.scss";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 import Main from "./component/common/main/Main";
-import { useEffect } from "react";
 import { notification } from "antd";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 let apiRef;
 export const openNotification = (mess) => {

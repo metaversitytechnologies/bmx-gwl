@@ -11,8 +11,8 @@
     width 0s ease 0.3s, -webkit-transform 0.3s cubic-bezier(0.7, 0.3, 0.1, 1);
 }
 a {
-  text-decoration: none;
-  color: #fff;
+  text-decoration: none !important;
+  color: #fff !important;
 }
 a:hover {
   text-decoration: none;
@@ -214,5 +214,40 @@ div#rc-tabs-0-tab-2{
     margin-left: 12px;
 }
 }
+p{
+  margin-bottom: unset !important;
+}
+.white {
+  color: #fff;
+}
 
+.ball_result {
+  width: 27px;
+  height: 27px;
+  margin: 2px;
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
+  border-radius: 50%;
+  background-color: #51524e;
+  padding-top: 4px;
+}
+.ul.nav.nav-tabs{
+  background: #51524e;
+.nav-link.nav2.nav-btn {
+    color: #fff;
+}
+}
+// import MatchBet from "../../component/Items/MatchBet/MatchBet";
+.table1{
+  @media screen and (max-width: 800px) {
+    width: 100%;
+  }
+}
+.card-header.bet-header {
+  background: #74766f;
+  color: #fff;
+  font-weight: 600;
+  padding: 12px 12px 0px 12px;
+}
 
