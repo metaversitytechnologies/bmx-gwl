@@ -159,7 +159,7 @@ const Sidebar = (props) => {
               ],
             },
             {
-              key: "13",
+              key: "23",
               icon: <LuBarChart4 />,
               label: "Casino Details",
               children: [
