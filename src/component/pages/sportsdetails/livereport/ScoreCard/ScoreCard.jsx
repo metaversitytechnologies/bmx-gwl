@@ -65,7 +65,8 @@ const ScoreCard = ({ mid }) => {
         <div>
           <iframe
           // src={`https://internal-consumer-apis.jmk888.com/go-score/template/4/${mid}`}
-          src={`https://score.247idhub.com/go-score/template/4/${mid}`}
+          // src={`https://score.247idhub.com/go-score/template/4/${mid}`}
+          src={`https://score.247idhub.com/index.html/event/${mid}?theme=crazy-diamond`}
           width="100%"
           height="284px;"
           className="score-card"
