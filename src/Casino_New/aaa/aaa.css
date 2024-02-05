@@ -58,11 +58,11 @@
         top: 0px;
     }
 }
-.aaa-table.suspended::after{
-   
-   
-    width: 40% !important; 
+
+.aaa-table.suspended::after {
+
+    width: 44% !important;
     height: 109%;
-    background-color: rgba(0,0,0,0.5);
-    
+    background-color: rgba(0, 0, 0, 0.5);
+
 }

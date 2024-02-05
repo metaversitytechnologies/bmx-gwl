@@ -249,4 +249,23 @@ p{
   font-weight: 600;
   padding: 12px 12px 0px 12px;
 }
+.d_heading {
+  background: #74766f;
+}
+a.nav-link {
+  color: #fff !important;
+  border: unset !important;
+}
+
+.show_btn {
+  button {
+    border: unset;
+    border-radius: unset;
+    outline: unset;
+    background: #5d7074;
+    color: #fff;
+    font-weight: bold;
+    padding: 5px 12px;
+  }
+}
 

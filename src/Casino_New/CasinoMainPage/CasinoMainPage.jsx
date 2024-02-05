@@ -66,11 +66,7 @@ const CasinoMainPage = () => {
     colorName: "back",
   });
 
-  // const [trigger, {data}] = useGetStackBtnMutation();
-
-  // useEffect(()=>{
-  //   trigger();
-  // }, [])
+  
 
   const { pathname } = useLocation();
 
@@ -230,43 +226,13 @@ const CasinoMainPage = () => {
             // <MatchBet />
           )}
         </div>
-        <div className="col-3 p-0">
+        <div className="col-3 p-0 desk_view">
           <div className="mt-2" style={{ marginRight: "5px" }}>
             <CasinoMatchBet />
           </div>
         </div>
 
-        {/* <div
-          id="sidebar-right"
-          className="col-3 sidebar-right desk-view-casino"
-          style={{ position: "relative", top: 0, right: 0, padding:0 }}>
-          <CasinoBetSlip
-            setShowBetSection={setShowBetSection}
-            showBetSection={showBetSection}
-            betState={betState}
-            stakes={data?.data}
-            open={open}
-            setUpdated={setUpdated}
-            updated={updated}
-            setOpen={setOpen}
-          />
-          <div className="mt-2" style={{ marginRight: "5px" }}>
-            <CasinoMatchBet />
-          </div>
-        </div>
-        <div className="mob-view-casino">
-          <CasinoBetSlip
-            setShowBetSection={setShowBetSection}
-            showBetSection={showBetSection}
-            betState={betState}
-            stakes={data?.data}
-            open={open}
-            setUpdated={setUpdated}
-            updated={updated}
-            setOpen={setOpen}
-
-          />
-        </div> */}
+        
       </div>
 
       <Toaster />

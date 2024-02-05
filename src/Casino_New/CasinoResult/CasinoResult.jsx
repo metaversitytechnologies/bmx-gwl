@@ -25,7 +25,7 @@ const CasinoResult = () => {
 
   const handleCasinoId = (e)=>{
     setCasinoId(e.target.value);
-    nav(`/casinoresult/${e.target.value}`)
+    nav(`/casinoresult/${e.target.value}`);
   }
 
   const [trigger, {data:resultList}] = useCasinoResultMutation()
@@ -33,13 +33,13 @@ const CasinoResult = () => {
   useEffect(() => {
     trigger(
       {
-        gtype: tableIdtoUrl[casinoId || id],
+        gtype: tableIdtoUrl[id],
         noOfRecord: noOfRecords,
         index,
       }
     )
   
-  }, [noOfRecords, index, id]);
+  }, [noOfRecords, index]);
 
   const handleSubmit = ()=>{
   
@@ -74,8 +74,9 @@ const CasinoResult = () => {
         setMid={(mid) => setMid(mid)}
       />
       <div className="card">
-        <div className="card-header bg-primary">
+        <div className="card-header d-flex j-space">
           <div className="text-white">Casino Result</div>
+          <div className="show_btn"><button onClick={()=>nav(-1)}>Back</button></div>
         </div>
         <div className="card-body gap-container ">
         <div className="row">
@@ -92,7 +93,6 @@ const CasinoResult = () => {
                   d.isAfter(dayjs())
                 }
               />
-              {/* <CustomizedDatePicker value={fromDate} onChange={setFromDate} /> */}
             </div>
             <div className={`${window.innerWidth < 800?"col-6":"col-2"} `}>
               <div className="form-group mb-0">
@@ -101,14 +101,14 @@ const CasinoResult = () => {
                   onChange={(e) => handleCasinoId(e)}
                   className="custom-select">
                   <option value="">Casino Type</option>
-                  {Object.keys(titleById).map((key) => (
-                    <option value={key}>{titleById[key]}</option>
+                  {Object.keys(titleById).map((key, index) => (
+                    <option key={index+key} value={key}>{titleById[key]}</option>
                   ))}
                 </select>
               </div>
             </div>
             <div className={`${window.innerWidth < 800?"col-12":"col-2"}  mob_btn`} onClick={handleSubmit}>
-              <button className="btn " style={{ background:"#08c" }}>Submit</button>
+              <button className="btn " style={{ background:"rgb(116 118 111)" }}>Submit</button>
             </div>
           </div>
           <div className="w-100">

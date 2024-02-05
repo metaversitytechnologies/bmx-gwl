@@ -55,7 +55,7 @@ import { useEffect } from "react";
 import NewCreateUser from "../../pages/newCreateUser/NewCreateUser";
 import SetCommission from "../../pages/setCommission/SetCommission";
 import CasinoMainPage from "../../../Casino_New/CasinoMainPage/CasinoMainPage";
-// import CasinoResult from "../../../Casino_New/CasinoMainPage/CasinoMainPage";
+import CasinoResult from "../../../Casino_New/CasinoResult/CasinoResult";
 
 
 const Main = () => {
@@ -126,7 +126,7 @@ useEffect(() => {
             <Route path="/client/create-client" element={<NewCreateUser userTypeOrder={3}  createName={"Client"} userTyep={2}/>}/>
             
             <Route path="/:id/casino" element={<CasinoMainPage />} />
-              {/* <Route path="/casinoresult/:id" element={<CasinoResult />} /> */}
+              <Route path="/casinoresult/:id" element={<CasinoResult />} />
 
             <Route path="/client/limitplusminus-super/:id" element={<SuperAgentLimitDetails />} />
             <Route path="/client/limitplusminus-agent" element={<AgentLimitDetails />} />

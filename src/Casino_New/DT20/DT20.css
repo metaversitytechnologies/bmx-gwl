@@ -41,7 +41,7 @@
 }
 
 .activeClass {
- border-top: 2px solid #fff;
+ border-top: 3px solid #000;
 }
 
 @media screen and (max-width: 800px) {

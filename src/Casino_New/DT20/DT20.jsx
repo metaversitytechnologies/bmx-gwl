@@ -37,7 +37,7 @@ const DT20 = ({
 
       <div className="fancy_aaa_container dt20_container ">
         <div className="mob-view-casino">
-          <div>
+          <div className="d_heading">
             <ul className="nav nav-tabs main-gameHead1 game-nav-bar">
               <li
                 className={`nav-item ${activeClass === 1 ? "activeClass" : ""}`}

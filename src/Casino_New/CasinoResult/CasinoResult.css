@@ -23,7 +23,14 @@
     flex-direction: column;
     gap: 10px;
 }
-
+.card-header{
+    background-color: #74766f !important;
+    color: #fff !important;
+  }
+  .j-space{
+    justify-content: space-between;
+    align-items: center;
+  }
 @media screen and (max-width: 800px) {
     .mob_table {
         display: flex;

@@ -16,12 +16,12 @@ const AaaMob = ({ t2, abc }) => {
           {t2?.map((item, id) => {
             if(item?.gtype !== "aaa") return <></>
             return (
-              <tr   className={clsx({
+              <tr key={id+item?.nation}  className={clsx({
                 "aaa-table": true,
                 clearfix: true,
                 suspended: item?.gstatus !== "ACTIVE",
               })}>
-                <td className="box-6" style={{fontSize:"12px"}}>
+                <td className="box-6" style={{fontSize:"12px", padding:"6px"}}>
                   <b>{abc[id]}.</b>
                   <b>{item?.nation}</b>{" "}
                   <p className="mb-0">

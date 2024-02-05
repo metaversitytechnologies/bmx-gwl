@@ -530,6 +530,38 @@ const Sidebar = (props) => {
                 ],
               },
               {
+                key: "23",
+                icon: <LuBarChart4 />,
+                label: "Casino Details",
+                children: [
+                  {
+                    label: <Link to="/60/casino" onClick={() => props?.action()}>ANDAR BAHAR</Link>,
+                  },
+                  {
+                    label: <Link to="/54/casino" onClick={() => props?.action()}>AMAR AKBAR ANTHONY</Link>,
+                  },
+                  {
+                    label: <Link to="/55/casino" onClick={() => props?.action()}>BOLLYWOOD TABLE</Link>,
+                  },
+                  {
+                    label: <Link to="/52/casino" onClick={() => props?.action()}>20-20 DRAGON TIGER</Link>,
+                  },
+                  {
+                    label: <Link to="/61/casino" onClick={() => props?.action()}>1 DAY DRAGON TIGER</Link>,
+                  },
+                  {
+                    label: <Link to="/53/casino" onClick={() => props?.action()}>LUCKY 7 - B</Link>,
+                  },
+                  {
+                    label: <Link to="/51/casino" onClick={() => props?.action()}>20-20 Teenpatti</Link>,
+                  },
+                  {
+                    label: <Link to="/57/casino" onClick={() => props?.action()}>1 DAY TEENPATTI</Link>,
+                  },
+                  
+                ],
+              },
+              {
                 key: "4",
                 icon: <BiUserCircle />,
                 label: "Ledger",
