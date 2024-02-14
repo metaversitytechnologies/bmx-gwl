@@ -8,7 +8,7 @@ export const UseOdds = (value) => {
   useEffect(() => {
     const timer = setInterval(() => {
       value &&
-        fetch("http://43.205.157.72:3434/casino/meta-" + value)
+        fetch("http://174.138.122.248:3434/casino/meta-" + value)
           .then((res) => res.json())
           .then((res) => {
             if (Array.isArray(res?.data?.data?.bf)) {
