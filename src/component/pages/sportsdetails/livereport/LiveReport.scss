@@ -379,6 +379,13 @@
       max-width: 36%;
     }
   }
+  .yes_no{
+
+    height: 100%;
+    .ant-col{
+      height: 100%;
+    }
+  }
 }
 .b-bottom {
   border-bottom: 1px solid #a8a8a8 !important;
@@ -555,4 +562,18 @@
 }
 .tv-score-container {
   overflow: hidden;
+}
+
+
+.bets_details{
+  .ant-modal-content{
+    padding: 0px !important;
+    .ant-modal-header {
+      padding: 17px;
+  }
+  }
+}
+
+.fancy_bet{
+  right: 55px !important;
 }

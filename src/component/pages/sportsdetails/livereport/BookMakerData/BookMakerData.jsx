@@ -9,7 +9,7 @@ import {
 } from "../../../../../store/service/OddsPnlServices";
 import { useLazyTtlBookQuery } from "../../../../../store/service/supermasteAccountStatementServices";
 
-const BookMakerData = ({ data, keyData }) => {
+const BookMakerData = ({ data, keyData, handleBets }) => {
   const [matchid, setMatchID] = useState("");
   const [showMyBook, setShowMyBook] = useState(2);
   const [activeBook, setActiveBook] = useState(1);
@@ -87,6 +87,8 @@ const BookMakerData = ({ data, keyData }) => {
       }
     : {};
 
+
+
   return (
     <>
       <div className="fancy_section">
@@ -110,6 +112,12 @@ const BookMakerData = ({ data, keyData }) => {
                         onClick={(e) => handleTtlBook(e)}>
                         Ttl Book
                       </button>
+                      <button
+                      style={{padding:"0px 12px"}}
+                        className={activeBook == 2 ? "activeMyBook" : ""}
+                        onClick={() => handleBets(data[0]?.mid)}>
+                        Bet
+                      </button>
                     </Col>
                     <div>
                       <span className="fancy_icon">i</span>
@@ -117,7 +125,7 @@ const BookMakerData = ({ data, keyData }) => {
                   </div>
                 </Col>
                 <Col className="b-bottom" span={5}>
-                  <Row>
+                  <Row className="yes_no">
                     <Col span={12} className="back khai">
                       <div>LAGAI</div>
                     </Col>
@@ -231,6 +239,13 @@ const BookMakerData = ({ data, keyData }) => {
                           onClick={(e) => handleTtlBook1(e)}>
                           Ttl Book
                         </button>
+                        <button
+                          className={activeBook1 == 2 ? "activeMyBook" : ""}
+                          onClick={() => handleBets(data[2]?.mid)}
+                          style={{padding:"0px 12px"}}
+                          >
+                          Bet
+                        </button>
                       </Col>
                       <div>
                         <span className="fancy_icon">i</span>
@@ -238,7 +253,7 @@ const BookMakerData = ({ data, keyData }) => {
                     </div>
                   </Col>
                   <Col className="b-bottom" span={5}>
-                    <Row>
+                    <Row className="yes_no">
                       <Col span={12} className="back khai">
                         <div>LAGAI</div>
                       </Col>

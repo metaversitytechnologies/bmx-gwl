@@ -1,5 +1,5 @@
 import "./LiveReport.scss";
-import { Col, Row, Spin } from "antd";
+import { Col, Modal, Row, Spin } from "antd";
 import { useLocation, useParams } from "react-router-dom";
 import MoreEvent from "./MoreEvent/MoreEvent";
 import CompeleteFancy from "./compeleteFancy/CompeleteFancy";
@@ -13,16 +13,19 @@ import {
 } from "../../../../store/service/OddsPnlServices";
 import { useLazyTtlBookQuery } from "../../../../store/service/supermasteAccountStatementServices";
 import BookMakerData from "./BookMakerData/BookMakerData";
+import { useLazySessionFancyBetDetailQuery } from "../../../../store/service/SportDetailServices";
+import BetModals from "./BetModals/BetModals";
 
 const LiveReport = () => {
   const [oddsData, setOddsData] = useState([]);
   const [ShowMyBook, setShowMyBook] = useState(2);
   const [marketId, setMarketId] = useState("");
   const [activeBookData, setActiveBookData] = useState(1);
+  const [open, setOpen] = useState(false);
+
 
   const { id, id1 } = useParams();
 
-  // console.log(id1, "Dsfdsfsdf")
 
   const { data, isLoading } = useEventDetailQuery(id, {
     pollingInterval: 1000,
@@ -39,6 +42,8 @@ const LiveReport = () => {
 
   const [getData, { data: results }] = useLazyTtlBookQuery();
   const [winnerPnl, { data: winnerData }] = useWinnerPnlMutation();
+  const [betDetails, { data: betDetailsData, isError}] =
+    useLazySessionFancyBetDetailQuery();
 
   useEffect(() => {
     marketId &&
@@ -57,6 +62,10 @@ const LiveReport = () => {
     });
   }, [marketId]);
 
+  const handleCancel = () => {
+    setOpen(false);
+  };
+
   const handleMyBook = () => {
     setShowMyBook(2);
     setActiveBookData(1);
@@ -73,6 +82,15 @@ const LiveReport = () => {
       matchid: Number(id),
       marketid: mrktid,
       subadminid: localStorage.getItem("userId"),
+    });
+  };
+  const handleBets = (marketid) => {
+    setOpen(true);
+    betDetails({
+      matchId: Number(id),
+      type: "",
+      userId: "",
+      marketId: marketid,
     });
   };
 
@@ -94,6 +112,9 @@ const LiveReport = () => {
         [results?.data?.[0].selection3]: results?.data?.[0].pnl3,
       }
     : {};
+
+  console.log(betDetailsData, "betDetailsDatabetDetailsData");
+
   return (
     <>
       {isLoading ? (
@@ -130,11 +151,19 @@ const LiveReport = () => {
                                 onClick={() => handleTtlBook(marketId)}>
                                 Ttl Book
                               </button>
+                              <button
+                              style={{padding:"0px 12px"}}
+                                className={
+                                  activeBookData == 2 ? "activeMyBook" : ""
+                                }
+                                onClick={() => handleBets(marketId)}>
+                                Bet
+                              </button>
                             </div>
                           </div>
                         </Col>
                         <Col span={5}>
-                          <Row>
+                          <Row className="yes_no">
                             <Col span={12} className="back lagai">
                               <div>LAGAI</div>
                             </Col>
@@ -255,23 +284,29 @@ const LiveReport = () => {
               );
             })}
           </div>
-
-          {/* {
-            console.log(data?.Bookmaker, "FDsfsdfs")
-          } */}
-          <BookMakerData keyData={"Bookmaker"} data={data?.Bookmaker} />
+          <BookMakerData keyData={"Bookmaker"} handleBets={handleBets} data={data?.Bookmaker} />
           {data &&
             Object.keys(data).map(
               (key) =>
                 data[key].length !== 0 &&
                 key != "Odds" && (
-                  <FancyData key={key} data={data[key]} keyData={key} />
+                  <FancyData key={key} handleBets={handleBets} data={data[key]} keyData={key} />
                 )
             )}
           <CompeleteFancy />
           <MoreEvent id1={id1} />
         </div>
       )}
+
+      <Modal
+        open={open}
+        title="Bets"
+        width={800}
+        onCancel={handleCancel}
+        footer={null}
+        className="bets_details">
+        <BetModals data={isError ? [] : betDetailsData?.data}/>
+      </Modal>
     </>
   );
 };
