@@ -53,7 +53,7 @@ const BetModals = ({data}) => {
           className="sport_detail  team_name"
           >
           <div className="table_section statement_tabs_data ant-spin-nested-loading">
-          <Table rowClassName={(text, record)=>record?.isback ?"back":"lay"} columns={columns} pagination={false} dataSource={data} />
+          <Table rowClassName={(record) => record.isback ? 'back' : 'lay' }  columns={columns} pagination={false} dataSource={data} />
           </div>
         </Card>
       </div>
