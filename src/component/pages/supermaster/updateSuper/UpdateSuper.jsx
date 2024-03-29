@@ -379,6 +379,22 @@ const UpdateSuper = ({ updateName }) => {
                               value: "2.00",
                               label: "2.00",
                             },
+                            {
+                              value: "2.25",
+                              label: "2.25",
+                            },
+                            {
+                              value: "2.50",
+                              label: "2.50",
+                            },
+                            {
+                              value: "2.75",
+                              label: "2.75",
+                            },
+                            {
+                              value: "3.00",
+                              label: "3.00",
+                            },
                           ]}
                         />
                       </Form.Item>
@@ -456,6 +472,22 @@ const UpdateSuper = ({ updateName }) => {
                             {
                               value: "3.00",
                               label: "3.00",
+                            },
+                            {
+                              value: "3.25",
+                              label: "3.25",
+                            },
+                            {
+                              value: "3.50",
+                              label: "3.50",
+                            },
+                            {
+                              value: "3.75",
+                              label: "3.75",
+                            },
+                            {
+                              value: "4.00",
+                              label: "4.00",
                             },
                           ]}
                         />
