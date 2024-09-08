@@ -8,7 +8,7 @@ export default defineConfig({
     host:true
   },
   build: {
-    outDir: "build",
+    outDir: "bmx-gwl-build",
     sourcemap: true,
   }
 })
